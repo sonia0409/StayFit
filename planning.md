@@ -28,7 +28,6 @@ user can see the trend - workout duration or calories burnt per day or both
 - user can share the workout plan with others or post it on social networking sites(whatsapp, facebook) 
 
 
-
 ### (Stretch)
 - connect app to fitbit via bluetooth.
 - enable to control music system via app.
@@ -36,3 +35,11 @@ user can see the trend - workout duration or calories burnt per day or both
 - user can keep track of their daily intake of calories with respect to the recommended calories   
   per day as per human weight - APIs to fetch the calories info w.r.t food item
 - user can fetch data like the number of steps per day, heart rate.
+- use websocket.io to connect with other user
+
+
+## ERD
+
+## Wireframe 
+
+## Set up the project Boilerplate
