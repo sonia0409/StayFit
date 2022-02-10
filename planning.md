@@ -56,9 +56,23 @@ user can see the trend - workout duration or calories burnt per day or both
 
 
 ### ERD
-...
+https://app.sqldbm.com/PostgreSQL/Edit/p201969/#
+Nouns:
+- user
+  - name
+  - age
+  - height
+  - weight
+- day
+  - week_id
+  - 
+- week
+  - month_id
+- workout
+- exercise
+- 
 ### Wireframes
-
+https://www.figma.com/file/Higwzm4lNNAagBt18mxDrn/LHL-Final-My_Workout?node-id=0%3A1
 ...
 
 ___
