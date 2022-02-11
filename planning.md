@@ -11,16 +11,30 @@ ___
 ### Project Description
 - Project title: Workout_logs / My Workout / My Workout App
 - Project description: An app that lets a user plan their workout and view their progression.
+- Problem being solved: People need an easy way to plan/track workouts in some way other than a notepad
 - Target audience: Anyone who goes to the gym or has an exercise routine
 - Team members: Sonia Singh, Olga Shilenkova, Nikhil Tallapureddy 
 
 ### Stack/Frame works
-1. FrontEnd - React.js, scss
-2. BackEnd - Node.js, Express, 
+1. FrontEnd - React.js, scss, react-calender, JavaScript
+2. BackEnd - Node.js, Express, TypeScript
 3. DB - Postgres, prisma
 4. deploy 
 
 - Mobile App using create-react-app --template ...
+
+Data Sources:
+user input:
+  - user info
+  - workout selection
+  - reps/sets/time of exercises
+
+API:
+  - list of exercises searchable by => bodypart, muscle group
+
+Seeded data:
+  - react-calender for calander
+  - 
 
 ### User Stories
 
@@ -58,18 +72,32 @@ user can see the trend - workout duration or calories burnt per day or both
 ### ERD
 https://app.sqldbm.com/PostgreSQL/Edit/p201969/#
 Nouns:
-- user
+- users
+
+- days/calender
   - name
-  - age
-  - height
-  - weight
-- day
-  - week_id
-  - 
-- week
-  - month_id
+  - workout_id
+
+- workouts
+  - FK -> user_id
+  - name
+  - type/cardio/strength...etc
+  - duration
+  - sets
+  - reps
+
+from API:
+- exercises
+  - body_part
+  - muscle_group aka target
+  - name
+  - url/gif
+
+
 - workout
-- exercise
+- workout_plan
+- day
+- week
 - 
 ### Wireframes
 https://www.figma.com/file/Higwzm4lNNAagBt18mxDrn/LHL-Final-My_Workout?node-id=0%3A1
