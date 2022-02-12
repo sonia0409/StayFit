@@ -16,7 +16,7 @@ const workoutObj = {
 function App() {
   return (
     <div>
-      Test Test
+      
       <DayWorkoutListItem id={workoutObj.id} workoutObj={workoutObj}/>
     </div>
   );
