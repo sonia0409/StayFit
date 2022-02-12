@@ -13,6 +13,7 @@ import db from '../configs/db.config';
 
 // routes import
 import catsRoutes from '../routes/catsRoutes';
+import usersRoutes from '../routes/usersRoutes';
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(morgan(ENVIRONMENT));
 app.use(bodyParser.json());
 
 app.use('/cats', catsRoutes(db));
+app.use('/users', usersRoutes(db))
 
 
 app.get('/', (req, res) => {
