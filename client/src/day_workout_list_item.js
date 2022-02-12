@@ -1,5 +1,5 @@
 import React from "react";
-import { faTrashCan, faPenToSquare, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import { faTrashCan, faPenToSquare, faCircleInfo, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./scss/day_workout_list_item.scss"
 
@@ -43,7 +43,15 @@ export default function DayWorkoutListItem(props) {
           <div>Reps: { reps }</div>
           <div>Duration: { duration }</div>
 
-          <div>&#9745;</div>
+          <div>
+
+            <button className="fas fa-view"
+            onClick={() => console.log('Check completed clicked')}
+            >
+              <FontAwesomeIcon icon={faCheck} />
+            </button>
+          </div>
+
         </div>
       </div>
 

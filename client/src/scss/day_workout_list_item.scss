@@ -1,6 +1,6 @@
 body {
   display:grid;
-  grid-template-columns: repeat( auto-fill, minmax(16rem, 1fr) );
+  grid-template-columns: repeat( auto-fill, minmax(30em, 1fr) );
   grid-gap: 5rem;
   padding:5rem;
   background:#F5F7FA;
@@ -75,6 +75,7 @@ body {
           }
       }
       .container {
+          
           position: absolute;
           width:100%;
           height:100%;
@@ -83,7 +84,26 @@ body {
           color:var(--text);
           padding: 5%;
           display: flex;
-          
+          justify-content: space-between;
+          align-items: center;
+          button {
+            
+            width:3rem;
+            height:3rem;
+            border-style: solid;
+            border-color: greenyellow;
+            border-radius:100%;
+            background:whitesmoke;
+            color:var(--background);
+            cursor: pointer;
+
+            &:hover {
+                background: greenyellow;
+                color:var(--background);
+                border-color: yellow;
+            }
+          }
+
 
       }
       &:hover .multi-button, .multi-button:focus-within { //Hover or a button inside is focused
