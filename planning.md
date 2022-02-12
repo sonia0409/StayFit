@@ -176,3 +176,16 @@ Front-end:
   -> hardcode ~5-10 sets of data for development
 - import axios and use for requests
 - look into MaterialUI for frontend UI design
+
+
+Components:
+
+Exercises tree -> SONIA
+
+Notcool Dashboard & Calender trees -> NIKHIL
+
+Forms -> OLGA
+
+Rest -> 
+
+CSS ->
