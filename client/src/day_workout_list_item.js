@@ -42,14 +42,14 @@ export default function DayWorkoutListItem(props) {
           <h2 className="exercise-name">{ name }</h2>
           
           <div className="exercise-info">
-          <div>Weight(lbs): { weight }</div>
+          <div>Weight: { weight } lbs</div>
           <div>Sets: { sets }</div>
           <div>Reps: { reps }</div>
-          <div>Duration: { duration }</div>
+          <div>Time: { duration } min</div>
           </div>
 
-          <div>
-            <button className="fas fa-view"
+          <div className="exercise-completed-button">
+            <button 
             onClick={() => console.log('Check completed clicked')}
             >
               <FontAwesomeIcon icon={faCheck} />
