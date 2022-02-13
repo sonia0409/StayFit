@@ -19,7 +19,6 @@ const Demo = styled('div')(({ theme }) => ({
 }));
 
 export default function Item(props) {
-  const [name, setName] = useState("")
 
 
   return (
