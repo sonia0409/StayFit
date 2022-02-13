@@ -16,7 +16,7 @@ ___
 - Team members: Sonia Singh, Olga Shilenkova, Nikhil Tallapureddy 
 
 ### Stack/Frame works
-1. FrontEnd - React.js, scss, react-calender, JavaScript
+1. FrontEnd - React.js, scss
 2. BackEnd - Node.js, Express, TypeScript
 3. DB - Postgres, prisma
 4. deploy 
@@ -36,17 +36,16 @@ API:
   - list of exercises searchable by => bodypart, muscle group
 
 Seeded data:
-  - react-calender for calander
   - 
 
 ### User Stories
 
 -------------------------------LEVEL 1-------------------------------
 - users can CREATE their own workout logs for a particular day 
-- user can EDIT,UPDATE, DELETE their workout logs
+- user can EDIT, DELETE their workout logs
 - users have options to repeat the workout on daily basis (Mon,Tue,Wed,Thur,Fri,Sat,Sun)
 - users can see the workout logs for the day by clicking on the day on calender 
-- user can mark the logs if complete or not - add color (red or green) 
+- user can mark the workouts if complete or not - add color (red or green) 
 - user can view the summary of all the workout logs.
 - user can enter the duration of the workout or sets of the workout
 
