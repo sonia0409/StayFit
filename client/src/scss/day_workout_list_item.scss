@@ -102,9 +102,23 @@ body {
                 color:var(--background);
                 border-color: yellow;
             }
+            &:focus {
+                background: greenyellow;
+                color:var(--background);
+                border-color: yellow;
+            }
           }
 
+          .exercise-name {
+              display: flex;
+              justify-content: center;
+              width: 40%;
+          }
 
+          .exercise-info {
+              width: 40%;
+              display: flex;
+          }
       }
       &:hover .multi-button, .multi-button:focus-within { //Hover or a button inside is focused
           width:10rem;

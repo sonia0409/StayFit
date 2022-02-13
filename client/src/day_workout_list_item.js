@@ -19,6 +19,7 @@ export default function DayWorkoutListItem(props) {
   return (
     
       <div className="card">
+
         <div className="multi-button">
           <button className="fas fa-trash"
             onClick={() => console.log('Delete clicked')}
@@ -36,15 +37,18 @@ export default function DayWorkoutListItem(props) {
             <FontAwesomeIcon icon={faCircleInfo} />
           </button>
         </div>
+
         <div className="container">
-          <h2>{ name }</h2>
+          <h2 className="exercise-name">{ name }</h2>
+          
+          <div className="exercise-info">
           <div>Weight(lbs): { weight }</div>
           <div>Sets: { sets }</div>
           <div>Reps: { reps }</div>
           <div>Duration: { duration }</div>
+          </div>
 
           <div>
-
             <button className="fas fa-view"
             onClick={() => console.log('Check completed clicked')}
             >
