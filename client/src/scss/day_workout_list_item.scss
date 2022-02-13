@@ -1,128 +1,111 @@
-body {
-  display:grid;
-  grid-template-columns: repeat( auto-fill, minmax(30em, 1fr) );
-  grid-gap: 5rem;
-  padding:5rem;
-  background:#F5F7FA;
-  .card {
-      --background:#5D9CEC;
-      --text:white;
-      color: white;
-      position: relative;
-      height:5rem;
-      box-shadow:0 0 2rem -1rem rgba(0,0,0,.05);
-      .multi-button {
-          z-index:0;
-          position: absolute;
-          top:1.25rem;
-          left:1.25rem;
-          border-radius:100%;
-          width:0rem;
-          height:0rem;
-          transform: translate(-50%, -50%);
-          transition: .25s cubic-bezier(0.25, 0, 0, 1);
-          button {
-              display: grid;
-              place-items: center;
-              position: absolute;
-              width:2rem;
-              height:2rem;
-              border:none;
-              border-radius:100%;
-              background:var(--background);
-              color:var(--text);
-              transform: translate(-50%, -50%);
-              cursor: pointer;
-              transition: .25s cubic-bezier(0.25, 0, 0, 1);
-              box-shadow:0 0 0rem -.25rem var(--background);
-              &:hover {
-                  background:var(--text);
-                  color:var(--background);
-                  box-shadow:0 0 1rem -.25rem var(--background);
-              }
-              &:first-child:nth-last-child(1) { //If there is 1 child
-                  left:25%;
-                  top:25%;
-              }
-              &:first-child:nth-last-child(2),
-              &:first-child:nth-last-child(2) ~ * { //If there are 2 children
-                  &:nth-child(1) {
-                      left:37.5%;
-                      top:18.75%;
-                  }
-                  &:nth-child(2) {
-                      left:18.75%;
-                      top:37.5%;
-                  }
-              }
-              &:first-child:nth-last-child(3),
-              &:first-child:nth-last-child(3) ~ * { //If there are 3 children
-                  &:nth-child(1) {
-                      left:50%;
-                      top:15.625%;
-                  }
-                  &:nth-child(2) {
-                      left:25%;
-                      top:25%;
-                  }
-                  &:nth-child(3) {
-                      left:15.625%;
-                      top:50%;
-                  }
-              }
-
-
-          }
-      }
-      .container {
-          
-          position: absolute;
-          width:100%;
-          height:100%;
-          border-radius:1rem;
-          background:var(--background);
-          color:var(--text);
-          padding: 5%;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          button {
-            
-            width:3rem;
-            height:3rem;
-            border-style: solid;
-            border-color: greenyellow;
+.card {
+    --background:#5D9CEC;
+    --text:white;
+    color: white;
+    position: relative;
+    max-width: 87.5%;
+    margin: 10px;
+    box-shadow:0 0 2rem -1rem rgba(0,0,0,.05);
+    .multi-button {
+        z-index:0;
+        position: absolute;
+        top:1.25rem;
+        left:1.25rem;
+        border-radius:100%;
+        width:0rem;
+        height:0rem;
+        transform: translate(-50%, -50%);
+        transition: .25s cubic-bezier(0.25, 0, 0, 1);
+        button {
+            display: grid;
+            place-items: center;
+            position: absolute;
+            width:2rem;
+            height:2rem;
+            border:none;
             border-radius:100%;
-            background:whitesmoke;
-            color:var(--background);
+            background:var(--background);
+            color:var(--text);
+            transform: translate(-50%, -50%);
             cursor: pointer;
-
+            transition: .25s cubic-bezier(0.25, 0, 0, 1);
+            box-shadow:0 0 0rem -.25rem var(--background);
             &:hover {
-                background: greenyellow;
+                background:var(--text);
                 color:var(--background);
-                border-color: yellow;
+                box-shadow:0 0 1rem -.25rem var(--background);
             }
-            &:focus {
-                background: greenyellow;
-                color:var(--background);
-                border-color: yellow;
+            &:first-child:nth-last-child(3),
+            &:first-child:nth-last-child(3) ~ * { //If there are 3 children
+                &:nth-child(1) {
+                    left:20%;
+                    top:100%;
+                }
+                &:nth-child(2) {
+                    left:20%;
+                    top:75%;
+                }
+                &:nth-child(3) {
+                    left:20%;
+                    top:50%;
+                }
             }
-          }
 
-          .exercise-name {
-              display: flex;
-              justify-content: center;
-              width: 40%;
-          }
 
-          .exercise-info {
-              width: 40%;
-              display: flex;
-          }
-      }
-      &:hover .multi-button, .multi-button:focus-within { //Hover or a button inside is focused
-          width:10rem;
-          height:10rem;
-      }
-  }
+        }
+    }
+    .container {
+        position: relative;
+        width:100%;
+        height:100%;
+        border-radius:1rem;
+        background:var(--background);
+        color:var(--text);
+        padding: 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        button {
+        
+        width:3rem;
+        height:3rem;
+        border-style: solid;
+        border-color: greenyellow;
+        border-radius:100%;
+        background:whitesmoke;
+        color:var(--background);
+        cursor: pointer;
+
+        &:hover {
+            background: greenyellow;
+            color:var(--background);
+            border-color: yellow;
+        }
+        &:focus {
+            background: greenyellow;
+            color:var(--background);
+            border-color: yellow;
+        }
+        }
+
+        .exercise-name {
+            font-size: smaller;
+            display: flex;
+            justify-content: center;
+            width: 30%;
+        }
+
+        .exercise-info {
+            font-size: smaller;
+            width: 30%;
+            // display: flex;
+        }
+        .exercise-completed-button {
+            width: 20%;
+        }
+    }
+    &:hover .multi-button, .multi-button:focus-within { //Hover or a button inside is focused
+        width:10rem;
+        height:10rem;
+    }
 }
