@@ -19,16 +19,18 @@ const Demo = styled('div')(({ theme }) => ({
 }));
 
 export default function Item(props) {
+  const [name, setName] = useState("")
+
 
   return (
     <Box sx={{ flexGrow: 1, maxWidth: 752 }}>
       <Grid container spacing={"auto"}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={12}>
           <Demo>
             <List>
                 <ListItem
                   secondaryAction={
-                    <IconButton edge="end" aria-label="next" onClick={() => console.log("Hello")}>
+                    <IconButton edge="end" aria-label="next" onClick={() => props.onClick(props.exerciseItem)}>
                       <ArrowForwardIosIcon />
                     </IconButton>
                   }
