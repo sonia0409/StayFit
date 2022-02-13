@@ -1,6 +1,8 @@
 import React from "react";
 import ExerciseList from "./ExerciseList";
 import ItemList from './ItemList';
+import { useState } from "react";
+import ShowExercise from "./ShowExercise";
 
 
 
@@ -79,12 +81,27 @@ export default function Application() {
         "Triceps",
         "Upper back"
     ]
+    const [showBodyPart, setShowBodyPart ] = useState(false);
+    const [showMuscels, setShowMuscels] = useState(false);
+
+    const onExerciseSelection = (name) => {
+        console.log("In applications name is:", name)
+        //if the name === BodyPart? setShowBodyPart(!showBodyPart)
+        if(name === "Body Parts") {
+            setShowBodyPart(!showBodyPart);
+        }
+        //if name === Muscels? setShowMuscels(!showMuscels) 
+        if(name === "Muscels") {
+            setShowMuscels(!showMuscels);
+        }
+    } 
+
 
     return (
         <div>
-            <ItemList header="List of Exercises" exerciseList={exerciseList}/>
-            <ItemList header="Body Parts" exerciseList={bodyPartsList}/>
-            <ItemList header="Muscels" exerciseList={muscelsList}/>
+            <ItemList header="List of Exercises" exerciseList={exerciseList} onClick={onExerciseSelection}/>
+            {showBodyPart && <ItemList header="Body Parts" exerciseList={bodyPartsList}/>}
+            {showMuscels && <ItemList header="Muscels" exerciseList={muscelsList}/>}
           {/*   <ExerciseList exercises={exercises} /> */}
         </div>
     );
