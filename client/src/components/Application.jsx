@@ -57,12 +57,35 @@ const exercises =[
 
 export default function Application() {
     const exerciseList = ["Body Parts", "Muscels"]
-    
+    const bodyPartsList = ["Back", "Cardio", "Chest", "Lower Arms", "Lower Legs", "Neck", "Shoulders", "Upper Arms", "Upper Legs", "Waist"]
+    const muscelsList=[
+        "Abductors",
+        "Abs",
+        "Adductors",
+        "Biceps",
+        "Calves",
+        "Cardiovascular System",
+        "Delts",
+        "Forearms",
+        "Glutes",
+        "Hamstrings",
+        "Lats",
+        "Levator Scapulae",
+        "Pectorals",
+        "Quads",
+        "Serratus Anterior",
+        "Spine",
+        "Traps",
+        "Triceps",
+        "Upper back"
+    ]
 
     return (
         <div>
             <ItemList header="List of Exercises" exerciseList={exerciseList}/>
-            <ExerciseList exercises={exercises} />
+            <ItemList header="Body Parts" exerciseList={bodyPartsList}/>
+            <ItemList header="Muscels" exerciseList={muscelsList}/>
+          {/*   <ExerciseList exercises={exercises} /> */}
         </div>
     );
 }
