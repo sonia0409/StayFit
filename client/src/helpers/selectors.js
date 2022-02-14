@@ -9,7 +9,7 @@ export const getExerciseByBodyPartName = (exercises, bodyPartName) => {
 };
 
 //function to filter the exercise based on the Muscels and the muscelName
-export const getExerciseByMuscelsName = (exercises, muscelName) => {
+export const getExerciseByMusclesName = (exercises, muscelName) => {
     const exercisesByMuscelsName = exercises.filter(
         (exercise) => exercise.target === muscelName.toLowerCase()
     )
