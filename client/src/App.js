@@ -1,10 +1,11 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Button from "./global-components/Button";
 
 function App() {
   return (
     <div>
-      Test Test
+      <Button />
     </div>
   );
 }
