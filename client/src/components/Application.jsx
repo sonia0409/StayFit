@@ -2,8 +2,7 @@ import React from "react";
 import ExerciseList from "./ExerciseList";
 import ItemList from './ItemList';
 import { useState } from "react";
-import ShowExercise from "./ShowExercise";
-
+import { getExerciseByBodyPartName, getExerciseByMuscelsName } from "../helpers/selectors";
 
 
 const exercises =[
@@ -83,26 +82,51 @@ export default function Application() {
     ]
     const [showBodyPart, setShowBodyPart ] = useState(false);
     const [showMuscels, setShowMuscels] = useState(false);
+    const [showPartName, setShowPartName] = useState(false);
+    const [showMuscelName, setShowMuscelName] = useState(false);
+    const [bodyPartName, setBodyPartName] = useState("waist")
+    const [muscelName, setMuscelName] = useState("lats")
+
 
     const onExerciseSelection = (name) => {
         console.log("In applications name is:", name)
         //if the name === BodyPart? setShowBodyPart(!showBodyPart)
         if(name === "Body Parts") {
             setShowBodyPart(!showBodyPart);
+            setShowMuscels(false);
         }
         //if name === Muscels? setShowMuscels(!showMuscels) 
         if(name === "Muscels") {
             setShowMuscels(!showMuscels);
+            setShowBodyPart(false);
         }
     } 
-
+    // set the state on the selection of partName
+    const onPartNameSelection = (bodyPartsList, partName) => {
+        console.log(partName)
+        if(bodyPartsList.includes(partName)){
+            setBodyPartName(partName);
+            setShowPartName(!showPartName);
+        }
+        if(muscelsList.includes(partName)){
+            setMuscelName(partName);
+            setShowMuscelName(!showMuscelName);
+        }
+    }
+    
+    const exercisesByBodyPart = getExerciseByBodyPartName(exercises,bodyPartName)
+    const exercisesByMuscels = getExerciseByMuscelsName(exercises, muscelName)
 
     return (
         <div>
-            <ItemList header="List of Exercises" exerciseList={exerciseList} onClick={onExerciseSelection}/>
-            {showBodyPart && <ItemList header="Body Parts" exerciseList={bodyPartsList}/>}
+            <button onClick={() => {
+               setShowMuscels(false); 
+               setShowBodyPart(false);
+            }}>Back Button</button>
+            {(!showBodyPart && !showMuscels) && <ItemList header="List of Exercises" exerciseList={exerciseList} onClick={onExerciseSelection}/>}
+            {showBodyPart  && <ItemList header="Body Parts" exerciseList={bodyPartsList}/>}
             {showMuscels && <ItemList header="Muscels" exerciseList={muscelsList}/>}
-          {/*   <ExerciseList exercises={exercises} /> */}
+              { <ExerciseList exercises={exercisesByBodyPart} onClick={onExerciseSelection}/>}  
         </div>
     );
 }
