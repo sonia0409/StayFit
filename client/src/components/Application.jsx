@@ -2,7 +2,7 @@ import React from "react";
 import ExerciseList from "./ExerciseList";
 import ItemList from './ItemList';
 import { useState } from "react";
-import { getExerciseByBodyPartName, getExerciseByMuscelsName } from "../helpers/selectors";
+import { getExerciseByBodyPartName, getExerciseByMusclesName } from "../helpers/selectors";
 
 
 const exercises =[
@@ -57,9 +57,9 @@ const exercises =[
 ] 
 
 export default function Application() {
-    const exerciseList = ["Body Parts", "Muscels"]
+    const exerciseList = ["Body Parts", "Muscles"]
     const bodyPartsList = ["Back", "Cardio", "Chest", "Lower Arms", "Lower Legs", "Neck", "Shoulders", "Upper Arms", "Upper Legs", "Waist"]
-    const muscelsList=[
+    const musclesList=[
         "Abductors",
         "Abs",
         "Adductors",
@@ -81,11 +81,11 @@ export default function Application() {
         "Upper back"
     ]
     const [showBodyPart, setShowBodyPart ] = useState(false);
-    const [showMuscels, setShowMuscels] = useState(false);
+    const [showMuscles, setShowMuscles] = useState(false);
     const [showPartName, setShowPartName] = useState(false);
-    const [showMuscelName, setShowMuscelName] = useState(false);
+    const [showMuscleName, setShowMuscleName] = useState(false);
     const [bodyPartName, setBodyPartName] = useState("waist")
-    const [muscelName, setMuscelName] = useState("lats")
+    const [muscleName, setMuscleName] = useState("lats")
 
 
     const onExerciseSelection = (name) => {
@@ -93,11 +93,11 @@ export default function Application() {
         //if the name === BodyPart? setShowBodyPart(!showBodyPart)
         if(name === "Body Parts") {
             setShowBodyPart(!showBodyPart);
-            setShowMuscels(false);
+            setShowMuscles(false);
         }
-        //if name === Muscels? setShowMuscels(!showMuscels) 
-        if(name === "Muscels") {
-            setShowMuscels(!showMuscels);
+        //if name === Muscles? setShowMuscles(!showMuscles) 
+        if(name === "Muscles") {
+            setShowMuscles(!showMuscles);
             setShowBodyPart(false);
         }
     } 
@@ -108,24 +108,24 @@ export default function Application() {
             setBodyPartName(partName);
             setShowPartName(!showPartName);
         }
-        if(muscelsList.includes(partName)){
-            setMuscelName(partName);
-            setShowMuscelName(!showMuscelName);
+        if(musclesList.includes(partName)){
+            setMuscleName(partName);
+            setShowMuscleName(!showMuscleName);
         }
     }
     
     const exercisesByBodyPart = getExerciseByBodyPartName(exercises,bodyPartName)
-    const exercisesByMuscels = getExerciseByMuscelsName(exercises, muscelName)
+    const exercisesByMuscles = getExerciseByMusclesName(exercises, muscleName)
 
     return (
         <div>
             <button onClick={() => {
-               setShowMuscels(false); 
+               setShowMuscles(false); 
                setShowBodyPart(false);
             }}>Back Button</button>
-            {(!showBodyPart && !showMuscels) && <ItemList header="List of Exercises" exerciseList={exerciseList} onClick={onExerciseSelection}/>}
+            {(!showBodyPart && !showMuscles) && <ItemList header="List of Exercises" exerciseList={exerciseList} onClick={onExerciseSelection}/>}
             {showBodyPart  && <ItemList header="Body Parts" exerciseList={bodyPartsList}/>}
-            {showMuscels && <ItemList header="Muscels" exerciseList={muscelsList}/>}
+            {showMuscles && <ItemList header="Muscles" exerciseList={musclesList}/>}
               { <ExerciseList exercises={exercisesByBodyPart} onClick={onExerciseSelection}/>}  
         </div>
     );
