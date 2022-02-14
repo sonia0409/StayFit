@@ -2,7 +2,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 
 export default function ShowExercise(props) {
-
+console.log(props)
     return (
         <li>
             <Box
