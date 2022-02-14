@@ -1,23 +1,21 @@
 import { React, useState } from 'react';
 import DayWorkoutList from '../day_workout_list';
+import WeeklyCalender from './WeeklyCalender';
 
 export default function Calender() {
-  const [selectedDate, setSelectedDate] = useState(new Date().toDateString())
+  const [selectedDate, setSelectedDate] = useState(new Date())
 
-  // useEffect(() => {
-  //   setSelectedDate(Date.now())
-  // }, []);
-  const splitDate = selectedDate.split(' ');
-  
+  const splitDate = selectedDate.toDateString().split(' ');
+
   return (
     <div>
-      Calender page
+      Calender pageeeee
       <h2>Component: Header</h2>
-      <h2>{splitDate[1]} {splitDate[2]} </h2>
       <h2>Tasks left: 10</h2>
-      <h2>Component: WeekCalender</h2>
-      <DayWorkoutList />
+      <h2>{splitDate[1]} {splitDate[2]} </h2>
+      <WeeklyCalender  currDate={selectedDate} onClick={setSelectedDate} />
 
+      <DayWorkoutList />
       <button className="addNewExercise">
         Add new Exercise
       </button>

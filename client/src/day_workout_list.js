@@ -118,7 +118,7 @@ const workoutObjs = [
 export default function DayWorkoutList() {
 
   const exerciseItems = workoutObjs.map(exercise => 
-    <DayWorkoutListItem id={exercise.id} workoutObj={exercise} />
+    <DayWorkoutListItem key={exercise.id} workoutObj={exercise} />
   )
 
   return (
