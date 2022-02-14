@@ -1,10 +1,12 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+// import "./App.css";
+import AddFormHook from "./global-components/AddFormHook";
 
 function App() {
   return (
     <div>
-      Test Test
+      <AddFormHook />
+      {/* <AddForm /> */}
     </div>
   );
 }
