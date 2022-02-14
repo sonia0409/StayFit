@@ -7,7 +7,7 @@ export default function ExerciseListItem(props) {
 
     return (
 
-        <div className="btn-group dropend">
+        <div>
             <Item exerciseItem={name} onClick={onClick} />
             {props.show && <ShowExercise name={name} gifUrl={gifUrl} />}
         </div>
