@@ -11,7 +11,8 @@ const Demo = styled('div')(({ theme }) => ({
 }));
 
 export default function ItemList(props) {
-  const {header, exerciseList, onClick} = props;
+  const { header, exerciseList, onClick } = props;
+  console.log(props)
 
   const nameList = exerciseList.map(element => <Item key={exerciseList.indexOf(element)} exerciseItem={element} onClick={onClick} />)
 
