@@ -42,18 +42,18 @@ export default function DayWorkoutListItem(props) {
           <h2 className="exercise-name">{ name }</h2>
           
           <div className="exercise-info">
-          <div>Weight: { weight } lbs</div>
-          <div>Sets: { sets }</div>
-          <div>Reps: { reps }</div>
-          <div>Time: { duration } min</div>
-          </div>
+            { weight && <div>Weight: <div>{ weight } lbs</div></div> }
+            { sets && <div>Sets: <div>{ sets }</div></div> }
+            { reps && <div>Reps: <div>{ reps }</div></div> }
+            { duration && <div>Time: <div>{ duration } min</div></div> }
 
-          <div className="exercise-completed-button">
-            <button 
-            onClick={() => console.log('Check completed clicked')}
-            >
-              <FontAwesomeIcon icon={faCheck} />
-            </button>
+            <div className="exercise-completed-button">
+              <button 
+              onClick={() => console.log('Check completed clicked')}
+              >
+                <FontAwesomeIcon icon={faCheck} />
+              </button>
+            </div>
           </div>
 
         </div>

@@ -1,21 +1,23 @@
 .card {
+    transition: 0.5s;
     --background:#5D9CEC;
     --text:white;
     color: white;
     position: relative;
     max-width: 87.5%;
     margin: 10px;
-    box-shadow:0 0 2rem -1rem rgba(0,0,0,.05);
+    // margin-left: 15px;
+    // box-shadow:0 0 2rem -1rem rgba(0,0,0,.05);
     .multi-button {
-        z-index:0;
+        z-index:1;
         position: absolute;
         top:1.25rem;
         left:1.25rem;
         border-radius:100%;
         width:0rem;
         height:0rem;
-        transform: translate(-50%, -50%);
-        transition: .25s cubic-bezier(0.25, 0, 0, 1);
+        transform: translate(-45%, -50%);
+        transition: .5s cubic-bezier(0.25, 0, 0, 1);
         button {
             display: grid;
             place-items: center;
@@ -29,7 +31,7 @@
             transform: translate(-50%, -50%);
             cursor: pointer;
             transition: .25s cubic-bezier(0.25, 0, 0, 1);
-            box-shadow:0 0 0rem -.25rem var(--background);
+            // box-shadow:0 0 0rem -.25rem var(--background);
             &:hover {
                 background:var(--text);
                 color:var(--background);
@@ -38,16 +40,16 @@
             &:first-child:nth-last-child(3),
             &:first-child:nth-last-child(3) ~ * { //If there are 3 children
                 &:nth-child(1) {
-                    left:20%;
-                    top:100%;
+                    left:28%;
+                    top:95%;
                 }
                 &:nth-child(2) {
-                    left:20%;
-                    top:75%;
+                    left:28%;
+                    top:70%;
                 }
                 &:nth-child(3) {
-                    left:20%;
-                    top:50%;
+                    left:28%;
+                    top:45%;
                 }
             }
 
@@ -61,12 +63,14 @@
         border-radius:1rem;
         background:var(--background);
         color:var(--text);
-        padding: 5%;
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-bottom: 5%;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
+        flex-direction: column;
+        // align-content: center;
+
         button {
-        
         width:3rem;
         height:3rem;
         border-style: solid;
@@ -92,20 +96,27 @@
             font-size: smaller;
             display: flex;
             justify-content: center;
-            width: 30%;
+            width: 100%;
         }
 
         .exercise-info {
+            display: flex;
             font-size: smaller;
             width: 30%;
-            // display: flex;
-        }
-        .exercise-completed-button {
-            width: 20%;
+            justify-content: space-between;
+            width: 100%;
+            .exercise-completed-button {
+                // width: 20%;
+            }
         }
     }
     &:hover .multi-button, .multi-button:focus-within { //Hover or a button inside is focused
         width:10rem;
         height:10rem;
+    }
+
+    &:hover {
+        transition: 0.5s;
+        padding-left: 0.75rem;
     }
 }
