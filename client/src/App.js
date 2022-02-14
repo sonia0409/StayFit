@@ -1,12 +1,11 @@
 import React from 'react';
 // import './App.css';
-import DayWorkoutList from './day_workout_list';
+import Dashboard from './Dashboard';
 
 function App() {
   return (
     <div>
-      
-      <DayWorkoutList />
+      <Dashboard />
     </div>
   );
 }
