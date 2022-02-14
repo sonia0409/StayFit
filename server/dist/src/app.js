@@ -13,14 +13,14 @@ const body_parser_1 = __importDefault(require("body-parser"));
 // db connection
 const db_config_1 = __importDefault(require("../configs/db.config"));
 // routes import
-const catsRoutes_1 = __importDefault(require("../routes/catsRoutes"));
+const usersRoutes_1 = __importDefault(require("../routes/usersRoutes"));
 const app = (0, express_1.default)();
 // middleware setup
 app.use((0, morgan_1.default)(ENVIRONMENT));
 app.use(body_parser_1.default.json());
-app.use('/cats', (0, catsRoutes_1.default)(db_config_1.default));
+app.use('/users', (0, usersRoutes_1.default)(db_config_1.default));
 app.get('/', (req, res) => {
-    res.json({ greetings: 'hello worldddddd' });
+    res.json({ greetings: 'hello world' });
 });
 app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
 //# sourceMappingURL=app.js.map

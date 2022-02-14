@@ -2,12 +2,13 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/app.js",
+  "main": "dist/src/app.js",
   "scripts": {
     "start": "tsc && node dist/src/app.js",
     "lint": "eslint . --ext .ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "db:reset": "node db/scripts/resetdb.js"
+    "db:reset": "node db/scripts/resetdb.js",
+    "local": "./node_modules/.bin/nodemon -L --ignore public/"
   },
   "keywords": [],
   "author": "",
