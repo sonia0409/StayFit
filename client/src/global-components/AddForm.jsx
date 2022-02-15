@@ -5,7 +5,8 @@ import { Checkbox } from "@mui/material";
 
 import "./AddForm.css";
 
-const AddForm = () => {
+const AddForm = (props) => {
+  const { date = "Mon Feb 14 2022" } = props;
   const {
     control,
     register, //cb ,register individual inputs into the hook
@@ -15,13 +16,13 @@ const AddForm = () => {
     defaultValues: {
       bodyPart: "",
       muscleGroup: "",
-      Mo: "",
-      Tu: "",
-      We: "",
-      Th: "",
-      Fr: "",
-      Sa: "",
-      Su: "",
+      Mo: false,
+      Tu: false,
+      We: false,
+      Th: false,
+      Fr: false,
+      Sa: false,
+      Su: false,
     },
   });
 
@@ -29,6 +30,8 @@ const AddForm = () => {
     <main>
       {/* "handleSubmit" will validate your inputs  */}
       <form
+        action="/day-exercises/:userid/:date/new"
+        method="POST"
         onSubmit={handleSubmit((data) => {
           console.log(data);
         })}
@@ -108,6 +111,12 @@ const AddForm = () => {
         <input {...register("sets")} placeholder="Sets" />
         <input {...register("reps")} placeholder="Reps" />
         <input {...register("weight")} placeholder="Weight" />
+        <input
+          {...register("date")}
+          placeholder="Date"
+          type="hidden"
+          value={date}
+        />
 
         <label>Recurring :</label>
         <div className="form-checkboxes">
