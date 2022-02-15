@@ -15,7 +15,7 @@ function default_1(db) {
         const command = `
     SELECT * FROM day_exercises 
     JOIN users ON user_id = users.id
-    JOIN exercises on exercise_id = exercises.id 
+    JOIN exercises on exercise_id = exercises.id a
     WHERE date = $1 
     AND user_id = $2
     `;
@@ -27,7 +27,7 @@ function default_1(db) {
     // POST: '/day-exercises/:userid/:date'
     //  date => 'Mon Feb 14 2022'
     //Insert and update the day_exercises_list
-    router.put('/:userid/:date/new', (req, res) => {
+    router.post('/:userid/:date/new', (req, res) => {
         const { name, muscleGroup, bodyPart, weight, duration, sets, reps, userid, exercise_id, date, mo, tu, we, th, fr, sa, su } = req.body;
         const exercisesArray = [name, muscleGroup, bodyPart, weight, duration, sets, reps];
         const recurringArray = [userid, exercise_id, date, mo, tu, we, th, fr, sa, su];
