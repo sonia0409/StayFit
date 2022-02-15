@@ -9,7 +9,7 @@ export default function BackButton() {
 
   return (
     <Stack spacing={2} direction="row">
-      <Button onClick={() => navigate(-1)} variant="contained">Back</Button>
+      <Button onClick={() => navigate(-1)} variant="contained"><ArrowBackIosIcon/></Button>
       {/* <div onClick={() => navigate(-1)}><ArrowBackIosIcon/></div> */}
     </Stack>
   );
