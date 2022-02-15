@@ -1,8 +1,6 @@
-// without Slider
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import ReactSelect from "react-select";
-// import { Input as AntdInput } from "antd";
 import { Checkbox } from "@mui/material";
 
 import "./AddForm.css";
@@ -13,7 +11,19 @@ const AddForm = () => {
     register, //cb ,register individual inputs into the hook
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      bodyPart: "",
+      muscleGroup: "",
+      Mo: "",
+      Tu: "",
+      We: "",
+      Th: "",
+      Fr: "",
+      Sa: "",
+      Su: "",
+    },
+  });
 
   return (
     <main>
@@ -26,7 +36,6 @@ const AddForm = () => {
         <div className="form-name">
           <h1>Add Workout</h1>
         </div>
-        {/* REACT SELECT */}
         <label>Body Part</label>
         <div className="form-dropdown">
           <Controller
@@ -37,16 +46,53 @@ const AddForm = () => {
                 isClearable
                 {...field}
                 options={[
-                  { value: "chest", label: "chest" },
-                  { value: "lower arms", label: "lower arms" },
-                  { value: "lower legs", label: "lower legs" },
-                  { value: "neck", label: "neck" },
-                  { value: "shoulders", label: "shoulders" },
-                  { value: "upper arms", label: "upper arms" },
-                  { value: "upper legs", label: "upper legs" },
-                  { value: "waist", label: "waist" },
-                  { value: "back", label: "back" },
-                  { value: "cardio", label: "cardio" },
+                  { value: "chest", label: "Chest" },
+                  { value: "lower arms", label: "Lower arms" },
+                  { value: "lower legs", label: "Lower legs" },
+                  { value: "neck", label: "Neck" },
+                  { value: "shoulders", label: "Shoulders" },
+                  { value: "upper arms", label: "Upper arms" },
+                  { value: "upper legs", label: "Upper legs" },
+                  { value: "waist", label: "Waist" },
+                  { value: "back", label: "Back" },
+                  { value: "cardio", label: "Cardio" },
+                  { value: "other", label: "Other" },
+                ]}
+              />
+            )}
+          />
+
+          <label>Muscle Group</label>
+          <Controller
+            name="muscleGroup"
+            control={control}
+            render={({ field }) => (
+              <ReactSelect
+                isClearable
+                {...field}
+                options={[
+                  { value: "abductors", label: "Abductors" },
+                  { value: "abs", label: "Abs" },
+                  { value: "biceps", label: "Biceps" },
+                  { value: "calves", label: "Calves" },
+                  {
+                    value: "cardiovascular system",
+                    label: "Cardiovascular System",
+                  },
+                  { value: "delts", label: "Delts" },
+                  { value: "forearms", label: "Forearms" },
+                  { value: "glutes", label: "Glutes" },
+                  { value: "hamstrings", label: "Hamstrings" },
+                  { value: "lats", label: "Lats" },
+                  { value: "levator scapulae", label: "Levator Scapulae" },
+                  { value: "pectorals", label: "Pectorals" },
+                  { value: "quads", label: "Quads" },
+                  { value: "serratus anterior", label: "Serratus Anterior" },
+                  { value: "spine", label: "Spine" },
+                  { value: "traps", label: "Traps" },
+                  { value: "triceps", label: "Triceps" },
+                  { value: "upper back", label: "Upper back" },
+                  { value: "other", label: "other" },
                 ]}
               />
             )}
@@ -62,6 +108,7 @@ const AddForm = () => {
         <input {...register("sets")} placeholder="Sets" />
         <input {...register("reps")} placeholder="Reps" />
         <input {...register("weight")} placeholder="Weight" />
+
         <label>Recurring :</label>
         <div className="form-checkboxes">
           <label> Mo </label>
@@ -97,32 +144,20 @@ const AddForm = () => {
           />
           <label> Sa </label>
           <Controller
-            name="Sat"
+            name="Sa"
             control={control}
             render={({ field }) => <Checkbox {...field} />}
           />
           <label> Su </label>
           <Controller
-            name="Sun"
+            name="Su"
             control={control}
             render={({ field }) => <Checkbox {...field} />}
           />
         </div>
-
         <input type="submit" />
       </form>
     </main>
   );
 };
 export default AddForm;
-
-// 0:"back"
-// 1:"cardio"
-// 2:"chest"
-// 3:"lower arms"
-// 4:"lower legs"
-// 5:"neck"
-// 6:"shoulders"
-// 7:"upper arms"
-// 8:"upper legs"
-// 9:"waist"

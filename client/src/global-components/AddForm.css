@@ -1,13 +1,11 @@
 body {
   background: #eeeeee;
-  /* background: #b2b1b9; */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
 }
 
 form {
-  /* background: #e5e5e5; */
   background: #2c2e43;
   max-width: 500px;
   margin: 0 auto;
@@ -18,7 +16,6 @@ form {
 
 .form-name {
   background: #548cff;
-  /* background: #548cff; */
   text-transform: uppercase;
   border: none;
   padding: 20px;
@@ -28,7 +25,6 @@ label {
   line-height: 2;
   text-align: left;
   color: #548cff;
-  /* font-weight: 200; */
   margin: 20px 0;
 }
 
