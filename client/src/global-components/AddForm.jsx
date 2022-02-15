@@ -15,13 +15,13 @@ const AddForm = () => {
     defaultValues: {
       bodyPart: "",
       muscleGroup: "",
-      Mo: "",
-      Tu: "",
-      We: "",
-      Th: "",
-      Fr: "",
-      Sa: "",
-      Su: "",
+      Mo: false,
+      Tu: false,
+      We: false,
+      Th: false,
+      Fr: false,
+      Sa: false,
+      Su: false,
     },
   });
 
