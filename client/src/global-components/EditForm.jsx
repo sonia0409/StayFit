@@ -12,8 +12,15 @@ const EditForm = (props) => {
     sets = "I would like to watch rather",
     reps = "Seven and a half",
     weight = "One chicken",
-    bodyPart = "I am from Props. Do I win?",
+    bodyPart = "Chest",
     muscleGroup = "I WON? Props!",
+    Mo = true,
+    Tu = true,
+    We = true,
+    Th = true,
+    Fr = true,
+    Sa = false,
+    Su = false,
   } = props;
   const {
     control,
@@ -23,19 +30,15 @@ const EditForm = (props) => {
   } = useForm({
     defaultValues: {
       //these values are NOT VISIABLE on the screen for user
-      bodyPart: "NO It was ME, from Default",
-      muscleGroup: "Na-na-banana, default",
-      Mo: "Not today",
-      Tu: "Better mood",
-      We: "Almost there",
-      Th: "Tomorow Friday",
-      Fr: true,
-      // Fr: defaultChecked,
-      Sa: "Hey-hey",
-      Su: "Oh, tomorow Monday",
-      // these are visiable, bcs they are in inputs,
-      //  and they override value from input field
-      exersiseName: "Low Back Hurt",
+      bodyPart: "",
+      muscleGroup: "",
+      Mo: false,
+      Tu: false,
+      We: false,
+      Th: false,
+      Fr: false,
+      Sa: false,
+      Su: false,
     },
   });
 
@@ -136,43 +139,43 @@ const EditForm = (props) => {
           <Controller
             name="Mo"
             control={control}
-            render={({ field }) => <Checkbox {...field} />}
+            render={({ field }) => <Checkbox {...field} defaultChecked={Mo} />}
           />
           <label> Tu </label>
           <Controller
             name="Tu"
             control={control}
-            render={({ field }) => <Checkbox {...field} />}
+            render={({ field }) => <Checkbox {...field} defaultChecked={Tu} />}
           />
           <label> We </label>
           <Controller
             name="We"
             control={control}
-            render={({ field }) => <Checkbox {...field} />}
+            render={({ field }) => <Checkbox {...field} defaultChecked={We} />}
           />
           <label> Th </label>
           <Controller
             name="Th"
             control={control}
-            render={({ field }) => <Checkbox {...field} />}
+            render={({ field }) => <Checkbox {...field} defaultChecked={Th} />}
           />
           <label> Fr </label>
           <Controller
             name="Fr"
             control={control}
-            render={({ field }) => <Checkbox {...field} />}
+            render={({ field }) => <Checkbox {...field} defaultChecked={Fr} />}
           />
           <label> Sa </label>
           <Controller
             name="Sa"
             control={control}
-            render={({ field }) => <Checkbox {...field} />}
+            render={({ field }) => <Checkbox {...field} defaultChecked={Sa} />}
           />
           <label> Su </label>
           <Controller
             name="Su"
             control={control}
-            render={({ field }) => <Checkbox {...field} defaultChecked />}
+            render={({ field }) => <Checkbox {...field} defaultChecked={Su} />}
           />
         </div>
         <input type="submit" />
