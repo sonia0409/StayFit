@@ -1,8 +1,12 @@
 import React from "react";
-// import "./App.css";
+import EditForm from "./global-components/EditForm";
 
 function App() {
-  return <div></div>;
+  return (
+    <div>
+      <EditForm />
+    </div>
+  );
 }
 
 export default App;
