@@ -12,6 +12,7 @@ import db from '../configs/db.config';
 
 // routes import
 import usersRoutes from '../routes/usersRoutes';
+import dayExercisesRoutes from '../routes/dayExercises';
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(morgan(ENVIRONMENT));
 app.use(bodyParser.json());
 
 app.use('/users', usersRoutes(db));
+app.use('/day-exercises', dayExercisesRoutes(db));
 
 
 app.get('/', (req, res) => {

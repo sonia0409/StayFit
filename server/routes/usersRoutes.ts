@@ -1,17 +1,23 @@
-/////////// catsRoutes.js
+/////////// usersRoutes.js
 import express from 'express';
 
 const router = express.Router();
 
 export default function(db) {
-  // all routes will go here
+  // GET: '/users'
   router.get('/', (req, res) => {
-    const command = "SELECT * FROM users";
+    const command = `
+    SELECT * FROM day_exercises 
+    JOIN users ON user_id = users.id
+    JOIN exercises on exercise_id = exercises.id 
+    WHERE date = 'Mon Feb 14 2022' 
+    AND user_id = '1'
+    `;
     db.query(command)
       .then(data => {
         res.json(data.rows);
       });
   });
-  
+
   return router;
 }
