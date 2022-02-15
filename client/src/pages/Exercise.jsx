@@ -2,13 +2,14 @@ import React from 'react';
 import ExerciseList from '../components/ExerciseList';
 import { useParams } from "react-router-dom";
 import { getExerciseByBodyPartName, getExerciseByMusclesName, getExercises } from "../helpers/selectors";
-
+import useExercisesData from '../hooks/useExercisesData';
 
 const Exercise = () => {
     let params = useParams();
     let part = params.part
     let name = params.name
-    const exercises = [
+    const { exercises } = useExercisesData()
+    /* const exercises = [
         {
             bodyPart: "waist",
             equipment: "body weight",
@@ -57,7 +58,7 @@ const Exercise = () => {
             name: "archer pull up",
             target: "lats",
         }
-    ]
+    ] */
     const filteredExercises = getExercises(exercises, part, name)
 
 
