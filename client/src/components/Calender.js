@@ -12,10 +12,18 @@ export default function Calender() {
       Calender pageeeee
       <h2>Component: Header</h2>
       <h2>Tasks left: 10</h2>
-      <h2>{splitDate[1]} {splitDate[2]} </h2>
+      <div>
+
+      <button
+        onClick={() => {
+          setSelectedDate(new Date())
+        }}
+        >Jump to today</button>
+      <h2>Selected Date: {splitDate[1]} {splitDate[2]} </h2>
+        </div>
       <WeeklyCalender  currDate={selectedDate} onClick={setSelectedDate} />
 
-      <DayWorkoutList />
+      <DayWorkoutList selectedDate={selectedDate}/>
       <button className="addNewExercise">
         Add new Exercise
       </button>

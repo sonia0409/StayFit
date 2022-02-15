@@ -1,6 +1,7 @@
-import React from 'react';
+import { React, useState, useEffect } from 'react';
 import DayWorkoutListItem from './day_workout_list_item';
 import './scss/day_workout_list.scss'
+import axios from 'axios';
 
 const workoutObjs = [
   {
@@ -115,15 +116,28 @@ const workoutObjs = [
   },
 ];
 
-export default function DayWorkoutList() {
+export default function DayWorkoutList(props) {
 
-  const exerciseItems = workoutObjs.map(exercise => 
+  const selectedDate = props.selectedDate.toDateString() 
+  const [dayExercises, setDayExercises] = useState([]);
+
+  const userid = 1;
+
+  useEffect(() => {
+    axios.get(`http://localhost:8080/day-exercises/${userid}/${selectedDate}`)
+      .then(response => {
+        setDayExercises([...response.data])
+      })
+    }, [selectedDate]);
+    
+  const exerciseItems = dayExercises.map(exercise => 
     <DayWorkoutListItem key={exercise.id} workoutObj={exercise} />
   )
 
   return (
     <div className="exercises-container">
-      {exerciseItems}
+      { exerciseItems}
+      111
     </div>
   );
 }
