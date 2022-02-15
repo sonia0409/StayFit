@@ -7,7 +7,8 @@ export default function(db) {
   // GET: '/day-exercises/:userid/:date'
   //  date => 'Mon Feb 14 2022'
   router.get('/:userid/:date', (req, res) => {
-    console.log(req.params);
+    // console.log(req.params);
+    const { date, userid} = req.params;
     const command = `
     SELECT * FROM day_exercises 
     JOIN users ON user_id = users.id
@@ -15,8 +16,8 @@ export default function(db) {
     WHERE date = $1 
     AND user_id = $2
     `;
-    db.query(command, [req.params.date, req.params.userid])
-      .then(data => {
+    db.query(command, [date, userid])
+      .then((data) => {
         res.json(data.rows);
       });
   });
@@ -24,7 +25,8 @@ export default function(db) {
   // POST: '/day-exercises/:userid/:date'
   //  date => 'Mon Feb 14 2022'
   router.post('/:userid/:date', (req, res) => {
-    console.log(req.params);
+    // console.log(req.params);
+    const { date, userid } = req.params;
     const command = `
     SELECT * FROM day_exercises 
     JOIN users ON user_id = users.id
@@ -32,7 +34,7 @@ export default function(db) {
     WHERE date = $1 
     AND user_id = $2
     `;
-    db.query(command, [req.params.date, req.params.userid])
+    db.query(command, [date, userid])
       .then(data => {
         res.json(data.rows);
       });
