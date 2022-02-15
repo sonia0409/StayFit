@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
+import BackButton from "./BackButton";
 
 
 export default function ExerciseList(props) {
@@ -26,6 +27,7 @@ export default function ExerciseList(props) {
                     <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
                         {header}
                     </Typography>
+                    <div><BackButton/></div>
                     {listOfExercises}
 
                 </Grid>

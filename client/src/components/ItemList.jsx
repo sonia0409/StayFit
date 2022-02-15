@@ -3,7 +3,9 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import Item from './Item'
+import Item from './Item';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import BackButton from './BackButton';
 
 
 const Demo = styled('div')(({ theme }) => ({
@@ -23,9 +25,8 @@ export default function ItemList(props) {
           <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
             {header}
           </Typography>
+          <div><BackButton/></div>
           {nameList}
-          <Demo>
-          </Demo>
         </Grid>
       </Grid>
     </Box>

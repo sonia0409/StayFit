@@ -6,6 +6,7 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 
 
+
 export default function Application() {
     const exerciseList = ["Body Parts", "Muscles"]
     const [showBodyPart, setShowBodyPart] = useState(false);
@@ -22,9 +23,7 @@ export default function Application() {
 
     return (
         <div>
-            <div><ArrowBackIosIcon/></div>
             {(!showBodyPart && !showMuscles) && <ItemList header="List of Exercises" exerciseList={exerciseList} onClick={onExerciseSelection} />}
-
         </div>
     );
 }
