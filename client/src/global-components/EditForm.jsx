@@ -20,24 +20,7 @@ const EditForm = (props) => {
     register, //cb ,register individual inputs into the hook
     handleSubmit,
     formState: { errors },
-  } = useForm({
-    defaultValues: {
-      //these values are NOT VISIABLE on the screen for user
-      bodyPart: "NO It was ME, from Default",
-      muscleGroup: "Na-na-banana, default",
-      Mo: "Not today",
-      Tu: "Better mood",
-      We: "Almost there",
-      Th: "Tomorow Friday",
-      Fr: true,
-      // Fr: defaultChecked,
-      Sa: "Hey-hey",
-      Su: "Oh, tomorow Monday",
-      // these are visiable, bcs they are in inputs,
-      //  and they override value from input field
-      exersiseName: "Low Back Hurt",
-    },
-  });
+  } = useForm({});
 
   return (
     <main>
