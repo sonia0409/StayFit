@@ -9,17 +9,49 @@ const router = express_1.default.Router();
 function default_1(db) {
     // GET: '/day-exercises/:userid/:date'
     //  date => 'Mon Feb 14 2022'
+    /*  router.get("/:userid/:date", (req, res) => {
+       // console.log(req.params);
+       const { date, userid } = req.params;
+       const command = `
+       SELECT * FROM day_exercises
+       JOIN users ON user_id = users.id
+       JOIN exercises on exercise_id = exercises.id
+       WHERE date = $1
+       AND user_id = $2
+       ORDER BY name
+       `;
+       db.query(command, [date, userid])
+         .then((data) => {
+           res.json(data.rows);
+         })
+         .catch((error) => res.status(500).send(error.message));
+     }); */
+    //GET REQUEST BASED ON THE RECURRING DAYS
     router.get("/:userid/:date", (req, res) => {
-        // console.log(req.params);
+        console.log(req.params);
         const { date, userid } = req.params;
+        const day = date.split(" ")[0];
+        console.log("<========day=====>", day);
+        const recurring_days = {
+            Mon: "recurring_monday",
+            Tue: "recurring_tuesday",
+            Wed: "recurring_wednesday",
+            Thu: "recurring_thursday",
+            Fri: "recurring_friday",
+            Sat: "recurring_saturday",
+            Sun: "recurring_sunday",
+        };
+        const currentDay = recurring_days[day];
         const command = `
-    SELECT * FROM day_exercises 
-    JOIN users ON user_id = users.id
-    JOIN exercises on exercise_id = exercises.id 
-    WHERE date = $1 
-    AND user_id = $2
-    ORDER BY name
+    SELECT * FROM exercises 
+    JOIN day_exercises on day_exercises.exercise_id = exercises.id 
+    WHERE 
+    (date = $1 AND user_id = $2) 
+    OR
+    (${currentDay} = TRUE AND user_id = $2)
+    ORDER BY exercises.id
     `;
+        console.log(date, userid, currentDay);
         db.query(command, [date, userid])
             .then((data) => {
             res.json(data.rows);
