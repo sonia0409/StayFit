@@ -11,8 +11,6 @@ export default function Calender() {
 
   return (
     <div>
-      <h2>Component: Header</h2>
-      
       <div className="calender-information">
         <h2>{splitDate[1]} {splitDate[2]} </h2>
         <Fab variant="extended" onClick= { () => setSelectedDate(new Date()) }>

@@ -56,7 +56,7 @@ export default function DayWorkoutListItem(props) {
             { duration && <div>Time: <div>{ duration } min</div></div> }
 
               <div className="exercise-not-completed-button">
-                  <input type="checkbox" id="demo" checked={localCompleted}/>
+                  <input type="checkbox" id="demo" checked={localCompleted} onChange={() => 1}/>
                   <label htmlFor="demo">
 
                     <button 

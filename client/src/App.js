@@ -11,8 +11,8 @@ import AddForm from "./global-components/AddForm";
 function App() {
   return (
     <div className="App">
-      <AddForm/>
-      {/* <Calender /> */}
+      {/* <AddForm/> */}
+      <Calender />
       {/*  <div> <Header/> </div> }/:name
       <div><Application /> </div>F
        <div> <Footer/> </div>     } */}

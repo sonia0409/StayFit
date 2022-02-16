@@ -136,18 +136,19 @@ export default function DayWorkoutList(props) {
     
     const persistIsCompleted = async (dayExerciseId, is_completed) => {
       // talk with groupmates to make HTTP call same in backend
-      await axios({
-        method: 'patch',
-        url: `http://localhost:8080/day-exercises/:${dayExerciseId}`,
-        data: {}
-      });
+      await axios.patch(`http://localhost:8080/day-exercises/${dayExerciseId}`, {})
+      // await axios({
+      //   method: 'patch',
+      //   url: `http://localhost:8080/day-exercises/:${dayExerciseId}`,
+      //   data: {}
+      // });
 
       // approach 1
-      axios.get(`http://localhost:8080/day-exercises/${userid}/${selectedDate}`)
+      await axios.get(`http://localhost:8080/day-exercises/${userid}/${selectedDate}`)
       .then(response => {
         setDayExercises([...response.data])
       })
-      return; 
+      return;
     }
 
   const exerciseItems = dayExercises.map(exercise => 
