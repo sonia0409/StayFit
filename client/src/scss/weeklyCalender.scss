@@ -7,11 +7,11 @@
     width: 20%;
     padding: 20px;
     // border: solid;
-    border-radius: 15%;
   }
-
+  
   .selected {
     width: 20%;
-    border-style: groove;
+    border-style: solid;
+    border-radius: 20px;
   }
 }

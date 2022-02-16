@@ -8,8 +8,7 @@ export default function(db) {
   router.get('/', (req, res) => {
     const command = `
     SELECT * FROM day_exercises 
-    JOIN users ON user_id = users.id
-    JOIN exercises on exercise_id = exercises.id 
+    JOIN day_exercises on exercise_id = exercises.id 
     WHERE date = 'Mon Feb 14 2022' 
     AND user_id = '1'
     `;

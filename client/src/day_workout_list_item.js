@@ -1,11 +1,11 @@
-import React from "react";
+import {React, useState} from "react";
 import { faTrashCan, faPenToSquare, faCircleInfo, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./scss/day_workout_list_item.scss"
+import axios from 'axios'
 
 export default function DayWorkoutListItem(props) {
-  
-  const { workoutObj, setIsCompleted } = props;
+  const { workoutObj, onChange } = props;
   
   const { 
     name,
@@ -14,7 +14,15 @@ export default function DayWorkoutListItem(props) {
     reps,
     weight,
     is_completed
-   } = workoutObj;
+  } = workoutObj;
+
+  const [localCompleted, setLocalCompleted] = useState(is_completed)
+
+  const onClickHandler = () => {
+    setLocalCompleted(!localCompleted)
+    onChange();
+
+  }
 
   return (
     
@@ -47,13 +55,21 @@ export default function DayWorkoutListItem(props) {
             { reps && <div>Reps: <div>{ reps }</div></div> }
             { duration && <div>Time: <div>{ duration } min</div></div> }
 
-            <div className="exercise-completed-button">
-              <button 
-              onClick={() => console.log('Check completed clicked')}
-              >
-                <FontAwesomeIcon icon={faCheck} />
-              </button>
-            </div>
+              <div className="exercise-not-completed-button">
+                  <input type="checkbox" id="demo" checked={localCompleted} onChange={() => 1}/>
+                  <label htmlFor="demo">
+
+                    <button 
+                    
+                    id="btnbtn"
+                    onClick={onClickHandler}
+                    >
+                      <FontAwesomeIcon icon={faCheck} />
+                    </button>
+                  </label>
+
+              </div>
+
           </div>
 
         </div>

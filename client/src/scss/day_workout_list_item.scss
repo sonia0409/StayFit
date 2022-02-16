@@ -59,7 +59,8 @@
     .container {
         position: relative;
         width:100%;
-        height:100%;
+        height:5vh;
+        min-height: 5rem;
         border-radius:1rem;
         background:var(--background);
         color:var(--text);
@@ -74,7 +75,7 @@
         width:3rem;
         height:3rem;
         border-style: solid;
-        border-color: greenyellow;
+        // border-color: greenyellow;
         border-radius:100%;
         background:whitesmoke;
         color:var(--background);
@@ -82,8 +83,8 @@
 
         &:hover {
             background: greenyellow;
-            color:var(--background);
-            border-color: yellow;
+            // color:var(--background);
+            // border-color: yellow;
         }
         &:focus {
             background: greenyellow;
@@ -107,7 +108,21 @@
             width: 100%;
             .exercise-completed-button {
                 // width: 20%;
+                // color:var(--background);
             }
+
+            .exercise-not-completed-button {
+                // border-style: solid;
+                // border-color: red;
+                // border-radius:100%;
+                // background:whitesmoke;
+                // // color:var(--background);
+                // cursor: pointer;
+                .checkbox {
+                    display: none;
+                }
+            }
+
         }
     }
     &:hover .multi-button, .multi-button:focus-within { //Hover or a button inside is focused
@@ -119,4 +134,53 @@
         transition: 0.5s;
         padding-left: 0.75rem;
     }
+}
+
+.empty-card {
+    --background:#5D9CEC;
+    --text:white;
+    width:100%;
+    max-width: 87.5%;
+    height:5vh;
+    margin: 10px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+
+    border-radius:1rem;
+    border-style: solid;
+    border-color:var(--background);
+    background:var(--text);
+    color:var(--background);
+
+    display: flex;
+    justify-content: center;
+}
+
+#btnbtn {
+    border-style: solid;
+    border-radius:100%;
+    background:whitesmoke;
+    color:var(--background);
+    cursor: pointer;
+    
+    &:hover {
+        background: greenyellow;
+    }
+}
+
+#demo:checked + label {
+    #btnbtn {
+        background: greenyellow;
+        color:var(--background);
+        border-color: yellow;
+
+    }
+
+}
+
+#demo {
+    display: none;
+}
+label {
 }

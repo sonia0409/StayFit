@@ -1,6 +1,10 @@
-import React from 'react';
+import { React, useState, useEffect } from 'react';
 import DayWorkoutListItem from './day_workout_list_item';
+import EmptyDayExercises from './components/EmptyDayExercises';
 import './scss/day_workout_list.scss'
+import axios from 'axios';
+import Fab from "@mui/material/Fab";
+import AddIcon from '@material-ui/icons/Add';
 
 const workoutObjs = [
   {
@@ -115,15 +119,48 @@ const workoutObjs = [
   },
 ];
 
-export default function DayWorkoutList() {
+export default function DayWorkoutList(props) {
 
-  const exerciseItems = workoutObjs.map(exercise => 
-    <DayWorkoutListItem key={exercise.id} workoutObj={exercise} />
+  const selectedDate = props.selectedDate.toDateString() 
+  const [dayExercises, setDayExercises] = useState([]);
+
+  const userid = 1;
+
+  useEffect(() => {
+    axios.get(`http://localhost:8080/day-exercises/${userid}/${selectedDate}`)
+      .then(response => {
+        setDayExercises([...response.data])
+      })
+    } 
+  ,[selectedDate]);
+    
+    const persistIsCompleted = async (dayExerciseId) => {
+      // Update is_completed status in database
+      await axios.patch(`http://localhost:8080/day-exercises/${dayExerciseId}`, {})
+      
+      // Get day_exercises and update state
+      await axios.get(`http://localhost:8080/day-exercises/${userid}/${selectedDate}`)
+      .then(response => {
+        setDayExercises([...response.data])
+      })
+      return;
+    }
+
+  const exerciseItems = dayExercises.map(exercise => 
+    <DayWorkoutListItem 
+      key={exercise.id}
+      workoutObj={exercise}
+      onChange={() => persistIsCompleted(exercise.id)} 
+    />
   )
 
   return (
     <div className="exercises-container">
-      {exerciseItems}
+      { exerciseItems}
+      { exerciseItems.length === 0 && <EmptyDayExercises /> }
+      <Fab color="primary" aria-label="add" className="add-new-exercise">
+        <AddIcon />
+      </Fab>
     </div>
   );
 }
