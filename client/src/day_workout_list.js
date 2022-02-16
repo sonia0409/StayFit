@@ -122,6 +122,7 @@ const workoutObjs = [
 export default function DayWorkoutList(props) {
 
   const selectedDate = props.selectedDate.toDateString() 
+  const {setEditObj} = props;
 
   const [dayExercises, setDayExercises] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -160,6 +161,7 @@ export default function DayWorkoutList(props) {
       key={exercise.id}
       workoutObj={exercise}
       onChange={() => persistIsCompleted(exercise.id)} 
+      onEditClick={() => setEditObj(exercise)}
     />
   )
 

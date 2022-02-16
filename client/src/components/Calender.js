@@ -2,12 +2,15 @@ import { React, useState } from 'react';
 import DayWorkoutList from '../day_workout_list';
 import WeeklyCalender from './WeeklyCalender';
 import AddForm from '../global-components/AddForm';
+import EditForm from '../global-components/EditForm';
 import '../scss/calender.scss'
 import Fab from "@mui/material/Fab";
 
 export default function Calender() {
   const [selectedDate, setSelectedDate] = useState(new Date())
-  const [showAddForm, setShowAddForm] = useState(false)
+  const [showAddForm, setShowAddForm] = useState(false);
+  // const [showEditForm, setShowEditForm] = useState(false);
+  const [editExerciseObj, setEditExerciseObj] = useState({});
 
   // const dateStringFormat = selectedDate.toDateString();
   const splitDate = selectedDate.toDateString().split(' ');
@@ -29,9 +32,14 @@ export default function Calender() {
         onClose={() => setShowAddForm(false)}  
         />
       {
-        !showAddForm &&
+        (!showAddForm && (Object.keys(editExerciseObj).length === 0)) &&
 
-        <DayWorkoutList selectedDate={selectedDate} onClick={() => setShowAddForm} />
+        <DayWorkoutList 
+          selectedDate={selectedDate} 
+          onClick={() => setShowAddForm}
+          // onEditClick={() => setShowEditForm}
+          setEditObj={setEditExerciseObj}
+        />
       }
 
       { showAddForm && 
@@ -39,6 +47,19 @@ export default function Calender() {
           date={selectedDate.toDateString()} 
           onSubmit={() => setShowAddForm(false)}
           onClose={() => setShowAddForm(false)}  
+        />
+      }
+
+      { (Object.keys(editExerciseObj).length > 0) && 
+        <EditForm 
+          key={editExerciseObj.id}
+          {...editExerciseObj} 
+          onClose={() => setEditExerciseObj({})}
+
+          // WORK ON EDIT FORM -> close on calender click of another day
+
+          // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+          // EDIT FORM DOESNT TAKE INPUT
         />
       }
     </div>

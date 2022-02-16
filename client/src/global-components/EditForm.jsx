@@ -21,6 +21,7 @@ const EditForm = (props) => {
     Fr = true,
     Sa = false,
     Su = false,
+    onClose
   } = props;
   const {
     control,
@@ -44,12 +45,12 @@ const EditForm = (props) => {
 
   return (
     <main>
-      {/* "handleSubmit" will validate your inputs  */}
       <form
         onSubmit={handleSubmit((data) => {
           console.log(data);
         })}
       >
+        <h1 onClick={onClose}>Close</h1>  
         <div className="form-name">
           <h1>Edit Workout</h1>
         </div>
