@@ -21,6 +21,7 @@ const app = (0, express_1.default)();
 app.use((0, morgan_1.default)(ENVIRONMENT));
 app.use(body_parser_1.default.json());
 app.use((0, cors_1.default)());
+app.use(body_parser_1.default.urlencoded({ extended: true }));
 app.use('/users', (0, usersRoutes_1.default)(db_config_1.default));
 app.use('/day-exercises', (0, dayExercises_1.default)(db_config_1.default));
 app.get('/', (req, res) => {
