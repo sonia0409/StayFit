@@ -19,6 +19,8 @@ const app = express();
 // middleware setup
 app.use(morgan(ENVIRONMENT));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 app.use('/users', usersRoutes(db));
 app.use('/day-exercises', dayExercisesRoutes(db));
