@@ -6,11 +6,13 @@ import Application from "./components/Application";
 import { Routes, Route } from "react-router-dom";
 import Exercises from "./pages/Exercises";
 import Exercise from "./pages/Exercise";
+import AddForm from "./global-components/AddForm";
 
 function App() {
   return (
     <div className="App">
-      <Calender />
+      <AddForm/>
+      {/* <Calender /> */}
       {/*  <div> <Header/> </div> }/:name
       <div><Application /> </div>F
        <div> <Footer/> </div>     } */}

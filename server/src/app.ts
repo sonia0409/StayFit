@@ -21,6 +21,8 @@ const app = express();
 app.use(morgan(ENVIRONMENT));
 app.use(bodyParser.json());
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 app.use('/users', usersRoutes(db));
 app.use('/day-exercises', dayExercisesRoutes(db));
