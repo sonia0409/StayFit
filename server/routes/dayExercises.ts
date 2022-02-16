@@ -73,26 +73,29 @@ export default function (db) {
 
   //Add the day_exercises_list
   router.post("/:userid/:date/new", (req, res) => {
-    console.log("form values recieved", req.body);
+    // console.log("form values recieved", req.body);
     const { date, userid } = req.params;
+    console.log(date, userid)
     const {
-      name,
-      muscleGroup,
-      bodyPart,
+      exerciseName,
       weight,
       duration,
       sets,
       reps,
-      mo = false,
-      tu = false,
-      we = false,
-      th = false,
-      fr = false,
-      sa = false,
-      su = false,
+      Mo = false,
+      Tu = false,
+      We = false,
+      Th = false,
+      Fr = false,
+      Sa = false,
+      Su = false,
     } = req.body;
+    console.log('+++++', exerciseName)
+    const muscleGroup = req.body.muscleGroup.value;
+    const bodyPart = req.body.bodyPart.value;
+
     const exercisesArray = [
-      name,
+      exerciseName,
       muscleGroup,
       bodyPart,
       weight,
@@ -123,18 +126,19 @@ export default function (db) {
 
     db.query(exercisesQuery, exercisesArray)
       .then((results) => {
+        console.log('----------------',results)
         const exercise_id = results.rows[0].id;
         const recurringArray = [
           Number(userid),
           exercise_id,
           date,
-          mo,
-          tu,
-          we,
-          th,
-          fr,
-          sa,
-          su,
+          Mo,
+          Tu,
+          We,
+          Th,
+          Fr,
+          Sa,
+          Su
         ];
         console.log("recurring array====>", recurringArray);
 
@@ -145,7 +149,7 @@ export default function (db) {
         res.status(200).send("successfully submitted!");
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.message);
         res.status(500).send(error.message);
       });
   });
@@ -161,13 +165,13 @@ export default function (db) {
       duration,
       sets,
       reps,
-      mo = false,
-      tu = false,
-      we = false,
-      th = false,
-      fr = false,
-      sa = false,
-      su = false,
+      Mo = false,
+      Tu = false,
+      We = false,
+      Th = false,
+      Fr = false,
+      Sa = false,
+      Su = false,
     } = req.body;
     const exercisesArray = [name, weight, duration, sets, reps, exercise_id];
     const exercisesQuery = `
@@ -196,7 +200,16 @@ export default function (db) {
 
     db.query(exercisesQuery, exercisesArray)
       .then((results) => {
-        const recurringArray = [mo, tu, we, th, fr, sa, su, exercise_id];
+        const recurringArray = [
+          Mo,
+          Tu,
+          We,
+          Th,
+          Fr,
+          Sa,
+          Su,
+          exercise_id
+        ];
         return db.query(recurringQuery, recurringArray);
       })
       .then((data) => {

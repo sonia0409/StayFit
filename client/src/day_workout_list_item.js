@@ -5,7 +5,7 @@ import "./scss/day_workout_list_item.scss"
 import axios from 'axios'
 
 export default function DayWorkoutListItem(props) {
-  const { workoutObj, onChange } = props;
+  const { workoutObj, onChange, onEditClick } = props;
   
   const { 
     name,
@@ -35,7 +35,9 @@ export default function DayWorkoutListItem(props) {
             <FontAwesomeIcon icon={faTrashCan} />
           </button>
           <button className="fas fa-edit"
-          onClick={() => console.log('Edit clicked')}
+          onClick={
+            onEditClick
+          }
           >
             <FontAwesomeIcon icon={faPenToSquare} />
           </button>
