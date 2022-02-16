@@ -6,23 +6,26 @@ import { Checkbox } from "@mui/material";
 import "./EditForm.css";
 
 const EditForm = (props) => {
+  console.log(props);
   const {
-    exersiseName = "Back Hurt",
-    duration = "From morining to the fence",
-    sets = "I would like to watch rather",
-    reps = "Seven and a half",
-    weight = "One chicken",
-    bodyPart = "Chest",
-    muscleGroup = "I WON? Props!",
-    Mo = true,
-    Tu = true,
-    We = true,
-    Th = true,
-    Fr = true,
-    Sa = false,
-    Su = false,
+    duration,
+    sets,
+    reps,
+    weight,
     onClose
   } = props;
+
+  const exersiseName = props.name;
+  const bodyPart = props.bodypart;
+  const muscleGroup = props.musclegroup;
+  const Mo = props.recurring_monday;
+  const Tu = props.recurring_tuesday;
+  const We = props.recurring_wednesday;
+  const Th = props.recurring_thursday;
+  const Fr = props.recurring_friday;
+  const Sa = props.recurring_saturday;
+  const Su = props.recurring_sunday;
+  
   const {
     control,
     register, //cb ,register individual inputs into the hook
@@ -47,6 +50,7 @@ const EditForm = (props) => {
     <main>
       <form
         onSubmit={handleSubmit((data) => {
+          onClose();
           console.log(data);
         })}
       >
@@ -129,6 +133,7 @@ const EditForm = (props) => {
           placeholder="Duration / min"
           value={duration}
         />
+        <input {...register("muscleGroup")} placeholder="muscleGroup" value={muscleGroup} />
         <input {...register("sets")} placeholder="Sets" value={sets} />
         <input {...register("reps")} placeholder="Reps" value={reps} />
         <input {...register("weight")} value={weight} placeholder="Weight" />

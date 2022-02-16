@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import DayWorkoutList from '../day_workout_list';
 import WeeklyCalender from './WeeklyCalender';
 import AddForm from '../global-components/AddForm';
@@ -11,6 +11,10 @@ export default function Calender() {
   const [showAddForm, setShowAddForm] = useState(false);
   // const [showEditForm, setShowEditForm] = useState(false);
   const [editExerciseObj, setEditExerciseObj] = useState({});
+
+  useEffect(() => {
+    setEditExerciseObj({});
+  }, [selectedDate])
 
   // const dateStringFormat = selectedDate.toDateString();
   const splitDate = selectedDate.toDateString().split(' ');
@@ -56,10 +60,6 @@ export default function Calender() {
           {...editExerciseObj} 
           onClose={() => setEditExerciseObj({})}
 
-          // WORK ON EDIT FORM -> close on calender click of another day
-
-          // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-          // EDIT FORM DOESNT TAKE INPUT
         />
       }
     </div>

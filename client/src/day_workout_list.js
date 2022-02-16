@@ -136,8 +136,8 @@ export default function DayWorkoutList(props) {
         .then(response => {
           setTimeout(() => {
             setLoading(false);
-          }, 1500)
-          setDayExercises([...response.data])
+            }, 500)
+            setDayExercises([...response.data])
         })  
     }
     updateData()
