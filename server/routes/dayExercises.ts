@@ -37,7 +37,7 @@ export default function (db) {
       .then(() => res.send(200))
       .catch((error) => console.log(error.message));
   });
-  
+
   //Add the day_exercises_list
   router.post("/:userid/:date/new", (req, res) => {
     console.log("form values recieved", req.body);
@@ -101,14 +101,14 @@ export default function (db) {
           th,
           fr,
           sa,
-          su
+          su,
         ];
         console.log("recurring array====>", recurringArray);
 
         return db.query(recurringQuery, recurringArray);
       })
       .then((data) => {
-        console.log(data);
+        console.log("<========New data=====>",data);
         res.status(200).send("successfully submitted!");
       })
       .catch((error) => {
@@ -117,9 +117,8 @@ export default function (db) {
       });
   });
 
-
   //edit the form values
-  
+
   router.put("/:exercise_id", (req, res) => {
     const { exercise_id } = req.params;
     console.log("edited form values recieved", req.body);
@@ -137,14 +136,7 @@ export default function (db) {
       sa = false,
       su = false,
     } = req.body;
-    const exercisesArray = [
-      name,
-      weight,
-      duration,
-      sets,
-      reps,
-      exercise_id
-    ];
+    const exercisesArray = [name, weight, duration, sets, reps, exercise_id];
     const exercisesQuery = `
     UPDATE exercises 
     SET name = $1, 
@@ -171,16 +163,7 @@ export default function (db) {
 
     db.query(exercisesQuery, exercisesArray)
       .then((results) => {
-        const recurringArray = [
-          mo,
-          tu,
-          we,
-          th,
-          fr,
-          sa,
-          su,
-          exercise_id
-        ];
+        const recurringArray = [mo, tu, we, th, fr, sa, su, exercise_id];
         return db.query(recurringQuery, recurringArray);
       })
       .then((data) => {
@@ -193,7 +176,20 @@ export default function (db) {
       });
   });
 
-  
+  //delete the schedule
+  router.delete("/:id", (req, res) => {
+    const { id } = req.params;
+    const query = `
+    DELETE FROM day_exercises WHERE day_exercises.id = $1
+    RETURNING *
+    `;
+    db.query(query, [id])
+      .then((data) =>{
+      console.log(data.rows[0])
+        res.status(200).send(`row ${id} sucessfully deleted`)
+      })
+      .catch((error) => res.send(500).send(error.message));
+  });
 
   return router;
 }
