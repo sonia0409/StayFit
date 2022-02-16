@@ -38,7 +38,7 @@ function default_1(db) {
             .then(() => res.send(200))
             .catch((error) => console.log(error.message));
     });
-    //Insert and update the day_exercises_list
+    //Add the day_exercises_list
     router.post("/:userid/:date/new", (req, res) => {
         console.log("form values recieved", req.body);
         const { date, userid } = req.params;
@@ -85,9 +85,68 @@ function default_1(db) {
                 th,
                 fr,
                 sa,
-                su,
+                su
             ];
             console.log("recurring array====>", recurringArray);
+            return db.query(recurringQuery, recurringArray);
+        })
+            .then((data) => {
+            console.log(data);
+            res.status(200).send("successfully submitted!");
+        })
+            .catch((error) => {
+            console.log(error);
+            res.status(500).send(error.message);
+        });
+    });
+    //edit the form values
+    router.put("/:exercise_id", (req, res) => {
+        const { exercise_id } = req.params;
+        console.log("edited form values recieved", req.body);
+        const { name, weight, duration, sets, reps, mo = false, tu = false, we = false, th = false, fr = false, sa = false, su = false, } = req.body;
+        const exercisesArray = [
+            name,
+            weight,
+            duration,
+            sets,
+            reps,
+            exercise_id
+        ];
+        const exercisesQuery = `
+    UPDATE exercises 
+    SET name = $1, 
+        weight = $2,
+        duration = $3,
+        sets = $4, 
+        reps = $5
+
+        WHERE exercises.id = $6
+    `;
+        const recurringQuery = `
+    UPDATE day_exercises 
+    SET 
+      recurring_monday = $1,
+      recurring_tuesday = $2,
+      recurring_wednesday = $3,
+      recurring_thursday = $4,
+      recurring_friday = $5,
+      recurring_saturday = $6,
+      recurring_sunday = $7
+
+      WHERE exercise_id = $8
+    `;
+        db.query(exercisesQuery, exercisesArray)
+            .then((results) => {
+            const recurringArray = [
+                mo,
+                tu,
+                we,
+                th,
+                fr,
+                sa,
+                su,
+                exercise_id
+            ];
             return db.query(recurringQuery, recurringArray);
         })
             .then((data) => {

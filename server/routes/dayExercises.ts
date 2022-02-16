@@ -100,7 +100,7 @@ export default function (db) {
           th,
           fr,
           sa,
-          su,
+          su
         ];
         console.log("recurring array====>", recurringArray);
 
@@ -147,11 +147,12 @@ export default function (db) {
     const exercisesQuery = `
     UPDATE exercises 
     SET name = $1, 
-        weight = $4,
-        duration = $5,
-        sets = $6, 
-        reps = $7, 
-        WHERE exercises.id = $8
+        weight = $2,
+        duration = $3,
+        sets = $4, 
+        reps = $5
+
+        WHERE exercises.id = $6
     `;
     const recurringQuery = `
     UPDATE day_exercises 
@@ -162,7 +163,8 @@ export default function (db) {
       recurring_thursday = $4,
       recurring_friday = $5,
       recurring_saturday = $6,
-      recurring_sunday = $7, 
+      recurring_sunday = $7
+
       WHERE exercise_id = $8
     `;
 
@@ -178,8 +180,6 @@ export default function (db) {
           su,
           exercise_id
         ];
-        console.log("recurring array====>", recurringArray);
-
         return db.query(recurringQuery, recurringArray);
       })
       .then((data) => {
