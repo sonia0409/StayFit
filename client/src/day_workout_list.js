@@ -134,16 +134,11 @@ export default function DayWorkoutList(props) {
     } 
   ,[selectedDate]);
     
-    const persistIsCompleted = async (dayExerciseId, is_completed) => {
-      // talk with groupmates to make HTTP call same in backend
+    const persistIsCompleted = async (dayExerciseId) => {
+      // Update is_completed status in database
       await axios.patch(`http://localhost:8080/day-exercises/${dayExerciseId}`, {})
-      // await axios({
-      //   method: 'patch',
-      //   url: `http://localhost:8080/day-exercises/:${dayExerciseId}`,
-      //   data: {}
-      // });
-
-      // approach 1
+      
+      // Get day_exercises and update state
       await axios.get(`http://localhost:8080/day-exercises/${userid}/${selectedDate}`)
       .then(response => {
         setDayExercises([...response.data])

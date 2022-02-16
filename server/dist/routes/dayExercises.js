@@ -18,6 +18,7 @@ function default_1(db) {
     JOIN exercises on exercise_id = exercises.id 
     WHERE date = $1 
     AND user_id = $2
+    ORDER BY name
     `;
         db.query(command, [date, userid])
             .then((data) => {
