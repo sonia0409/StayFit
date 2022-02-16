@@ -2,11 +2,13 @@ import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import ReactSelect from "react-select";
 import { Checkbox } from "@mui/material";
-
+import axios from "axios";
 import "./AddForm.css";
 
 const AddForm = (props) => {
-  const { date = "Mon Feb 14 2022" } = props;
+  const { date, onSubmit, userid = 1, onClose } = props;
+
+  // console.log('add form date', date)
   const {
     control,
     register, //cb ,register individual inputs into the hook
@@ -28,18 +30,29 @@ const AddForm = (props) => {
 
   return (
     <main>
-      {/* "handleSubmit" will validate your inputs  */}
       <form
-        action="/day-exercises/:userid/:date/new"
-        method="POST"
-        onSubmit={handleSubmit((data) => {
-          console.log(data);
+        onSubmit={handleSubmit(async (data) => {
+          // Use axios post to add exercise to database.
+          await axios.post(
+            `http://localhost:8080/day-exercises/${userid}/${date}/new`, 
+            data);
+
+          // Change showAddForm state to false and cause re-render of calender component.
+          //  This updated the current day with added exercise.
+          onSubmit();
         })}
       >
+        <h1 onClick={onClose}>Close</h1>
         <div className="form-name">
           <h1>Add Workout</h1>
         </div>
+        <h2>{date}</h2>
+        <input
+          {...register("date")}
+          placeholder={date}
+        />
         <label>Body Part</label>
+        
         <div className="form-dropdown">
           <Controller
             name="bodyPart"
@@ -103,20 +116,20 @@ const AddForm = (props) => {
         </div>
         {/* register your input into the hook by invoking the "register" function */}
         <input
-          {...register("exersiseName", { required: true })}
-          placeholder="Exersise Name"
+          {...register("exerciseName", { required: true })}
+          placeholder="Exercise Name"
         />
-        {errors.exersiseName && <p>Exersise Name is required field</p>}
+        {errors.exerciseName && <p>Exercise Name is required field</p>}
         <input {...register("duration")} placeholder="Duration / min" />
         <input {...register("sets")} placeholder="Sets" />
         <input {...register("reps")} placeholder="Reps" />
         <input {...register("weight")} placeholder="Weight" />
-        <input
+        {/* <input
           {...register("date")}
           placeholder="Date"
           type="hidden"
           value={date}
-        />
+        /> */}
 
         <label>Recurring :</label>
         <div className="form-checkboxes">

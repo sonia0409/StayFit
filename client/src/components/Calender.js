@@ -1,14 +1,17 @@
 import { React, useState } from 'react';
 import DayWorkoutList from '../day_workout_list';
 import WeeklyCalender from './WeeklyCalender';
+import AddForm from '../global-components/AddForm';
 import '../scss/calender.scss'
 import Fab from "@mui/material/Fab";
 
 export default function Calender() {
   const [selectedDate, setSelectedDate] = useState(new Date())
+  const [showAddForm, setShowAddForm] = useState(false)
 
+  // const dateStringFormat = selectedDate.toDateString();
   const splitDate = selectedDate.toDateString().split(' ');
-
+  // console.log(selectedDate)
   return (
     <div>
       <div className="calender-information">
@@ -20,10 +23,24 @@ export default function Calender() {
       </div>
 
 
-      <WeeklyCalender  currDate={selectedDate} onClick={setSelectedDate} />
+      <WeeklyCalender 
+        currDate={selectedDate} 
+        onClick={setSelectedDate}
+        onClose={() => setShowAddForm(false)}  
+        />
+      {
+        !showAddForm &&
 
-      <DayWorkoutList selectedDate={selectedDate}/>
+        <DayWorkoutList selectedDate={selectedDate} onClick={() => setShowAddForm} />
+      }
 
+      { showAddForm && 
+        <AddForm 
+          date={selectedDate.toDateString()} 
+          onSubmit={() => setShowAddForm(false)}
+          onClose={() => setShowAddForm(false)}  
+        />
+      }
     </div>
   );
 }

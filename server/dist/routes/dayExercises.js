@@ -41,11 +41,15 @@ function default_1(db) {
     });
     //Add the day_exercises_list
     router.post("/:userid/:date/new", (req, res) => {
-        console.log("form values recieved", req.body);
+        // console.log("form values recieved", req.body);
         const { date, userid } = req.params;
-        const { name, muscleGroup, bodyPart, weight, duration, sets, reps, mo = false, tu = false, we = false, th = false, fr = false, sa = false, su = false, } = req.body;
+        console.log(date, userid);
+        const { exerciseName, weight, duration, sets, reps, Mo = false, Tu = false, We = false, Th = false, Fr = false, Sa = false, Su = false, } = req.body;
+        console.log('+++++', exerciseName);
+        const muscleGroup = req.body.muscleGroup.value;
+        const bodyPart = req.body.bodyPart.value;
         const exercisesArray = [
-            name,
+            exerciseName,
             muscleGroup,
             bodyPart,
             weight,
@@ -75,18 +79,19 @@ function default_1(db) {
     `;
         db.query(exercisesQuery, exercisesArray)
             .then((results) => {
+            console.log('----------------', results);
             const exercise_id = results.rows[0].id;
             const recurringArray = [
                 Number(userid),
                 exercise_id,
                 date,
-                mo,
-                tu,
-                we,
-                th,
-                fr,
-                sa,
-                su
+                Mo,
+                Tu,
+                We,
+                Th,
+                Fr,
+                Sa,
+                Su
             ];
             console.log("recurring array====>", recurringArray);
             return db.query(recurringQuery, recurringArray);
@@ -96,7 +101,7 @@ function default_1(db) {
             res.status(200).send("successfully submitted!");
         })
             .catch((error) => {
-            console.log(error);
+            console.log(error.message);
             res.status(500).send(error.message);
         });
     });
@@ -104,7 +109,7 @@ function default_1(db) {
     router.put("/:exercise_id", (req, res) => {
         const { exercise_id } = req.params;
         console.log("edited form values recieved", req.body);
-        const { name, weight, duration, sets, reps, mo = false, tu = false, we = false, th = false, fr = false, sa = false, su = false, } = req.body;
+        const { name, weight, duration, sets, reps, Mo = false, Tu = false, We = false, Th = false, Fr = false, Sa = false, Su = false, } = req.body;
         const exercisesArray = [
             name,
             weight,
@@ -139,13 +144,13 @@ function default_1(db) {
         db.query(exercisesQuery, exercisesArray)
             .then((results) => {
             const recurringArray = [
-                mo,
-                tu,
-                we,
-                th,
-                fr,
-                sa,
-                su,
+                Mo,
+                Tu,
+                We,
+                Th,
+                Fr,
+                Sa,
+                Su,
                 exercise_id
             ];
             return db.query(recurringQuery, recurringArray);

@@ -122,17 +122,26 @@ const workoutObjs = [
 export default function DayWorkoutList(props) {
 
   const selectedDate = props.selectedDate.toDateString() 
+
   const [dayExercises, setDayExercises] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const userid = 1;
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/day-exercises/${userid}/${selectedDate}`)
-      .then(response => {
-        setDayExercises([...response.data])
-      })
-    } 
-  ,[selectedDate]);
+    const updateData = async () => {
+      setLoading(true);
+      await axios.get(`http://localhost:8080/day-exercises/${userid}/${selectedDate}`)
+        .then(response => {
+          setTimeout(() => {
+            setLoading(false);
+          }, 1500)
+          setDayExercises([...response.data])
+        })  
+    }
+    updateData()
+
+  } ,[selectedDate]);
     
     const persistIsCompleted = async (dayExerciseId) => {
       // Update is_completed status in database
@@ -156,9 +165,15 @@ export default function DayWorkoutList(props) {
 
   return (
     <div className="exercises-container">
-      { exerciseItems}
-      { exerciseItems.length === 0 && <EmptyDayExercises /> }
-      <Fab color="primary" aria-label="add" className="add-new-exercise">
+      { (exerciseItems.length > 0 && !loading) && exerciseItems }
+      { (exerciseItems.length === 0 && !loading) && <EmptyDayExercises /> }
+      { loading && 'Loading' }
+      <Fab
+        color="primary"
+        aria-label="add" 
+        className="add-new-exercise"
+        onClick={props.onClick(true)}  
+      >
         <AddIcon />
       </Fab>
     </div>
