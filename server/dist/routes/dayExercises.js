@@ -85,13 +85,13 @@ function default_1(db) {
                 th,
                 fr,
                 sa,
-                su
+                su,
             ];
             console.log("recurring array====>", recurringArray);
             return db.query(recurringQuery, recurringArray);
         })
             .then((data) => {
-            console.log(data);
+            console.log("<========New data=====>", data);
             res.status(200).send("successfully submitted!");
         })
             .catch((error) => {
@@ -104,14 +104,7 @@ function default_1(db) {
         const { exercise_id } = req.params;
         console.log("edited form values recieved", req.body);
         const { name, weight, duration, sets, reps, mo = false, tu = false, we = false, th = false, fr = false, sa = false, su = false, } = req.body;
-        const exercisesArray = [
-            name,
-            weight,
-            duration,
-            sets,
-            reps,
-            exercise_id
-        ];
+        const exercisesArray = [name, weight, duration, sets, reps, exercise_id];
         const exercisesQuery = `
     UPDATE exercises 
     SET name = $1, 
@@ -137,16 +130,7 @@ function default_1(db) {
     `;
         db.query(exercisesQuery, exercisesArray)
             .then((results) => {
-            const recurringArray = [
-                mo,
-                tu,
-                we,
-                th,
-                fr,
-                sa,
-                su,
-                exercise_id
-            ];
+            const recurringArray = [mo, tu, we, th, fr, sa, su, exercise_id];
             return db.query(recurringQuery, recurringArray);
         })
             .then((data) => {
@@ -157,6 +141,20 @@ function default_1(db) {
             console.log(error);
             res.status(500).send(error.message);
         });
+    });
+    //delete the schedule
+    router.delete("/:id", (req, res) => {
+        const { id } = req.params;
+        const query = `
+    DELETE FROM day_exercises WHERE day_exercises.id = $1
+    RETURNING *
+    `;
+        db.query(query, [id])
+            .then((data) => {
+            console.log(data.rows[0]);
+            res.status(200).send(`row ${id} sucessfully deleted`);
+        })
+            .catch((error) => res.send(500).send(error.message));
     });
     return router;
 }
