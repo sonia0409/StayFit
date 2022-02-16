@@ -14,11 +14,11 @@ function App() {
       {/*  <div> <Header/> </div> }/:name
       <div><Application /> </div>F
        <div> <Footer/> </div>     } */}
-      <Routes>
+      {/* <Routes>
         <Route path="/" element={<Application />} />
         <Route path="exercises/:part" element={<Exercises />} />
         <Route path="exercises/:part/exercise/:name" element={<Exercise />} />
-      </Routes>
+      </Routes> */}
     </div>
   );
 }
