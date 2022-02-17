@@ -72,87 +72,87 @@ export default function (db) {
   });
 
   //Add the day_exercises_list
-  router.post("/:userid/:date/new", (req, res) => {
-    // console.log("form values recieved", req.body);
-    const { date, userid } = req.params;
-    console.log(date, userid)
-    const {
-      exerciseName,
-      weight,
-      duration,
-      sets,
-      reps,
-      Mo = false,
-      Tu = false,
-      We = false,
-      Th = false,
-      Fr = false,
-      Sa = false,
-      Su = false,
-    } = req.body;
-    console.log('+++++', exerciseName)
-    const muscleGroup = req.body.muscleGroup.value;
-    const bodyPart = req.body.bodyPart.value;
+  // router.post("/:userid/:date/new", (req, res) => {
+  //   // console.log("form values recieved", req.body);
+  //   const { date, userid } = req.params;
+  //   console.log(date, userid)
+  //   const {
+  //     exerciseName,
+  //     weight,
+  //     duration,
+  //     sets,
+  //     reps,
+  //     Mo = false,
+  //     Tu = false,
+  //     We = false,
+  //     Th = false,
+  //     Fr = false,
+  //     Sa = false,
+  //     Su = false,
+  //   } = req.body;
+  //   console.log('+++++', exerciseName)
+  //   const muscleGroup = req.body.muscleGroup.value;
+  //   const bodyPart = req.body.bodyPart.value;
 
-    const exercisesArray = [
-      exerciseName,
-      muscleGroup,
-      bodyPart,
-      weight,
-      duration,
-      sets,
-      reps,
-    ];
-    const exercisesQuery = `
-    INSERT INTO exercises (name, muscleGroup, bodyPart, weight, duration, sets, reps) 
-    VALUES ($1, $2, $3, $4, $5, $6, $7)
-    RETURNING id
-    `;
-    const recurringQuery = `
-    INSERT INTO day_exercises(
-      user_id,
-      exercise_id,
-      date,
-      recurring_monday,
-      recurring_tuesday,
-      recurring_wednesday,
-      recurring_thursday,
-      recurring_friday,
-      recurring_saturday,
-      recurring_sunday
-      ) 
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
-    `;
+  //   const exercisesArray = [
+  //     exerciseName,
+  //     muscleGroup,
+  //     bodyPart,
+  //     weight,
+  //     duration,
+  //     sets,
+  //     reps,
+  //   ];
+  //   const exercisesQuery = `
+  //   INSERT INTO exercises (name, muscleGroup, bodyPart, weight, duration, sets, reps) 
+  //   VALUES ($1, $2, $3, $4, $5, $6, $7)
+  //   RETURNING id
+  //   `;
+  //   const recurringQuery = `
+  //   INSERT INTO day_exercises(
+  //     user_id,
+  //     exercise_id,
+  //     date,
+  //     recurring_monday,
+  //     recurring_tuesday,
+  //     recurring_wednesday,
+  //     recurring_thursday,
+  //     recurring_friday,
+  //     recurring_saturday,
+  //     recurring_sunday
+  //     ) 
+  //   VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+  //   `;
 
-    db.query(exercisesQuery, exercisesArray)
-      .then((results) => {
-        console.log('----------------',results)
-        const exercise_id = results.rows[0].id;
-        const recurringArray = [
-          Number(userid),
-          exercise_id,
-          date,
-          Mo,
-          Tu,
-          We,
-          Th,
-          Fr,
-          Sa,
-          Su
-        ];
-        console.log("recurring array====>", recurringArray);
+  //   db.query(exercisesQuery, exercisesArray)
+  //     .then((results) => {
+  //       console.log('----------------',results)
+  //       const exercise_id = results.rows[0].id;
+  //       const recurringArray = [
+  //         Number(userid),
+  //         exercise_id,
+  //         date,
+  //         Mo,
+  //         Tu,
+  //         We,
+  //         Th,
+  //         Fr,
+  //         Sa,
+  //         Su
+  //       ];
+  //       console.log("recurring array====>", recurringArray);
 
-        return db.query(recurringQuery, recurringArray);
-      })
-      .then((data) => {
-        console.log("<========New data=====>", data);
-        res.status(200).send("successfully submitted!");
-      })
-      .catch((error) => {
-        console.log(error.message);
-        res.status(500).send(error.message);
-      });
-  });
+  //       return db.query(recurringQuery, recurringArray);
+  //     })
+  //     .then((data) => {
+  //       console.log("<========New data=====>", data);
+  //       res.status(200).send("successfully submitted!");
+  //     })
+  //     .catch((error) => {
+  //       console.log(error.message);
+  //       res.status(500).send(error.message);
+  //     });
+  // });
 
   //edit the form values
 
@@ -235,6 +235,136 @@ export default function (db) {
         res.status(200).send(`row ${id} sucessfully deleted`);
       })
       .catch((error) => res.send(500).send(error.message));
+  });
+
+  // NEWWWWWWWWWW
+  //Add the day_exercises_list
+  router.post("/:userid/:date/new2", (req, res) => {
+    // Get data from url params
+    const { date, userid } = req.params;
+    
+    // Get data from request body
+    const data = req.body;
+    
+    const {
+      exerciseName,
+      muscleGroup = data.muscleGroup.value,
+      bodyPart = data.bodyPart.value,
+      weight,
+      duration,
+      sets,
+      reps,
+      recurring_monday,
+      recurring_tuesday,
+      recurring_wednesday,
+      recurring_thursday,
+      recurring_friday,
+      recurring_saturday,
+      recurring_sunday
+    } = req.body;
+    
+    const isRecurring = (recurring_monday || recurring_tuesday || recurring_wednesday || recurring_thursday || recurring_friday || recurring_saturday || recurring_sunday);
+
+    // Create queries to be used
+    const exercisesQuery = `
+    INSERT INTO exercises (name, muscleGroup, bodyPart, weight, duration, sets, reps) 
+    VALUES ($1, $2, $3, $4, $5, $6, $7)
+    RETURNING id
+    `;
+
+    const dayExercisesQuery = `
+    INSERT INTO day_exercises (user_id, exercise_id, is_completed, date) 
+    VALUES ($1, $2, $3, $4)
+    RETURNING *
+    `;
+    
+    const recurringQuery = `
+    INSERT INTO recurring_exercises(
+      user_id,
+      exercise_id,
+      date,
+      recurring_monday,
+      recurring_tuesday,
+      recurring_wednesday,
+      recurring_thursday,
+      recurring_friday,
+      recurring_saturday,
+      recurring_sunday
+      )
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+    RETURNING *
+    `;
+
+    // Exercises query inputs
+    const exercisesArray = [
+      exerciseName,
+      muscleGroup,
+      bodyPart,
+      weight,
+      duration,
+      sets,
+      reps,
+    ];
+
+    // Add new exercise item
+    db.query(exercisesQuery, exercisesArray)
+      .then(async results => {
+        const exerciseId = results.rows[0].id;
+        console.log('-----new exercise item added', exerciseId);
+
+        // 2 cases after adding new exercise item:
+        //  1: isRecurring is false => only add new day_exercise item
+        //  2: isRecurring is true => create new recurring_exercise item
+        
+        // Create query inputs:
+        const dayExercisesArray = [
+          Number(userid),
+          exerciseId,
+          false,
+          date
+        ];
+
+        const recurringArray = [
+          Number(userid),
+          exerciseId,
+          date,
+          recurring_monday,
+          recurring_tuesday,
+          recurring_wednesday,
+          recurring_thursday,
+          recurring_friday,
+          recurring_saturday,
+          recurring_sunday
+        ];
+
+        // CASE 1: NOT RECURRING
+        if (!isRecurring) {
+          await db.query(dayExercisesQuery, dayExercisesArray)
+            .then(data => {
+              console.log('-----not recurring => new day_exercise item added', data.rows[0].id);
+            })
+            .catch((error) => {
+              console.log(error.message);
+              res.status(500).send(error.message);
+            });
+          return res.status(200).send("successfully submitted!");
+        }
+
+        // CASE 2: RECURRING
+        await db.query(recurringQuery, recurringArray)
+          .then(data => {
+            console.log('-----recurring => new recurring_exercise item added', data.rows[0].id);
+            return res.status(200).send("successfully submitted!");
+          })
+          .catch((error) => {
+            console.log(error.message);
+            res.status(500).send(error.message);
+          });
+      })
+      .catch((error) => {
+        console.log(error.message);
+        res.status(500).send(error.message);
+      });
   });
 
   return router;
