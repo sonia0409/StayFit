@@ -24,7 +24,7 @@ form {
 }
 
 .form-name {
-  background: #548cff;
+  background: #ffc600;
   text-transform: uppercase;
   border: none;
   padding: 20px;
@@ -34,6 +34,8 @@ form {
 .form-label {
   line-height: 2;
   text-align: left;
+  font-size: 15px;
+  font-weight: 500;
   color: #548cff;
   margin: 20px 0;
 }
@@ -45,11 +47,6 @@ h2 {
   text-align: center;
   letter-spacing: 10px;
 }
-/* .form {
-  background: #6c6d65;
-  max-width: 400px;
-  margin: 0 auto;
-} */
 
 p {
   color: #bf1650;
@@ -61,10 +58,8 @@ p::before {
 }
 
 .form-dropdown {
-  /* display: block; */
   width: 100%;
   margin: 0.5rem 0;
-  /* font-size: 14px; */
 }
 
 input {
@@ -89,7 +84,7 @@ input {
 
 button[type="submit"],
 input[type="submit"] {
-  background: #548cff;
+  background: #ffc600;
   color: white;
   text-transform: uppercase;
   border: none;
