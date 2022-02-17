@@ -1,7 +1,7 @@
 import React from "react";
 import Dashboard from "./Dashboard";
 import Calender from "./components/Calender";
-// import "./App.css";
+import "./App.css";
 import Application from "./components/Application";
 import { Routes, Route } from "react-router-dom";
 import Exercises from "./pages/Exercises";

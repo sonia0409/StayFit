@@ -40,11 +40,11 @@ export default function Header() {
           {/* </Grid> */}
           {/* <Grid item xs={1}> */}
           <Avatar
-            alt="Tired man"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxSNIFSen-ODMRSzmOFJkfqBxejIsxvl2_6g&usqp=CAU"
+            // alt="Tired man"
+            // src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxSNIFSen-ODMRSzmOFJkfqBxejIsxvl2_6g&usqp=CAU"
 
-            // alt="Side curve shaddow"
-            // src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJer6FiaY05AG_7wxANXkCAqtDPjqJl5tLqA&usqp=CAU"
+            alt="Side curve shaddow"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJer6FiaY05AG_7wxANXkCAqtDPjqJl5tLqA&usqp=CAU"
           />
 
           {/* <Button color="inherit">Button if required</Button> */}
