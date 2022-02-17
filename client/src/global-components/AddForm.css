@@ -4,19 +4,23 @@ body {
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
 }
-
+h5 {
+  margin-top: 0px;
+}
 .close-cross {
   color: yellow;
   text-align: center;
+  margin-top: 0px;
 }
 
 form {
   background: #2c2e43;
   max-width: 500px;
   margin: 0 auto;
-  margin-top: 50px;
-  padding: 20px;
+  margin-top: 2rem;
+  padding: 1.5rem;
   border-radius: 4px;
+  text-align: left;
 }
 
 .form-name {
@@ -57,10 +61,10 @@ p::before {
 }
 
 .form-dropdown {
-  display: block;
+  /* display: block; */
   width: 100%;
-  margin-bottom: 10px;
-  font-size: 14px;
+  margin: 0.5rem 0;
+  /* font-size: 14px; */
 }
 
 input {
@@ -94,6 +98,7 @@ input[type="submit"] {
   font-size: 16px;
   font-weight: 100;
   letter-spacing: 10px;
+  text-align: center;
 }
 
 button[type="submit"]:hover,
