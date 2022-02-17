@@ -1,7 +1,9 @@
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import ReactSelect from "react-select";
-import { Checkbox } from "@mui/material";
+import { Checkbox, Button, Fab } from "@mui/material";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import Paper from "@mui/material/Paper";
 import axios from "axios";
 import "./AddForm.css";
 
@@ -34,25 +36,33 @@ const AddForm = (props) => {
         onSubmit={handleSubmit(async (data) => {
           // Use axios post to add exercise to database.
           await axios.post(
-            `http://localhost:8080/day-exercises/${userid}/${date}/new`, 
-            data);
+            `http://localhost:8080/day-exercises/${userid}/${date}/new`,
+            data
+          );
 
           // Change showAddForm state to false and cause re-render of calender component.
           //  This updated the current day with added exercise.
           onSubmit();
         })}
       >
-        <h1 onClick={onClose}>Close</h1>
+        <div style={{ color: "yellow" }}>
+          <Paper elevation={0} />
+          <Paper />
+          <Paper elevation={3} />
+          <HighlightOffIcon
+            sx={{ color: "yellow" }}
+            fontSize="large"
+            onClick={onClose}
+          />
+          <h5>Close</h5>
+        </div>
         <div className="form-name">
           <h1>Add Workout</h1>
         </div>
         <h2>{date}</h2>
-        <input
-          {...register("date")}
-          placeholder={date}
-        />
+        <input {...register("date")} placeholder={date} />
         <label>Body Part</label>
-        
+
         <div className="form-dropdown">
           <Controller
             name="bodyPart"
