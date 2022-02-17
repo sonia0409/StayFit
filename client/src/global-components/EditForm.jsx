@@ -57,7 +57,7 @@ const EditForm = (props) => {
           <h1>Edit Workout</h1>
         </div>
 
-        {/* <label>Body Part</label> */}
+        <label>Body Part</label>
         {/* <div className="form-dropdown">
           <Controller
             name="bodyPart"
@@ -140,8 +140,8 @@ const EditForm = (props) => {
         {/* <label> Body Part :</label>
         <label> {bodyPart} </label>
          */}
-        {/* <label> Muscule Group :</label>
-        <label> {muscleGroup} </label> */}
+        <label> Muscule Group :</label>
+        <label> {muscleGroup} </label>
         <input
           {...register("exersiseName", {
             required: true,
