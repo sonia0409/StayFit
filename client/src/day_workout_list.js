@@ -160,7 +160,7 @@ export default function DayWorkoutList(props) {
     <DayWorkoutListItem 
       key={exercise.id}
       workoutObj={exercise}
-      onChange={() => persistIsCompleted(exercise.id)} 
+      onChange={() => persistIsCompleted(exercise.day_exercise_id)} 
       onEditClick={() => setEditObj(exercise)}
     />
   )
