@@ -67,7 +67,7 @@ const AddForm = (props) => {
         <div className="form-dropdown">
           <Grid container spacing={0}>
             <Grid item xs={3}>
-              <label className="form-label">Body Part</label>
+              <label className="form-label">Body Part :</label>
             </Grid>
             <Grid item xs={9}>
               <Controller
@@ -99,7 +99,7 @@ const AddForm = (props) => {
         <div className="form-dropdown">
           <Grid container spacing={0}>
             <Grid item xs={3}>
-              <label className="form-label">Muscle Group</label>
+              <label className="form-label">Muscle Group :</label>
             </Grid>
             <Grid item xs={9}>
               <Controller
@@ -146,7 +146,7 @@ const AddForm = (props) => {
         {errors.exerciseName && <p>Exercise Name is required field</p>}
         <Grid container spacing={0}>
           <Grid item xs={3}>
-            <label className="form-label"> Exerciese Name</label>
+            <label className="form-label"> Name :</label>
           </Grid>
           <Grid item xs={9}>
             <input
@@ -157,7 +157,7 @@ const AddForm = (props) => {
         </Grid>
         <Grid container spacing={0}>
           <Grid item xs={3}>
-            <label className="form-label"> Duration </label>
+            <label className="form-label"> Duration : </label>
           </Grid>
           <Grid item xs={9}>
             <input {...register("duration")} placeholder="Duration / min" />
@@ -165,7 +165,7 @@ const AddForm = (props) => {
         </Grid>
         <Grid container spacing={0}>
           <Grid item xs={3}>
-            <label className="form-label"> Sets </label>
+            <label className="form-label"> Sets :</label>
           </Grid>
           <Grid item xs={9}>
             <input {...register("sets")} placeholder="Sets" />
@@ -173,7 +173,7 @@ const AddForm = (props) => {
         </Grid>
         <Grid container spacing={0}>
           <Grid item xs={3}>
-            <label className="form-label"> Reps </label>
+            <label className="form-label"> Reps :</label>
           </Grid>
           <Grid item xs={9}>
             <input {...register("reps")} placeholder="Reps" />
@@ -181,7 +181,7 @@ const AddForm = (props) => {
         </Grid>
         <Grid container spacing={0}>
           <Grid item xs={3}>
-            <label className="form-label"> Weight </label>
+            <label className="form-label"> Weight :</label>
           </Grid>
           <Grid item xs={9}>
             <input {...register("weight")} placeholder="Weight" />
