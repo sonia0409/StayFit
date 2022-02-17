@@ -358,6 +358,18 @@ export default function (db) {
     todayDate.setHours(0,0,0,0);
     const selectedDate = new Date(date);
   
+    // Get recurring day
+    const dayList = [
+      "recurring_sunday",
+      "recurring_monday",
+      "recurring_tuesday",
+      "recurring_wednesday",
+      "recurring_thursday",
+      "recurring_friday",
+      "recurring_saturday"
+    ];
+    const recurringDay = dayList[selectedDate.getDay()];
+          
     // Cases for selecting data:
     //  ------
     //  Case 1: Selected date is in the past => Query day_exercises for all
@@ -375,6 +387,7 @@ export default function (db) {
     //  -----
 
     // Create queries to be used
+    // -----
     const dayExercisesQuery = `
     SELECT *, day_exercises.date AS date, day_exercises.id as day_exercise_id FROM day_exercises
     JOIN exercises ON day_exercises.exercise_id = exercises.id
@@ -383,95 +396,68 @@ export default function (db) {
     AND day_exercises.date = $2
     `;
 
-    // dayExercises query inputs
+    const recurringExercisesQuery = `
+    SELECT recurring_exercises.exercise_id FROM recurring_exercises
+    WHERE recurring_exercises.user_id = $1
+    AND ${recurringDay} = TRUE
+    `;
+
+    const exerciseInDayExerciseQuery = `
+    SELECT day_exercises.exercise_id FROM day_exercises
+    WHERE user_id = $1
+    AND date = $2
+    `;
+
+    const addDayExerciseItemQuery = `
+    INSERT INTO day_exercises (user_id, exercise_id, is_completed, date) 
+    VALUES ($1, $2, $3, $4)
+    RETURNING *
+    `;
+    // -----
+    
+    // Query inputs
+    // -----
     const dayExercisesArray = [userid, date];
+
+    const recurringExercisesArray = [userid];
+    // -----
+
+    const renderExercises = () => {
+      db.query(dayExercisesQuery, dayExercisesArray)
+        .then(result => res.json(result.rows))
+        .catch(error => res.status(500).send(error.message));
+    };
 
     // CASE 1:
     if (todayDate > selectedDate) {
-      db.query(dayExercisesQuery, dayExercisesArray)
-        .then(result => res.json(result.rows))
-        .catch((error) => {
-          console.log(error.message);
-          res.status(500).send(error.message);
-        });
+      renderExercises();
     } else {
       // CASE 2:
-
-      // Get recurring day
-      const dayList = [
-        "recurring_sunday",
-        "recurring_monday",
-        "recurring_tuesday",
-        "recurring_wednesday",
-        "recurring_thursday",
-        "recurring_friday",
-        "recurring_saturday"
-      ];
-      const recurringDay = dayList[selectedDate.getDay()];
-      
-      // recurringExercises query
-      const recurringExercisesQuery = `
-      SELECT recurring_exercises.exercise_id FROM recurring_exercises
-      WHERE recurring_exercises.user_id = $1
-      AND ${recurringDay} = TRUE
-      `;
-
-      // recurringExercises query inputs
-      const recurringExercisesArray = [userid];
-
       db.query(recurringExercisesQuery, recurringExercisesArray)
         .then(result => {
           const recurringExerciseIds = result.rows.map(a => a.exercise_id);
-          console.log('Recurring ids  ', recurringExerciseIds);
-          
           return recurringExerciseIds;
         })
         .then(async recurringExerciseIds => {
-          const exerciseInDayExerciseQuery = `
-          SELECT day_exercises.exercise_id FROM day_exercises
-          WHERE user_id = $1
-          AND date = $2
-          `;
-          
+
           await db.query(exerciseInDayExerciseQuery, [userid, date])
             .then(async result => {
               const existingExerciesIds = result.rows.map(a => a.exercise_id);
-              console.log('existing ids: ',existingExerciesIds);
               const idsToAdd = recurringExerciseIds.filter(id => !existingExerciesIds.includes(id));
-              console.log('Ids to ADD TO day_exercises  ', idsToAdd);
-
-              const addDayExerciseItemQuery = `
-              INSERT INTO day_exercises (user_id, exercise_id, is_completed, date) 
-              VALUES ($1, $2, $3, $4)
-              RETURNING *
-              `;
-
+              
+              // Loop through idsToAdd and create day_exercise items
               for (const id of idsToAdd) {
                 const queryInputs = [ userid, id, false, date];
-
                 await db.query(addDayExerciseItemQuery, queryInputs);
               }
-
-              console.log('after for loop -> day_exercises added:', idsToAdd.length);
-
-            });
-
-          await db.query(dayExercisesQuery, dayExercisesArray)
-            .then(result => res.json(result.rows))
-            .catch((error) => {
-              console.log(error.message);
-              res.status(500).send(error.message);
             });
         })
-        .catch((error) => {
-          console.log(error.message);
-          res.status(500).send(error.message);
-        });
+        .then(() => renderExercises())
+        .catch((error) => res.status(500).send(error.message));
 
       return;
     }
   });
-
 
   return router;
 }
