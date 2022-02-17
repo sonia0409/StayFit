@@ -4,11 +4,12 @@ import ReactSelect from "react-select";
 import { Checkbox } from "@mui/material";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import Grid from "@mui/material/Grid";
+import axios from "axios";
 import "./EditForm.css";
 
 const EditForm = (props) => {
   console.log("PROPS =====>", props);
-  const { duration, sets, reps, weight, onClose } = props;
+  const { exercise_id, duration, sets, reps, weight, onClose } = props;
 
   const exerciseName = props.name;
   const bodyPart = props.bodypart;
@@ -48,9 +49,14 @@ const EditForm = (props) => {
   return (
     <main>
       <form
-        onSubmit={handleSubmit((data) => {
-          // onClose();
+        onSubmit={handleSubmit(async (data) => {
           console.log("Data from Edit Form =======>", data);
+
+          // Use axios to edit exercise in database.
+          //path:  ("/:exercise_id");
+          await axios.post(`http://localhost:8080/${exercise_id}`, data);
+
+          // onClose();
         })}
       >
         <div className="close-cross">
