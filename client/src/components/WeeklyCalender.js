@@ -2,7 +2,7 @@ import React from 'react';
 import '../scss/weeklyCalender.scss';
 
 export default function WeeklyCalender(props) {
-  const { currDate, onClick } = props;
+  const { currDate, onClick, onClose } = props;
   let day3 = new Date(currDate);
   let day1 = new Date(currDate);
   let day2 = new Date(currDate);
@@ -25,13 +25,19 @@ export default function WeeklyCalender(props) {
   return (
     <section className="weekCalenderContainer">
       <article className="weekDay" 
-        onClick={() => onClick(day1)}
+        onClick={() => {
+          onClose();
+          onClick(day1);
+        }}
       >
         <div>{day1Info[2]}</div> <div> {day1Info[0]}</div>
       </article>
 
       <article className="weekDay"
-        onClick={() => onClick(day2)}
+        onClick={() => {
+          onClose();
+          onClick(day2);
+        }}
       >
         <div>{day2Info[2]}</div> <div> {day2Info[0]}</div>
       </article>
@@ -41,13 +47,19 @@ export default function WeeklyCalender(props) {
       </article>
 
       <article className="weekDay"
-        onClick={() => onClick(day4)}
+        onClick={() => {
+          onClose();
+          onClick(day4);
+        }}
       >
         <div>{day4Info[2]}</div> <div> {day4Info[0]}</div>
       </article>
         
       <article className="weekDay"
-        onClick={() => onClick(day5)}
+        onClick={() => {
+          onClose();
+          onClick(day5);
+        }}
       >
         <div>{day5Info[2]}</div> <div> {day5Info[0]}</div>
       </article>

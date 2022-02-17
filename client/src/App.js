@@ -25,6 +25,8 @@ function App() {
       <AddForm />
       {/* <EditForm /> */}
       <Footer />
+      {/* <AddForm/> */}
+      <Calender />
       {/*  <div> <Header/> </div> }/:name
       <div><Application /> </div>F
        <div> <Footer/> </div>     } */}
