@@ -3,6 +3,7 @@ import { useForm, Controller } from "react-hook-form";
 import ReactSelect from "react-select";
 import { Checkbox } from "@mui/material";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import Grid from "@mui/material/Grid";
 import "./EditForm.css";
 
 const EditForm = (props) => {
@@ -56,107 +57,87 @@ const EditForm = (props) => {
           <HighlightOffIcon fontSize="large" onClick={onClose} />
           <h5>Close</h5>
         </div>
+
         <div className="form-name">
           <h1>Edit Workout</h1>
+          <hr />
+          <h4>Do we want a date here?</h4>
         </div>
 
-        <label>Body Part</label>
-        {/* <div className="form-dropdown">
-          <Controller
-            name="bodyPart"
-            control={control}
-            render={({ field }) => (
-              <ReactSelect
-                isClearable
-                {...field}
-                // value={bodyPart}
-                options={[
-                  { value: { bodyPart }, label: "readOnly" },
-                  { value: "chest", label: "Chest" },
-                  { value: "lower arms", label: "Lower arms" },
-                  { value: "lower legs", label: "Lower legs" },
-                  { value: "neck", label: "Neck" },
-                  { value: "shoulders", label: "Shoulders" },
-                  { value: "upper arms", label: "Upper arms" },
-                  { value: "upper legs", label: "Upper legs" },
-                  { value: "waist", label: "Waist" },
-                  { value: "back", label: "Back" },
-                  { value: "cardio", label: "Cardio" },
-                  { value: "other", label: "Other" },
-                ]}
-              />
-            )}
-          />
-          <label>Muscle Group</label>
-          {/* <Controller
-            name="muscleGroup"
-            control={control}
-            render={({ field }) => (
-              <ReactSelect
-                isClearable
-                {...field}
-                options={[
-                  { value: { muscleGroup } },
-                  // { value: "abductors", label: "Abductors" },
-                  // { value: "abs", label: "Abs" },
-                  // { value: "biceps", label: "Biceps" },
-                  // { value: "calves", label: "Calves" },
-                  // {
-                  // value: "cardiovascular system",
-                  // label: "Cardiovascular System",
-                  // },
-                  // { value: "delts", label: "Delts" },
-                  // { value: "forearms", label: "Forearms" },
-                  // { value: "glutes", label: "Glutes" },
-                  // { value: "hamstrings", label: "Hamstrings" },
-                  // { value: "lats", label: "Lats" },
-                  // { value: "levator scapulae", label: "Levator Scapulae" },
-                  // { value: "pectorals", label: "Pectorals" },
-                  // { value: "quads", label: "Quads" },
-                  // { value: "serratus anterior", label: "Serratus Anterior" },
-                  // { value: "spine", label: "Spine" },
-                  // { value: "traps", label: "Traps" },
-                  // { value: "triceps", label: "Triceps" },
-                  // { value: "upper back", label: "Upper back" },
-                  // { value: "other", label: "other" },
-                ]}
-              />
-            )}
-          /> 
-              </div> */}
-        {/* register your input into the hook by invoking the "register" function */}
+        <div className="form-dropdown"></div>
 
-        {/* Inputs */}
+        {/* Inputs  */}
+        <Grid container spacing={0}>
+          <Grid item xs={3}>
+            <label>Body Part : </label>
+          </Grid>
+          <Grid item xs={9}>
+            <input
+              {...register("bodyPart")}
+              placeholder="bodyPart"
+              value={bodyPart}
+              disabled
+            />
+          </Grid>
+        </Grid>
 
-        <input
-          {...register("bodyPart")}
-          placeholder="bodyPart"
-          value={bodyPart}
-          disabled
-          // readonly
-        />
-        {/* <input
-          {...register("muscleGroup")}
-          placeholder="muscleGroup"
-          value={muscleGroup}
-          // disabled
-        /> */}
-        {/* <label> Body Part :</label>
-        <label> {bodyPart} </label>
-         */}
-        <label> Muscule Group :</label>
-        <label> {muscleGroup} </label>
-        <input
-          {...register("exersiseName", {
-            required: true,
-          })}
-          placeholder="Exersise Name"
-        />
-        {errors.exersiseName && <p>Exersise Name is required field</p>}
-        <input {...register("duration")} placeholder="Duration / min" />
-        <input {...register("sets")} placeholder="Sets" />
-        <input {...register("reps")} placeholder="Reps" />
-        <input {...register("weight")} placeholder="Weight" />
+        <Grid container spacing={0}>
+          <Grid item xs={3}>
+            <label> Muscule Group :</label>
+          </Grid>
+          <Grid item xs={9}>
+            <input
+              {...register("muscleGroup")}
+              placeholder="muscleGroup"
+              value={muscleGroup}
+              disabled
+            />
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={0}>
+          <Grid item xs={3}>
+            <label className="form-label"> Name :</label>
+          </Grid>
+          <Grid item xs={9}>
+            <input {...register("exerciseName")} placeholder="Exercise Name" />
+            {errors.exersiseName && <p>Exersise Name is required field</p>}
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={0}>
+          <Grid item xs={3}>
+            <label className="form-label"> Duration (min) : </label>
+          </Grid>
+          <Grid item xs={9}>
+            <input {...register("duration")} placeholder="Duration / min" />
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={0}>
+          <Grid item xs={3}>
+            <label className="form-label"> Sets :</label>
+          </Grid>
+          <Grid item xs={9}>
+            <input {...register("sets")} placeholder="Sets" />
+          </Grid>
+        </Grid>
+        <Grid container spacing={0}>
+          <Grid item xs={3}>
+            <label className="form-label"> Reps :</label>
+          </Grid>
+          <Grid item xs={9}>
+            <input {...register("reps")} placeholder="Reps" />
+          </Grid>
+        </Grid>
+        <Grid container spacing={0}>
+          <Grid item xs={3}>
+            <label className="form-label"> Weight (lbs) :</label>
+          </Grid>
+          <Grid item xs={9}>
+            <input {...register("weight")} placeholder="Weight" />
+          </Grid>
+        </Grid>
 
         <label>Recurring :</label>
         <div className="form-checkboxes">
