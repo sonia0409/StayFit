@@ -2,7 +2,7 @@ import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import ReactSelect from "react-select";
 import { Checkbox } from "@mui/material";
-
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import "./EditForm.css";
 
 const EditForm = (props) => {
@@ -28,12 +28,12 @@ const EditForm = (props) => {
   } = useForm({
     defaultValues: {
       bodyPart: bodyPart || "",
-      muscleGroup: muscleGroup,
-      exersiseName: exersiseName,
-      duration: duration || "",
-      sets: sets,
-      reps: reps,
-      weight: weight,
+      muscleGroup: muscleGroup || "",
+      exersiseName: exersiseName || "",
+      duration: duration || null,
+      sets: sets || null,
+      reps: reps || null,
+      weight: weight || null,
       Mo: false,
       Tu: false,
       We: false,
@@ -49,10 +49,13 @@ const EditForm = (props) => {
       <form
         onSubmit={handleSubmit((data) => {
           // onClose();
-          console.log(data);
+          console.log("Data from Edit Form =======>", data);
         })}
       >
-        <h1 onClick={onClose}>Close</h1>
+        <div className="close-cross">
+          <HighlightOffIcon fontSize="large" onClick={onClose} />
+          <h5>Close</h5>
+        </div>
         <div className="form-name">
           <h1>Edit Workout</h1>
         </div>
