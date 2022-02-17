@@ -1,9 +1,9 @@
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import ReactSelect from "react-select";
-import { Checkbox, Button, Fab } from "@mui/material";
+import { Checkbox } from "@mui/material";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import Paper from "@mui/material/Paper";
+import Grid from "@mui/material/Grid";
 import axios from "axios";
 import "./AddForm.css";
 
@@ -45,23 +45,24 @@ const AddForm = (props) => {
           onSubmit();
         })}
       >
-        <div style={{ color: "yellow" }}>
-          <Paper elevation={0} />
-          <Paper />
-          <Paper elevation={3} />
+        <div
+          className="close-cross"
+          //  style={{ color: "yellow" }}
+        >
           <HighlightOffIcon
-            sx={{ color: "yellow" }}
+            // sx={{ color: "yellow" }}
             fontSize="large"
             onClick={onClose}
           />
           <h5>Close</h5>
         </div>
+
         <div className="form-name">
           <h1>Add Workout</h1>
+          <hr />
+          <h2>{date}</h2>
         </div>
-        <h2>{date}</h2>
-        <input {...register("date")} placeholder={date} />
-        <label>Body Part</label>
+        <label className="form-label">Body Part</label>
 
         <div className="form-dropdown">
           <Controller
@@ -88,7 +89,7 @@ const AddForm = (props) => {
             )}
           />
 
-          <label>Muscle Group</label>
+          <label className="form-label">Muscle Group</label>
           <Controller
             name="muscleGroup"
             control={control}
@@ -124,24 +125,56 @@ const AddForm = (props) => {
             )}
           />
         </div>
-        {/* register your input into the hook by invoking the "register" function */}
-        <input
-          {...register("exerciseName", { required: true })}
-          placeholder="Exercise Name"
-        />
+        {/* Inputs field */}
+        <Grid container spacing={0}>
+          <Grid item xs={3}>
+            <label className="form-label"> Exerciese Name</label>
+          </Grid>
+          <Grid item xs={9}>
+            <input
+              {...register("exerciseName", { required: true })}
+              placeholder="Exercise Name"
+            />
+          </Grid>
+        </Grid>
         {errors.exerciseName && <p>Exercise Name is required field</p>}
-        <input {...register("duration")} placeholder="Duration / min" />
-        <input {...register("sets")} placeholder="Sets" />
-        <input {...register("reps")} placeholder="Reps" />
+        <Grid container spacing={0}>
+          <Grid item xs={3}>
+            <label className="form-label"> Duration </label>
+          </Grid>
+          <Grid item xs={9}>
+            <input {...register("duration")} placeholder="Duration / min" />
+          </Grid>
+        </Grid>
+        <Grid container spacing={0}>
+          <Grid item xs={3}>
+            <label className="form-label"> Sets </label>
+          </Grid>
+          <Grid item xs={9}>
+            <input {...register("sets")} placeholder="Sets" />
+          </Grid>
+        </Grid>
+        <Grid container spacing={0}>
+          <Grid item xs={3}>
+            <label className="form-label"> Reps </label>
+          </Grid>
+          <Grid item xs={9}>
+            <input {...register("reps")} placeholder="Reps" />
+          </Grid>
+        </Grid>
+
+        <label className="form-label"> Weight </label>
+
         <input {...register("weight")} placeholder="Weight" />
-        {/* <input
+
+        <input
           {...register("date")}
           placeholder="Date"
           type="hidden"
           value={date}
-        /> */}
+        />
 
-        <label>Recurring :</label>
+        <label className="form-label">Recurring :</label>
         <div className="form-checkboxes">
           <label> Mo </label>
           {/* control your input into the hook by invoking the "field" function */}
