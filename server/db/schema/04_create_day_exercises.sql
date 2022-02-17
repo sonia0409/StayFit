@@ -6,5 +6,6 @@ CREATE TABLE day_exercises (
   user_id integer REFERENCES users(id) ON DELETE CASCADE NOT NULL,
   exercise_id integer REFERENCES exercises(id) ON DELETE CASCADE NOT NULL,
   is_completed boolean DEFAULT false,
-  date VARCHAR(255) NOT NULL
+  date VARCHAR(255) NOT NULL,
+  is_deleted boolean DEFAULT false
 );
