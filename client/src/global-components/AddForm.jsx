@@ -10,7 +10,6 @@ import "./AddForm.css";
 const AddForm = (props) => {
   const { date, onSubmit, userid = 1, onClose } = props;
 
-  // console.log('add form date', date)
   const {
     control,
     register, //cb ,register individual inputs into the hook
@@ -34,6 +33,7 @@ const AddForm = (props) => {
     <main>
       <form
         onSubmit={handleSubmit(async (data) => {
+          console.log("Data from form =====> ", data);
           // Use axios post to add exercise to database.
           await axios.post(
             `http://localhost:8080/day-exercises/${userid}/${date}/new`,
@@ -45,22 +45,15 @@ const AddForm = (props) => {
           onSubmit();
         })}
       >
-        <div
-          className="close-cross"
-          //  style={{ color: "yellow" }}
-        >
-          <HighlightOffIcon
-            // sx={{ color: "yellow" }}
-            fontSize="large"
-            onClick={onClose}
-          />
+        <div className="close-cross">
+          <HighlightOffIcon fontSize="large" onClick={onClose} />
           <h5>Close</h5>
         </div>
 
         <div className="form-name">
           <h1>Add Workout</h1>
           <hr />
-          <h2>{date}</h2>
+          <h4>{date}</h4>
         </div>
 
         {/* Dropdown */}
@@ -157,7 +150,7 @@ const AddForm = (props) => {
         </Grid>
         <Grid container spacing={0}>
           <Grid item xs={3}>
-            <label className="form-label"> Duration : </label>
+            <label className="form-label"> Duration (min) : </label>
           </Grid>
           <Grid item xs={9}>
             <input {...register("duration")} placeholder="Duration / min" />
@@ -181,7 +174,7 @@ const AddForm = (props) => {
         </Grid>
         <Grid container spacing={0}>
           <Grid item xs={3}>
-            <label className="form-label"> Weight :</label>
+            <label className="form-label"> Weight (lbs) :</label>
           </Grid>
           <Grid item xs={9}>
             <input {...register("weight")} placeholder="Weight" />
