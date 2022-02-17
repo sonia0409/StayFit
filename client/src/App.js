@@ -17,24 +17,14 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {/* <Calender /> */}
-      {/* <ExerciseList /> */} {/* => not working yet */}
-      {/* <ExerciseListItem /> */}
-      {/* <Exercises /> */} {/*=> not working yet */}
-      {/* <Exercise /> */} {/* => not working yet */}
-      <AddForm />
-      {/* <EditForm /> */}
       <Footer />
-      {/* <AddForm/> */}
-      <Calender />
-      {/*  <div> <Header/> </div> }/:name
-      <div><Application /> </div>F
-       <div> <Footer/> </div>     } */}
-      {/* <Routes>
-        <Route path="/" element={<Application />} />
+      <Routes>
+        {/* <Route path="/" element={<Dashboard/>} /> */} {/* rn - not working */}
+        {<Route path="/" element={<Calender />} />}{/* change path to /calender; once get Dashboard working */}
+        <Route path="exerciseCategory" element={<Application />} />
         <Route path="exercises/:part" element={<Exercises />} />
         <Route path="exercises/:part/exercise/:name" element={<Exercise />} />
-      </Routes> */}
+      </Routes>
     </div>
   );
 }
