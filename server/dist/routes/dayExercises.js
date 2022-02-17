@@ -15,38 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
 function default_1(db) {
-    //GET REQUEST BASED ON THE RECURRING DAYS
-    // router.get("/:userid/:date", (req, res) => {
-    //   console.log(req.params);
-    //   const { date, userid } = req.params;
-    //   const day = date.split(" ")[0];
-    //   console.log("<========day=====>",day);
-    //   const recurring_days = {
-    //     Mon: "recurring_monday",
-    //     Tue: "recurring_tuesday",
-    //     Wed: "recurring_wednesday",
-    //     Thu: "recurring_thursday",
-    //     Fri: "recurring_friday",
-    //     Sat: "recurring_saturday",
-    //     Sun: "recurring_sunday",
-    //   };
-    //   const currentDay = recurring_days[day];
-    //   const command = `
-    //   SELECT * FROM exercises 
-    //   JOIN day_exercises on day_exercises.exercise_id = exercises.id 
-    //   WHERE 
-    //   (date = $1 AND user_id = $2) 
-    //   OR
-    //   (${currentDay} = TRUE AND user_id = $2)
-    //   ORDER BY exercises.id
-    //   `;
-    //   console.log(date, userid, currentDay)
-    //   db.query(command, [date, userid])
-    //     .then((data) => {
-    //       res.json(data.rows);
-    //     })
-    //     .catch((error) => res.status(500).send(error.message));
-    // });
     //update the is_complete status
     router.patch("/:id", (req, res) => {
         const { id } = req.params;
@@ -58,85 +26,6 @@ function default_1(db) {
             .then(() => res.send(200))
             .catch((error) => console.log(error.message));
     });
-    //Add the day_exercises_list
-    // router.post("/:userid/:date/new", (req, res) => {
-    //   // console.log("form values recieved", req.body);
-    //   const { date, userid } = req.params;
-    //   console.log(date, userid)
-    //   const {
-    //     exerciseName,
-    //     weight,
-    //     duration,
-    //     sets,
-    //     reps,
-    //     Mo = false,
-    //     Tu = false,
-    //     We = false,
-    //     Th = false,
-    //     Fr = false,
-    //     Sa = false,
-    //     Su = false,
-    //   } = req.body;
-    //   console.log('+++++', exerciseName)
-    //   const muscleGroup = req.body.muscleGroup.value;
-    //   const bodyPart = req.body.bodyPart.value;
-    //   const exercisesArray = [
-    //     exerciseName,
-    //     muscleGroup,
-    //     bodyPart,
-    //     weight,
-    //     duration,
-    //     sets,
-    //     reps,
-    //   ];
-    //   const exercisesQuery = `
-    //   INSERT INTO exercises (name, muscleGroup, bodyPart, weight, duration, sets, reps) 
-    //   VALUES ($1, $2, $3, $4, $5, $6, $7)
-    //   RETURNING id
-    //   `;
-    //   const recurringQuery = `
-    //   INSERT INTO day_exercises(
-    //     user_id,
-    //     exercise_id,
-    //     date,
-    //     recurring_monday,
-    //     recurring_tuesday,
-    //     recurring_wednesday,
-    //     recurring_thursday,
-    //     recurring_friday,
-    //     recurring_saturday,
-    //     recurring_sunday
-    //     ) 
-    //   VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
-    //   `;
-    //   db.query(exercisesQuery, exercisesArray)
-    //     .then((results) => {
-    //       console.log('----------------',results)
-    //       const exercise_id = results.rows[0].id;
-    //       const recurringArray = [
-    //         Number(userid),
-    //         exercise_id,
-    //         date,
-    //         Mo,
-    //         Tu,
-    //         We,
-    //         Th,
-    //         Fr,
-    //         Sa,
-    //         Su
-    //       ];
-    //       console.log("recurring array====>", recurringArray);
-    //       return db.query(recurringQuery, recurringArray);
-    //     })
-    //     .then((data) => {
-    //       console.log("<========New data=====>", data);
-    //       res.status(200).send("successfully submitted!");
-    //     })
-    //     .catch((error) => {
-    //       console.log(error.message);
-    //       res.status(500).send(error.message);
-    //     });
-    // });
     //edit the form values
     router.put("/:exercise_id", (req, res) => {
         const { exercise_id } = req.params;
@@ -205,12 +94,12 @@ function default_1(db) {
     });
     // NEWWWWWWWWWW
     //Add the day_exercises_list
-    router.post("/:userid/:date/new2", (req, res) => {
+    router.post("/:userid/:date/new", (req, res) => {
         // Get data from url params
         const { date, userid } = req.params;
         // Get data from request body
         const data = req.body;
-        const { exerciseName, muscleGroup = data.muscleGroup.value, bodyPart = data.bodyPart.value, weight, duration, sets, reps, recurring_monday, recurring_tuesday, recurring_wednesday, recurring_thursday, recurring_friday, recurring_saturday, recurring_sunday } = req.body;
+        const { exerciseName, muscleGroup = data.muscleGroup.value, bodyPart = data.bodyPart.value, weight, duration, sets, reps, recurring_monday = data.Mo, recurring_tuesday = data.Tu, recurring_wednesday = data.We, recurring_thursday = data.Th, recurring_friday = data.Fr, recurring_saturday = data.Sa, recurring_sunday = data.Su } = req.body;
         const isRecurring = (recurring_monday || recurring_tuesday || recurring_wednesday || recurring_thursday || recurring_friday || recurring_saturday || recurring_sunday);
         // Create queries to be used
         const exercisesQuery = `
@@ -345,9 +234,10 @@ function default_1(db) {
         const dayExercisesQuery = `
     SELECT *, day_exercises.date AS date, day_exercises.id as day_exercise_id FROM day_exercises
     JOIN exercises ON day_exercises.exercise_id = exercises.id
-    JOIN recurring_exercises ON recurring_exercises.exercise_id = exercises.id
+    LEFT JOIN recurring_exercises ON recurring_exercises.exercise_id = exercises.id
     WHERE day_exercises.user_id = $1
     AND day_exercises.date = $2
+    AND day_exercises.is_deleted = false
     `;
         const recurringExercisesQuery = `
     SELECT recurring_exercises.exercise_id FROM recurring_exercises
