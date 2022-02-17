@@ -1,63 +1,42 @@
 /////////// day_exercisesRoutes.js
+import e from "express";
 import express from "express";
 
 const router = express.Router();
 
 export default function (db) {
-  // GET: '/day-exercises/:userid/:date'
-  //  date => 'Mon Feb 14 2022'
- /*  router.get("/:userid/:date", (req, res) => {
-    // console.log(req.params);
-    const { date, userid } = req.params;
-    const command = `
-    SELECT * FROM day_exercises 
-    JOIN users ON user_id = users.id
-    JOIN exercises on exercise_id = exercises.id 
-    WHERE date = $1 
-    AND user_id = $2
-    ORDER BY name
-    `;
-    db.query(command, [date, userid])
-      .then((data) => {
-        res.json(data.rows);
-      })
-      .catch((error) => res.status(500).send(error.message));
-  }); */
-
   //GET REQUEST BASED ON THE RECURRING DAYS
-  router.get("/:userid/:date", (req, res) => {
-    console.log(req.params);
-    const { date, userid } = req.params;
-    const day = date.split(" ")[0];
-    console.log("<========day=====>",day);
-    const recurring_days = {
-      Mon: "recurring_monday",
-      Tue: "recurring_tuesday",
-      Wed: "recurring_wednesday",
-      Thu: "recurring_thursday",
-      Fri: "recurring_friday",
-      Sat: "recurring_saturday",
-      Sun: "recurring_sunday",
-    };
-    const currentDay = recurring_days[day];
-    const command = `
-    SELECT * FROM exercises 
-    JOIN day_exercises on day_exercises.exercise_id = exercises.id 
-    WHERE 
-    (date = $1 AND user_id = $2) 
-    OR
-    (${currentDay} = TRUE AND user_id = $2)
-    ORDER BY exercises.id
-    `;
-    console.log(date, userid, currentDay)
-    db.query(command, [date, userid])
-      .then((data) => {
-        res.json(data.rows);
-      })
-      .catch((error) => res.status(500).send(error.message));
-  });
-  // POST: '/day-exercises/:userid/:date'
-  //  date => 'Mon Feb 14 2022'
+  // router.get("/:userid/:date", (req, res) => {
+  //   console.log(req.params);
+  //   const { date, userid } = req.params;
+  //   const day = date.split(" ")[0];
+  //   console.log("<========day=====>",day);
+  //   const recurring_days = {
+  //     Mon: "recurring_monday",
+  //     Tue: "recurring_tuesday",
+  //     Wed: "recurring_wednesday",
+  //     Thu: "recurring_thursday",
+  //     Fri: "recurring_friday",
+  //     Sat: "recurring_saturday",
+  //     Sun: "recurring_sunday",
+  //   };
+  //   const currentDay = recurring_days[day];
+  //   const command = `
+  //   SELECT * FROM exercises 
+  //   JOIN day_exercises on day_exercises.exercise_id = exercises.id 
+  //   WHERE 
+  //   (date = $1 AND user_id = $2) 
+  //   OR
+  //   (${currentDay} = TRUE AND user_id = $2)
+  //   ORDER BY exercises.id
+  //   `;
+  //   console.log(date, userid, currentDay)
+  //   db.query(command, [date, userid])
+  //     .then((data) => {
+  //       res.json(data.rows);
+  //     })
+  //     .catch((error) => res.status(500).send(error.message));
+  // });
 
   //update the is_complete status
   router.patch("/:id", (req, res) => {
@@ -366,6 +345,133 @@ export default function (db) {
         res.status(500).send(error.message);
       });
   });
+
+  // GET: '/day-exercises/:userid/:date'
+  //  Get day_exercises for user for the selected date
+  //  date => 'Mon Feb 14 2022'
+  router.get("/:userid/:date", (req, res) => {
+    // Get data from url params
+    const { date, userid } = req.params;
+
+    // Setup date formats for comparisons
+    const todayDate = new Date();
+    todayDate.setHours(0,0,0,0);
+    const selectedDate = new Date(date);
+  
+    // Cases for selecting data:
+    //  ------
+    //  Case 1: Selected date is in the past => Query day_exercises for all
+    //            exercises for the user and the selected date.
+    //  ------
+    //  Case 2: 1. Selected date is today or future => check recurring_exercises
+    //              for all rows with selected DAY as true for user.
+    //          2. Loop through exerciseIds found and look for the ids in
+    //              day_exercises table.
+    //              -> if present, skip.
+    //              -> if not present, create instance in day_exercises with
+    //                 the selected date.
+    //          3. Query day_exercises for all exercises for the user and
+    //              the selected date.
+    //  -----
+
+    // Create queries to be used
+    const dayExercisesQuery = `
+    SELECT *, day_exercises.date AS date, day_exercises.id as day_exercise_id FROM day_exercises
+    JOIN exercises ON day_exercises.exercise_id = exercises.id
+    JOIN recurring_exercises ON recurring_exercises.exercise_id = exercises.id
+    WHERE day_exercises.user_id = $1
+    AND day_exercises.date = $2
+    `;
+
+    // dayExercises query inputs
+    const dayExercisesArray = [userid, date];
+
+    // CASE 1:
+    if (todayDate > selectedDate) {
+      db.query(dayExercisesQuery, dayExercisesArray)
+        .then(result => res.json(result.rows))
+        .catch((error) => {
+          console.log(error.message);
+          res.status(500).send(error.message);
+        });
+    } else {
+      // CASE 2:
+
+      // Get recurring day
+      const dayList = [
+        "recurring_sunday",
+        "recurring_monday",
+        "recurring_tuesday",
+        "recurring_wednesday",
+        "recurring_thursday",
+        "recurring_friday",
+        "recurring_saturday"
+      ];
+      const recurringDay = dayList[selectedDate.getDay()];
+      
+      // recurringExercises query
+      const recurringExercisesQuery = `
+      SELECT recurring_exercises.exercise_id FROM recurring_exercises
+      WHERE recurring_exercises.user_id = $1
+      AND ${recurringDay} = TRUE
+      `;
+
+      // recurringExercises query inputs
+      const recurringExercisesArray = [userid];
+
+      db.query(recurringExercisesQuery, recurringExercisesArray)
+        .then(result => {
+          const recurringExerciseIds = result.rows.map(a => a.exercise_id);
+          console.log('Recurring ids  ', recurringExerciseIds);
+          
+          return recurringExerciseIds;
+        })
+        .then(async recurringExerciseIds => {
+          const exerciseInDayExerciseQuery = `
+          SELECT day_exercises.exercise_id FROM day_exercises
+          WHERE user_id = $1
+          AND date = $2
+          `;
+          
+          await db.query(exerciseInDayExerciseQuery, [userid, date])
+            .then(async result => {
+              const existingExerciesIds = result.rows.map(a => a.exercise_id);
+              console.log('existing ids: ',existingExerciesIds);
+              const idsToAdd = recurringExerciseIds.filter(id => !existingExerciesIds.includes(id));
+              console.log('Ids to ADD TO day_exercises  ', idsToAdd);
+
+              const addDayExerciseItemQuery = `
+              INSERT INTO day_exercises (user_id, exercise_id, is_completed, date) 
+              VALUES ($1, $2, $3, $4)
+              RETURNING *
+              `;
+
+              for (const id of idsToAdd) {
+                const queryInputs = [ userid, id, false, date];
+
+                await db.query(addDayExerciseItemQuery, queryInputs);
+              }
+
+              console.log('after for loop -> day_exercises added:', idsToAdd.length);
+
+            });
+
+          await db.query(dayExercisesQuery, dayExercisesArray)
+            .then(result => res.json(result.rows))
+            .catch((error) => {
+              console.log(error.message);
+              res.status(500).send(error.message);
+            });
+        })
+        .catch((error) => {
+          console.log(error.message);
+          res.status(500).send(error.message);
+        });
+
+      return;
+    }
+  });
+
 
   return router;
 }
