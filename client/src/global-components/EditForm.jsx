@@ -7,10 +7,10 @@ import Grid from "@mui/material/Grid";
 import "./EditForm.css";
 
 const EditForm = (props) => {
-  console.log(props);
+  console.log("PROPS =====>", props);
   const { duration, sets, reps, weight, onClose } = props;
 
-  const exersiseName = props.name;
+  const exerciseName = props.name;
   const bodyPart = props.bodypart;
   const muscleGroup = props.musclegroup;
   const Mo = props.recurring_monday;
@@ -30,18 +30,18 @@ const EditForm = (props) => {
     defaultValues: {
       bodyPart: bodyPart || "",
       muscleGroup: muscleGroup || "",
-      exersiseName: exersiseName || "",
+      exerciseName: exerciseName || "",
       duration: duration || null,
       sets: sets || null,
       reps: reps || null,
       weight: weight || null,
-      Mo: false,
-      Tu: false,
-      We: false,
-      Th: false,
-      Fr: false,
-      Sa: false,
-      Su: false,
+      Mo: Mo || false,
+      Tu: Tu || false,
+      We: We || false,
+      Th: Th || false,
+      Fr: Fr || false,
+      Sa: Sa || false,
+      Su: Su || false,
     },
   });
 
@@ -101,7 +101,7 @@ const EditForm = (props) => {
           </Grid>
           <Grid item xs={9}>
             <input {...register("exerciseName")} placeholder="Exercise Name" />
-            {errors.exersiseName && <p>Exersise Name is required field</p>}
+            {errors.exerciseName && <p>Exercise Name is required field</p>}
           </Grid>
         </Grid>
 
