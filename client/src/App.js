@@ -1,7 +1,7 @@
 import React from "react";
 import Dashboard from "./Dashboard";
 import Calender from "./components/Calender";
-import "./App.css";
+// import "./App.css";
 import Application from "./components/Application";
 import { Routes, Route } from "react-router-dom";
 import Exercises from "./pages/Exercises";
@@ -22,11 +22,11 @@ function App() {
       {/* <ExerciseListItem /> */}
       {/* <Exercises /> */} {/*=> not working yet */}
       {/* <Exercise /> */} {/* => not working yet */}
-      <AddForm />
+      {/* <AddForm /> */}
       {/* <EditForm /> */}
+      <Calender />
       <Footer />
       {/* <AddForm/> */}
-      <Calender />
       {/*  <div> <Header/> </div> }/:name
       <div><Application /> </div>F
        <div> <Footer/> </div>     } */}

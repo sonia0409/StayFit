@@ -27,10 +27,10 @@ const EditForm = (props) => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      bodyPart: bodyPart,
+      bodyPart: bodyPart || "",
       muscleGroup: muscleGroup,
       exersiseName: exersiseName,
-      duration: duration,
+      duration: duration || "",
       sets: sets,
       reps: reps,
       weight: weight,
@@ -48,7 +48,7 @@ const EditForm = (props) => {
     <main>
       <form
         onSubmit={handleSubmit((data) => {
-          onClose();
+          // onClose();
           console.log(data);
         })}
       >
@@ -129,6 +129,7 @@ const EditForm = (props) => {
           {...register("bodyPart")}
           placeholder="bodyPart"
           value={bodyPart}
+          disabled
           // readonly
         />
         {/* <input
