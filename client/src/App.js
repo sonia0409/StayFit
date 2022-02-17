@@ -6,11 +6,25 @@ import Application from "./components/Application";
 import { Routes, Route } from "react-router-dom";
 import Exercises from "./pages/Exercises";
 import Exercise from "./pages/Exercise";
+import Footer from "./global-components/Footer";
+import Header from "./global-components/Header";
 import AddForm from "./global-components/AddForm";
+// import EditForm from "./global-components/EditForm";
+import ExerciseList from "./components/ExerciseList";
+import ExerciseListItem from "./components/ExerciseListItem";
 
 function App() {
   return (
     <div className="App">
+      <Header />
+      {/* <Calender /> */}
+      {/* <ExerciseList /> */} {/* => not working yet */}
+      {/* <ExerciseListItem /> */}
+      {/* <Exercises /> */} {/*=> not working yet */}
+      {/* <Exercise /> */} {/* => not working yet */}
+      <AddForm />
+      {/* <EditForm /> */}
+      <Footer />
       {/* <AddForm/> */}
       <Calender />
       {/*  <div> <Header/> </div> }/:name

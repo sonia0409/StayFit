@@ -6,7 +6,7 @@ const router = express.Router();
 export default function (db) {
   // GET: '/day-exercises/:userid/:date'
   //  date => 'Mon Feb 14 2022'
- /*  router.get("/:userid/:date", (req, res) => {
+  /*  router.get("/:userid/:date", (req, res) => {
     // console.log(req.params);
     const { date, userid } = req.params;
     const command = `
@@ -29,7 +29,7 @@ export default function (db) {
     console.log(req.params);
     const { date, userid } = req.params;
     const day = date.split(" ")[0];
-    console.log("<========day=====>",day);
+    console.log("<========day=====>", day);
     const recurring_days = {
       Mon: "recurring_monday",
       Tue: "recurring_tuesday",
@@ -49,7 +49,7 @@ export default function (db) {
     (${currentDay} = TRUE AND user_id = $2)
     ORDER BY exercises.id
     `;
-    console.log(date, userid, currentDay)
+    console.log(date, userid, currentDay);
     db.query(command, [date, userid])
       .then((data) => {
         res.json(data.rows);
@@ -75,7 +75,7 @@ export default function (db) {
   router.post("/:userid/:date/new", (req, res) => {
     // console.log("form values recieved", req.body);
     const { date, userid } = req.params;
-    console.log(date, userid)
+    console.log(date, userid);
     const {
       exerciseName,
       weight,
@@ -90,7 +90,7 @@ export default function (db) {
       Sa = false,
       Su = false,
     } = req.body;
-    console.log('+++++', exerciseName)
+    console.log("+++++", exerciseName);
     const muscleGroup = req.body.muscleGroup.value;
     const bodyPart = req.body.bodyPart.value;
 
@@ -126,7 +126,7 @@ export default function (db) {
 
     db.query(exercisesQuery, exercisesArray)
       .then((results) => {
-        console.log('----------------',results)
+        console.log("----------------", results);
         const exercise_id = results.rows[0].id;
         const recurringArray = [
           Number(userid),
@@ -138,7 +138,7 @@ export default function (db) {
           Th,
           Fr,
           Sa,
-          Su
+          Su,
         ];
         console.log("recurring array====>", recurringArray);
 
@@ -200,16 +200,7 @@ export default function (db) {
 
     db.query(exercisesQuery, exercisesArray)
       .then((results) => {
-        const recurringArray = [
-          Mo,
-          Tu,
-          We,
-          Th,
-          Fr,
-          Sa,
-          Su,
-          exercise_id
-        ];
+        const recurringArray = [Mo, Tu, We, Th, Fr, Sa, Su, exercise_id];
         return db.query(recurringQuery, recurringArray);
       })
       .then((data) => {
