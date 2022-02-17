@@ -1,11 +1,9 @@
 /////////// day_exercisesRoutes.js
-import e from "express";
 import express from "express";
 
 const router = express.Router();
 
 export default function (db) {
-
 
   //update the is_complete status
   router.patch("/:id", (req, res) => {
