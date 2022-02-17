@@ -5,79 +5,37 @@ INSERT INTO day_exercises (
   user_id,
   exercise_id,
   is_completed,
-  date,
-  recurring_monday,
-  recurring_tuesday,
-  recurring_wednesday,
-  recurring_thursday,
-  recurring_friday,
-  recurring_saturday,
-  recurring_sunday
+  date
 ) VALUES 
 (
   1,
   1,
   false,
-  'Mon Feb 14 2022',
-  true,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false
+  'Mon Feb 14 2022'
 ),
 (
   1,
   2,
   false,
-  'Mon Feb 14 2022',
-  true,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false
+  'Mon Feb 14 2022'
 ),
 (
   1,
   3,
   false,
-  'Mon Feb 14 2022',
-  true,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false
+  'Mon Feb 14 2022'
 ),
 (
   1,
   4,
   true,
-  'Mon Feb 14 2022',
-  true,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false
+  'Mon Feb 14 2022'
 ),
 (
   1,
   5,
   true,
-  'Mon Feb 14 2022',
-  true,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false
+  'Mon Feb 14 2022'
 );
 
 -- ALTER SEQUENCE users_id_seq RESTART WITH 50;
