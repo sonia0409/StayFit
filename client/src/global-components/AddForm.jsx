@@ -187,13 +187,7 @@ const AddForm = (props) => {
             <input {...register("weight")} placeholder="Weight" />
           </Grid>
         </Grid>
-        {/* Hiden field for date */}
-        <input
-          {...register("date")}
-          placeholder="Date"
-          type="hidden"
-          value={date}
-        />
+
         {/* Checkboxes  */}
         <Grid container spacing={0}>
           <Grid item xs={3}>
