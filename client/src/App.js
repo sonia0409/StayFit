@@ -20,9 +20,7 @@ function App() {
       <Footer />
       <Routes>
         {/* <Route path="/" element={<Dashboard/>} /> */} {/* rn - not working */}
-        <Route path="/" element={<div>
-          <h1 style={{color: "black"}}>"Bring Dashboard component here!!"</h1>
-        </div>} />
+        <Route path="/" element={<Dashboard />} />
         <Route path="/calender" element={<Calender />} />{/* change path to /calender; once get Dashboard working */}
         <Route path="/exerciseCategory" element={<Application />} />
         <Route path="/exercises/:part" element={<Exercises />} />
