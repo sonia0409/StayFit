@@ -1,7 +1,5 @@
 import React from "react";
-import { useForm, Controller } from "react-hook-form";
-import ReactSelect from "react-select";
-import { Checkbox } from "@mui/material";
+import { useForm } from "react-hook-form";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import Grid from "@mui/material/Grid";
 import axios from "axios";
@@ -64,49 +62,19 @@ const EditForm = (props) => {
       >
         <div className="close-cross">
           <HighlightOffIcon fontSize="large" onClick={onClose} />
-          {/* <h5>Close</h5> */}
+          <h5>Close</h5>
         </div>
 
         <div className="form-name">
           <h2>Edit Workout</h2>
-          <hr />
-          <h3>Do we want a date here?</h3>
+          {/* <hr /> */}
         </div>
 
-        <div className="form-dropdown"></div>
-
         {/* Inputs  */}
-        <Grid container spacing={0}>
-          <Grid item xs={3}>
-            <label>Body Part : </label>
-          </Grid>
-          <Grid item xs={9}>
-            <input
-              {...register("bodyPart")}
-              placeholder="bodyPart"
-              value={bodyPart}
-              disabled
-            />
-          </Grid>
-        </Grid>
 
         <Grid container spacing={0}>
           <Grid item xs={3}>
-            <label> Muscule Group :</label>
-          </Grid>
-          <Grid item xs={9}>
-            <input
-              {...register("muscleGroup")}
-              placeholder="muscleGroup"
-              value={muscleGroup}
-              disabled
-            />
-          </Grid>
-        </Grid>
-
-        <Grid container spacing={0}>
-          <Grid item xs={3}>
-            <label className="form-label"> Name :</label>
+            <label className="form-label"> Exercise Name :</label>
           </Grid>
           <Grid item xs={9}>
             <input {...register("exerciseName")} placeholder="Exercise Name" />
@@ -147,53 +115,6 @@ const EditForm = (props) => {
             <input {...register("weight")} placeholder="Weight" />
           </Grid>
         </Grid>
-
-        <label>Recurring :</label>
-        <div className="form-checkboxes">
-          <label> Mo </label>
-          {/* control your input into the hook by invoking the "field" function */}
-          <Controller
-            name="Mo"
-            control={control}
-            render={({ field }) => <Checkbox {...field} defaultChecked={Mo} />}
-          />
-          <label> Tu </label>
-          <Controller
-            name="Tu"
-            control={control}
-            render={({ field }) => <Checkbox {...field} defaultChecked={Tu} />}
-          />
-          <label> We </label>
-          <Controller
-            name="We"
-            control={control}
-            render={({ field }) => <Checkbox {...field} defaultChecked={We} />}
-          />
-          <label> Th </label>
-          <Controller
-            name="Th"
-            control={control}
-            render={({ field }) => <Checkbox {...field} defaultChecked={Th} />}
-          />
-          <label> Fr </label>
-          <Controller
-            name="Fr"
-            control={control}
-            render={({ field }) => <Checkbox {...field} defaultChecked={Fr} />}
-          />
-          <label> Sa </label>
-          <Controller
-            name="Sa"
-            control={control}
-            render={({ field }) => <Checkbox {...field} defaultChecked={Sa} />}
-          />
-          <label> Su </label>
-          <Controller
-            name="Su"
-            control={control}
-            render={({ field }) => <Checkbox {...field} defaultChecked={Su} />}
-          />
-        </div>
         <input type="submit" />
       </form>
     </main>
