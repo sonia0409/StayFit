@@ -22,13 +22,12 @@ export default function Calender() {
   return (
     <div>
       <div className="calender-information">
-        <h2>
+        <h2 className="date">
           {splitDate[1]} {splitDate[2]}{" "}
         </h2>
         <Fab variant="extended" onClick={() => setSelectedDate(new Date())}>
           Today
         </Fab>
-        <h2>Tasks: 10</h2>
       </div>
 
       <WeeklyCalender

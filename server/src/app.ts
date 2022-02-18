@@ -13,6 +13,7 @@ import db from '../configs/db.config';
 // routes import
 import usersRoutes from '../routes/usersRoutes';
 import dayExercisesRoutes from '../routes/dayExercises';
+import exercisesRoutes from '../routes/exercisesRoutes';
 import cors from 'cors';
 
 const app = express();
@@ -26,6 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/users', usersRoutes(db));
 app.use('/day-exercises', dayExercisesRoutes(db));
+app.use('/exercises', exercisesRoutes(db));
 
 
 app.get('/', (req, res) => {

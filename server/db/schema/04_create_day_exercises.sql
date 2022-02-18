@@ -7,11 +7,5 @@ CREATE TABLE day_exercises (
   exercise_id integer REFERENCES exercises(id) ON DELETE CASCADE NOT NULL,
   is_completed boolean DEFAULT false,
   date VARCHAR(255) NOT NULL,
-  recurring_monday boolean DEFAULT false,
-  recurring_tuesday boolean DEFAULT false,
-  recurring_wednesday boolean DEFAULT false,
-  recurring_thursday boolean DEFAULT false,
-  recurring_friday boolean DEFAULT false,
-  recurring_saturday boolean DEFAULT false,
-  recurring_sunday boolean DEFAULT false
+  is_deleted boolean DEFAULT false
 );

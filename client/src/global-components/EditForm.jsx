@@ -6,7 +6,7 @@ import axios from "axios";
 import "./EditForm.css";
 
 const EditForm = (props) => {
-  console.log("PROPS =====>", props);
+  // console.log("PROPS =====>", props);
   const { exercise_id, duration, sets, reps, weight, onClose } = props;
 
   const exerciseName = props.name;
@@ -19,6 +19,8 @@ const EditForm = (props) => {
   const Fr = props.recurring_friday;
   const Sa = props.recurring_saturday;
   const Su = props.recurring_sunday;
+
+  const isRecurring = (Mo || Tu || We || Th || Fr || Sa || Su);
 
   const {
     control,
@@ -48,12 +50,12 @@ const EditForm = (props) => {
     <main>
       <form
         onSubmit={handleSubmit(async (data) => {
-          console.log("Data from Edit Form =======>", data);
+          // console.log("Data from Edit Form =======>", data);
 
           // Use axios to edit exercise in database.
           //path:  ("exercise/:exercise_id");
           await axios.post(
-            `http://localhost:8080/exercise/${exercise_id}`,
+            `http://localhost:8080/exercises/${exercise_id}`,
             data
           );
 
@@ -115,6 +117,11 @@ const EditForm = (props) => {
             <input {...register("weight")} placeholder="Weight" />
           </Grid>
         </Grid>
+        { isRecurring && 
+          <div className="note-message">
+            * Note: This is a recurring exercise and will modify all related events. 
+          </div>
+        }
         <input type="submit" />
       </form>
     </main>
