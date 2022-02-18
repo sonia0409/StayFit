@@ -51,7 +51,7 @@ const AddForm = (props) => {
         </div>
 
         <div className="form-name">
-          <h1>Add Workout</h1>
+          <h2>Add Workout</h2>
           <hr />
           <h4>{date}</h4>
         </div>
