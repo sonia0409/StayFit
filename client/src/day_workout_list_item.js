@@ -12,7 +12,7 @@ import DeletePopup from "./components/popup/DeletePopup";
 import './components/popup/popup.scss';
 
 export default function DayWorkoutListItem(props) {
-  const { workoutObj, onChange, onEditClick, togglePopup, isOpen } = props;
+  const { workoutObj, onChange, onEditClick, toggleDeleted } = props;
   
   const { 
     name,
@@ -22,9 +22,18 @@ export default function DayWorkoutListItem(props) {
     weight,
     is_completed,
     day_exercise_id,
-    exercise_id
+    exercise_id,
+    recurring_monday,
+    recurring_tuesday,
+    recurring_wednesday,
+    recurring_thursday,
+    recurring_friday,
+    recurring_saturday,
+    recurring_sunday
   } = workoutObj;
 
+  const isRecurring = (recurring_monday || recurring_tuesday || recurring_wednesday || recurring_thursday || recurring_friday || recurring_saturday || recurring_sunday )
+  
   const [localCompleted, setLocalCompleted] = useState(is_completed);
 
   const onClickHandler = () => {
@@ -32,17 +41,26 @@ export default function DayWorkoutListItem(props) {
     onChange();
   }
 
+  const [isOpen, setIsOpen] = useState(false);
+  
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  }
 
-
-  const onSingleDelete = () => {
-    axios.patch(`http://localhost:8080/exercises/${day_exercise_id}`)
+  const onSingleDelete = async () => {
+    await axios.patch(`http://localhost:8080/exercises/${day_exercise_id}`)
       .then(() => {
+        toggleDeleted()
         togglePopup()
       })
   }
-  const onAllDelete = () => {
-    axios.delete(`http://localhost:8080/exercises/${exercise_id}`)
-      .then(() => togglePopup())
+  const onAllDelete = async () => {
+    console.log(workoutObj)
+    await axios.delete(`http://localhost:8080/exercises/${exercise_id}`)
+      .then(() => {
+        toggleDeleted()
+        togglePopup()
+      })
   }
 
   return (
@@ -52,6 +70,7 @@ export default function DayWorkoutListItem(props) {
           handleClose={togglePopup}
           onSingleDelete={onSingleDelete}
           onAllDelete={onAllDelete}
+          isRecurring={isRecurring}
         />}
         <div className="multi-button">
           <button className="fas fa-trash"

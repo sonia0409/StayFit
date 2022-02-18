@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function DeletePopup(props) {
-  const { handleClose, onSingleDelete, onAllDelete } = props;
+  const { handleClose, onSingleDelete, onAllDelete, isRecurring } = props;
   
   return (
     <div className="popup-box">
@@ -13,9 +13,11 @@ export default function DeletePopup(props) {
         <button
           onClick={() => onSingleDelete()}
         >Delete exercise for today</button>
-        <button
+        { isRecurring && 
+          <button
           onClick={() => onAllDelete()}
-        >Delete for all future dates</button>
+          >Delete for all future dates</button>
+        }
       </div>
     </div>
   );
