@@ -20,7 +20,7 @@ export default function Calender() {
   const splitDate = selectedDate.toDateString().split(" ");
   // console.log(selectedDate)
   return (
-    <div>
+    <div className="calender-container">
       <div className="calender-information">
         <h2 className="date">
           {splitDate[1]} {splitDate[2]}{" "}
