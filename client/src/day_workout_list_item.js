@@ -8,9 +8,11 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./scss/day_workout_list_item.scss";
 import axios from "axios";
+import DeletePopup from "./components/popup/DeletePopup";
+import './components/popup/popup.scss';
 
 export default function DayWorkoutListItem(props) {
-  const { workoutObj, onChange, onEditClick } = props;
+  const { workoutObj, onChange, onEditClick, togglePopup, isOpen } = props;
   
   const { 
     name,
@@ -30,28 +32,30 @@ export default function DayWorkoutListItem(props) {
     onChange();
   }
 
-  const onDeleteHandler = () => {
-    const deleteAll = false;
-    const deleteSingle = false;
 
-    const onDelete = () => {
-      if (deleteSingle) {
-        axios.patch(`http://localhost:8080/exercises/${day_exercise_id}`)
-          .then()
-      } else {
-        axios.delete(`http://localhost:8080/exercises/${exercise_id}`)
-          .then()
-      }
-    }
+
+  const onSingleDelete = () => {
+    axios.patch(`http://localhost:8080/exercises/${day_exercise_id}`)
+      .then(() => {
+        togglePopup()
+      })
+  }
+  const onAllDelete = () => {
+    axios.delete(`http://localhost:8080/exercises/${exercise_id}`)
+      .then(() => togglePopup())
   }
 
   return (
     
       <div className="card">
-
+        {isOpen && <DeletePopup
+          handleClose={togglePopup}
+          onSingleDelete={onSingleDelete}
+          onAllDelete={onAllDelete}
+        />}
         <div className="multi-button">
           <button className="fas fa-trash"
-            onClick={() => onDeleteHandler()}
+            onClick={() => togglePopup()}
           >
             <FontAwesomeIcon icon={faTrashCan} />
           </button>
