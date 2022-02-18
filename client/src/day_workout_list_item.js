@@ -1,8 +1,13 @@
-import {React, useState} from "react";
-import { faTrashCan, faPenToSquare, faCircleInfo, faCheck } from "@fortawesome/free-solid-svg-icons";
+import { React, useState } from "react";
+import {
+  faTrashCan,
+  faPenToSquare,
+  faCircleInfo,
+  faCheck,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./scss/day_workout_list_item.scss"
-import axios from 'axios'
+import "./scss/day_workout_list_item.scss";
+import axios from "axios";
 
 export default function DayWorkoutListItem(props) {
   const { workoutObj, onChange, onEditClick } = props;
@@ -18,10 +23,10 @@ export default function DayWorkoutListItem(props) {
     exercise_id
   } = workoutObj;
 
-  const [localCompleted, setLocalCompleted] = useState(is_completed)
+  const [localCompleted, setLocalCompleted] = useState(is_completed);
 
   const onClickHandler = () => {
-    setLocalCompleted(!localCompleted)
+    setLocalCompleted(!localCompleted);
     onChange();
   }
 
@@ -74,24 +79,15 @@ export default function DayWorkoutListItem(props) {
             { duration && <div>Time: <div>{ duration } min</div></div> }
 
               <div className="exercise-not-completed-button">
-                  <input type="checkbox" id="demo" checked={localCompleted} onChange={() => 1}/>
-                  <label htmlFor="demo">
-
-                    <button 
-                    
-                    id="btnbtn"
-                    onClick={onClickHandler}
-                    >
-                      <FontAwesomeIcon icon={faCheck} />
-                    </button>
-                  </label>
-
-              </div>
-
+                <input type="checkbox" id="demo" checked={localCompleted} onChange={() => 1}/>
+                <label htmlFor="demo">
+                <button id="btnbtn" onClick={onClickHandler}>
+                <FontAwesomeIcon icon={faCheck} />
+              </button>
+            </label>
           </div>
-
         </div>
       </div>
-
+    </div>
   );
 }

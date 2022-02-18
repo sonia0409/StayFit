@@ -63,16 +63,7 @@ export default function (db) {
 
     db.query(exercisesQuery, exercisesArray)
       .then((results) => {
-        const recurringArray = [
-          Mo,
-          Tu,
-          We,
-          Th,
-          Fr,
-          Sa,
-          Su,
-          exercise_id
-        ];
+        const recurringArray = [Mo, Tu, We, Th, Fr, Sa, Su, exercise_id];
         return db.query(recurringQuery, recurringArray);
       })
       .then((data) => {
