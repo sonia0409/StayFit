@@ -7,6 +7,7 @@ import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import CreateIcon from "@mui/icons-material/Create";
 import DateRangeTwoToneIcon from "@mui/icons-material/DateRangeTwoTone";
 import { makeStyles } from '@material-ui/core/styles';
+import { useNavigate } from 'react-router-dom';
 
 export default function Footer() {
   const [value, setValue] = useState(0);
@@ -21,8 +22,9 @@ export default function Footer() {
   }));
   
   const classes = useStyles();
-  const handleClick = () => {
-    console.log(" navigation button clicked!! ")
+  const navigate = useNavigate()
+  const handleClick = (name) => {
+    navigate(name)
   }
 
   return (
@@ -35,11 +37,11 @@ export default function Footer() {
             setValue(newValue);
           }}
         >
-          <BottomNavigationAction label="Dashboard" icon={<CreateIcon onClick={() => console.log("I clicked dashboard!!")} />} />
-          <BottomNavigationAction label="Exercises" icon={<FitnessCenterIcon onClick={() => console.log("I clicked exercises!!")}/>} /> 
+          <BottomNavigationAction label="Dashboard" icon={<CreateIcon onClick={() => {handleClick('/')}} />} />
+          <BottomNavigationAction label="Exercises" icon={<FitnessCenterIcon onClick={() => {handleClick('/exerciseCategory')}}/>} /> 
           <BottomNavigationAction
             label="Calender"
-            icon={<DateRangeTwoToneIcon onClick={() => console.log("I clicked calender!!")} />}
+            icon={<DateRangeTwoToneIcon onClick={() => {handleClick('/Calender')}} />}
           />
         </BottomNavigation>
       </Box>
