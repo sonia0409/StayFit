@@ -160,9 +160,10 @@ function default_1(db) {
             // CASE 1: NOT RECURRING
             if (!isRecurring) {
                 yield db.query(dayExercisesQuery, dayExercisesArray)
-                    .then(data => {
+                    .then((data) => __awaiter(this, void 0, void 0, function* () {
+                    yield db.query(recurringQuery, recurringArray);
                     console.log('-----not recurring => new day_exercise item added', data.rows[0].id);
-                })
+                }))
                     .catch((error) => {
                     console.log(error.message);
                     res.status(500).send(error.message);
@@ -254,7 +255,10 @@ function default_1(db) {
         // -----
         const renderExercises = () => {
             db.query(dayExercisesQuery, dayExercisesArray)
-                .then(result => res.json(result.rows))
+                .then(result => {
+                console.log(result.rows);
+                res.json(result.rows);
+            })
                 .catch(error => res.status(500).send(error.message));
         };
         // CASE 1:
