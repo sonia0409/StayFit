@@ -91,7 +91,9 @@ function default_1(db) {
         const { date, userid } = req.params;
         // Get data from request body
         const data = req.body;
-        const { exerciseName, muscleGroup = data.muscleGroup.value, bodyPart = data.bodyPart.value, weight, duration, sets, reps, recurring_monday = data.Mo, recurring_tuesday = data.Tu, recurring_wednesday = data.We, recurring_thursday = data.Th, recurring_friday = data.Fr, recurring_saturday = data.Sa, recurring_sunday = data.Su } = req.body;
+        const { exerciseName, weight, duration, sets, reps, recurring_monday = data.Mo, recurring_tuesday = data.Tu, recurring_wednesday = data.We, recurring_thursday = data.Th, recurring_friday = data.Fr, recurring_saturday = data.Sa, recurring_sunday = data.Su } = req.body;
+        const muscleGroup = data.muscleGroup.value;
+        const bodyPart = data.bodyPart.value;
         const isRecurring = (recurring_monday || recurring_tuesday || recurring_wednesday || recurring_thursday || recurring_friday || recurring_saturday || recurring_sunday);
         // Create queries to be used
         const exercisesQuery = `
@@ -256,7 +258,6 @@ function default_1(db) {
         const renderExercises = () => {
             db.query(dayExercisesQuery, dayExercisesArray)
                 .then(result => {
-                console.log(result.rows);
                 res.json(result.rows);
             })
                 .catch(error => res.status(500).send(error.message));

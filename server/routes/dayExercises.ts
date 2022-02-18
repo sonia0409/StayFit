@@ -102,8 +102,6 @@ export default function (db) {
     
     const {
       exerciseName,
-      muscleGroup = data.muscleGroup.value,
-      bodyPart = data.bodyPart.value,
       weight,
       duration,
       sets,
@@ -116,6 +114,9 @@ export default function (db) {
       recurring_saturday = data.Sa,
       recurring_sunday = data.Su
     } = req.body;
+
+    const muscleGroup = data.muscleGroup.value;
+    const bodyPart = data.bodyPart.value;
     
     const isRecurring = (recurring_monday || recurring_tuesday || recurring_wednesday || recurring_thursday || recurring_friday || recurring_saturday || recurring_sunday);
 

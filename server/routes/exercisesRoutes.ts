@@ -45,5 +45,35 @@ export default function (db) {
       .catch((error) => console.log(error.message));
   });
 
+  // Edit exercise
+  //  '/exercises/:exerciseId
+  router.post("/:exerciseId", (req, res) => {
+    const { exerciseId } = req.params;
+    const data = req.body;
+    
+    const { exerciseName } = data;
+    const weight = data.weight || null;
+    const duration = data.duration || null;
+    const sets = data.sets || null;
+    const reps = data.reps || null;
+    
+    const exercisesQuery = `
+    UPDATE exercises 
+    SET name = $1, 
+        weight = $2,
+        duration = $3,
+        sets = $4, 
+        reps = $5
+    WHERE id = $6
+    `;
+
+    db.query(exercisesQuery, [exerciseName, weight, duration, sets, reps, exerciseId])
+      .then((data) => {
+        console.log(data.rows[0]);
+        res.send(200);
+      })
+      .catch((error) => console.log(error.message));
+  });
+
   return router;
 }
