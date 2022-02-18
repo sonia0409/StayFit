@@ -6,13 +6,28 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import CreateIcon from "@mui/icons-material/Create";
 import DateRangeTwoToneIcon from "@mui/icons-material/DateRangeTwoTone";
+import { makeStyles } from '@material-ui/core/styles';
 
 export default function Footer() {
   const [value, setValue] = useState(0);
+  const useStyles = makeStyles(theme => ({
+    footer: {
+      position: 'fixed',
+      bottom: 0,
+      width: '100%',
+      height: 60,
+      textAlign: 'space-evenly',
+    }
+  }));
+  
+  const classes = useStyles();
+  const handleClick = () => {
+    console.log(" navigation button clicked!! ")
+  }
 
   return (
-    <div className="footer">
-      <Box>
+
+      <Box className={classes.footer}>
         <BottomNavigation
           showLabels
           value={value}
@@ -20,14 +35,14 @@ export default function Footer() {
             setValue(newValue);
           }}
         >
-          <BottomNavigationAction label="Search" icon={<FitnessCenterIcon />} />
-          <BottomNavigationAction label="Plan" icon={<CreateIcon />} />
+          <BottomNavigationAction label="Dashboard" icon={<CreateIcon onClick={() => console.log("I clicked dashboard!!")} />} />
+          <BottomNavigationAction label="Exercises" icon={<FitnessCenterIcon onClick={() => console.log("I clicked exercises!!")}/>} /> 
           <BottomNavigationAction
             label="Calender"
-            icon={<DateRangeTwoToneIcon />}
+            icon={<DateRangeTwoToneIcon onClick={() => console.log("I clicked calender!!")} />}
           />
         </BottomNavigation>
       </Box>
-    </div>
+  
   );
 }
