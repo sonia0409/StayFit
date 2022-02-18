@@ -13,7 +13,9 @@ export default function DayWorkoutListItem(props) {
     sets,
     reps,
     weight,
-    is_completed
+    is_completed,
+    day_exercise_id,
+    exercise_id
   } = workoutObj;
 
   const [localCompleted, setLocalCompleted] = useState(is_completed)
@@ -21,7 +23,21 @@ export default function DayWorkoutListItem(props) {
   const onClickHandler = () => {
     setLocalCompleted(!localCompleted)
     onChange();
+  }
 
+  const onDeleteHandler = () => {
+    const deleteAll = false;
+    const deleteSingle = false;
+
+    const onDelete = () => {
+      if (deleteSingle) {
+        axios.patch(`http://localhost:8080/exercises/${day_exercise_id}`)
+          .then()
+      } else {
+        axios.delete(`http://localhost:8080/exercises/${exercise_id}`)
+          .then()
+      }
+    }
   }
 
   return (
@@ -30,7 +46,7 @@ export default function DayWorkoutListItem(props) {
 
         <div className="multi-button">
           <button className="fas fa-trash"
-            onClick={() => console.log('Delete clicked')}
+            onClick={() => onDeleteHandler()}
           >
             <FontAwesomeIcon icon={faTrashCan} />
           </button>
