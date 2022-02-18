@@ -6,44 +6,45 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import CreateIcon from "@mui/icons-material/Create";
 import DateRangeTwoToneIcon from "@mui/icons-material/DateRangeTwoTone";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
+import { useNavigate } from 'react-router-dom';
+
 export default function Footer() {
   const [value, setValue] = useState(0);
-  const useStyles = makeStyles((theme) => ({
+  const useStyles = makeStyles(theme => ({
     footer: {
-      position: "fixed",
+      position: 'fixed',
       bottom: 0,
-      width: "100%",
+      width: '100%',
       height: 60,
-      textAlign: "space-evenly",
-    },
+      textAlign: 'space-evenly',
+    }
   }));
+  
   const classes = useStyles();
-  const handleClick = () => {
-    console.log("I got clicked");
-  };
+  const navigate = useNavigate()
+  const handleClick = (name) => {
+    navigate(name)
+  }
+
   return (
-    <Box className={classes.footer}>
-      <BottomNavigation
-        showLabels
-        value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
-      >
-        <BottomNavigationAction
-          label="Dashboard"
-          icon={<CreateIcon onClick={handleClick} />}
-        />
-        <BottomNavigationAction
-          label="Exercises"
-          icon={<FitnessCenterIcon onClick={handleClick} />}
-        />
-        <BottomNavigationAction
-          label="Calender"
-          icon={<DateRangeTwoToneIcon onClick={handleClick} />}
-        />
-      </BottomNavigation>
-    </Box>
+
+      <Box className={classes.footer}>
+        <BottomNavigation
+          showLabels
+          value={value}
+          onChange={(event, newValue) => {
+            setValue(newValue);
+          }}
+        >
+          <BottomNavigationAction label="Dashboard" icon={<CreateIcon onClick={() => {handleClick('/')}} />} />
+          <BottomNavigationAction label="Exercises" icon={<FitnessCenterIcon onClick={() => {handleClick('/exerciseCategory')}}/>} /> 
+          <BottomNavigationAction
+            label="Calender"
+            icon={<DateRangeTwoToneIcon onClick={() => {handleClick('/Calender')}} />}
+          />
+        </BottomNavigation>
+      </Box>
+  
   );
 }
