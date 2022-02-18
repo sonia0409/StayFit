@@ -194,7 +194,9 @@ export default function (db) {
         // CASE 1: NOT RECURRING
         if (!isRecurring) {
           await db.query(dayExercisesQuery, dayExercisesArray)
-            .then(data => {
+            .then(async data => {
+              await db.query(recurringQuery, recurringArray);
+              
               console.log('-----not recurring => new day_exercise item added', data.rows[0].id);
             })
             .catch((error) => {
@@ -300,7 +302,9 @@ export default function (db) {
 
     const renderExercises = () => {
       db.query(dayExercisesQuery, dayExercisesArray)
-        .then(result => res.json(result.rows))
+        .then(result => {
+          res.json(result.rows);
+        })
         .catch(error => res.status(500).send(error.message));
     };
 

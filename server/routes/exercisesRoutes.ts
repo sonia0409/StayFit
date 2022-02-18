@@ -26,15 +26,22 @@ export default function (db) {
   //  '/exercises/:exerciseId
   router.delete("/:exerciseId", (req, res) => {
     const { exerciseId } = req.params;
+    
+    const recurringQuery = ` 
+    DELETE FROM recurring_exercises
+    WHERE recurring_exercises.exercise_id = $1
+    `;
 
-    const query = ` 
-    UPDATE day_exercises
-    SET is_deleted = true
+    const dayExerciseQuery = ` 
+    DELETE FROM day_exercises
     WHERE day_exercises.exercise_id = $1
     `;
 
-    db.query(query, [exerciseId])
-      .then(() => res.send(200))
+    db.query(recurringQuery, [exerciseId])
+      .then(() => {
+        db.query(dayExerciseQuery, [exerciseId])
+          .then(() => res.send(200));
+      })
       .catch((error) => console.log(error.message));
   });
 
