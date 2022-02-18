@@ -20,6 +20,8 @@ const EditForm = (props) => {
   const Sa = props.recurring_saturday;
   const Su = props.recurring_sunday;
 
+  const isRecurring = (Mo || Tu || We || Th || Fr || Sa || Su);
+
   const {
     control,
     register, //cb ,register individual inputs into the hook
@@ -115,6 +117,11 @@ const EditForm = (props) => {
             <input {...register("weight")} placeholder="Weight" />
           </Grid>
         </Grid>
+        { isRecurring && 
+          <div className="note-message">
+            * Note: This is a recurring exercise and will modify all related events. 
+          </div>
+        }
         <input type="submit" />
       </form>
     </main>
