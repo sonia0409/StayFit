@@ -12,10 +12,10 @@ export default function DayWorkoutList(props) {
 
   const [dayExercises, setDayExercises] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [isOpen, setIsOpen] = useState(false);
-  
-  const togglePopup = () => {
-    setIsOpen(!isOpen);
+  const [exerciseDeleted, setExerciseDeleted] = useState(false);
+
+  const toggleDeleted = () => {
+    setExerciseDeleted(!exerciseDeleted)
   }
 
   const userid = 1;
@@ -33,7 +33,7 @@ export default function DayWorkoutList(props) {
         });
     };
     updateData();
-  }, [selectedDate]);
+  }, [selectedDate, exerciseDeleted]);
 
   const persistIsCompleted = async (dayExerciseId) => {
     // Update is_completed status in database
@@ -57,8 +57,7 @@ export default function DayWorkoutList(props) {
       workoutObj={exercise}
       onChange={() => persistIsCompleted(exercise.day_exercise_id)} 
       onEditClick={() => setEditObj(exercise)}
-      togglePopup={togglePopup}
-      isOpen={isOpen}
+      toggleDeleted={toggleDeleted}
     />
   ));
 
