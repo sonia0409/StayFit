@@ -16,19 +16,22 @@ import ExerciseListItem from "./components/ExerciseListItem";
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Footer />
+      <div className="header">
+      <Header /> 
+      </div>
+      <div className="routes">
       <Routes>
         {/* <Route path="/" element={<Dashboard/>} /> */} {/* rn - not working */}
-        <Route path="/" element={<div>
-          <h1 style={{color: "black"}}>"Bring Dashboard component here!!"</h1>
-        </div>} />
-        <Route path="/calender" element={<Calender />} />{/* change path to /calender; once get Dashboard working */}
+        <Route path="/" element={<Calender/>} />
+        {/* <Route path="/calender" element={<Calender />} /> */}     {/* change path to /calender; once get Dashboard working */}
         <Route path="/exerciseCategory" element={<Application />} />
         <Route path="/exercises/:part" element={<Exercises />} />
         <Route path="/exercises/:part/exercise/:name" element={<Exercise />} />
       </Routes>
-      
+      </div>
+      <div className="footer">
+      <Footer />
+      </div>
     </div>
   );
 }

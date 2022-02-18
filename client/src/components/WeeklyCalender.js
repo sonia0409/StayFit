@@ -42,7 +42,7 @@ export default function WeeklyCalender(props) {
         <div>{day2Info[2]}</div> <div> {day2Info[0]}</div>
       </article>
 
-      <article className="weekDay selected" >
+      <article className="selected" >
         <div>{day3Info[2]}</div> <div> {day3Info[0]}</div>
       </article>
 
