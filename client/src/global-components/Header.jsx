@@ -1,57 +1,84 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import { Avatar, Grid } from "@mui/material";
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
+import HomeIcon from '@mui/icons-material/Home';
+import Avatar from '@mui/material/Avatar';
+import { useNavigate } from 'react-router-dom';
 
-const useStyles = makeStyles(() => ({
-  root: {
-    flexGrow: 1,
-  },
-  title: {
-    flexGrow: 1,
-  },
-}));
+export default function MenuAppBar() {
+ 
+  const [auth, setAuth] = React.useState(true);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const navigate = useNavigate()
+  const handleHomeButton = () => {
+    console.log("Home button clicked!!")
+    navigate("..")
+  }
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
 
-export default function Header() {
-  const classes = useStyles();
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
-    <div className={classes.root}>
-      <AppBar style={{ "background-color": "#2c2e43" }} position="static">
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
         <Toolbar>
-          {/* <Grid container spacing={8}> */}
-          {/* <Grid item xs={4}> */}
-          <Typography variant="h6" className={classes.title}>
-            My-Workout
-          </Typography>
-          {/* </Grid> */}
-          {/* <Grid item xs={6}> */}
-          <Typography
-            variant="h6"
-            // noWrap
-            // component="div"
-            // sx={{ mr: 6, display: { xs: "none", md: "flex" } }}
-          >
-            {/* LOGO */}
-          </Typography>
-          {/* </Grid> */}
-          {/* <Grid item xs={1}> */}
-          <Avatar
-            // alt="Tired man"
-            // src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxSNIFSen-ODMRSzmOFJkfqBxejIsxvl2_6g&usqp=CAU"
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleHomeButton}
+              color="inherit"
+            >
+              <HomeIcon />
+            </IconButton>
+          </Box>
 
-            alt="Side curve shaddow"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJer6FiaY05AG_7wxANXkCAqtDPjqJl5tLqA&usqp=CAU"
-          />
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            StayFit
+          </Typography>
+          {auth && (
+            <div>
 
-          {/* <Button color="inherit">Button if required</Button> */}
-          {/* </Grid> */}
-          {/* </Grid> */}
+              <IconButton onClick={handleMenu} sx={{ p: 0 }}>
+                <Avatar
+                  alt="Tired man"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxSNIFSen-ODMRSzmOFJkfqBxejIsxvl2_6g&usqp=CAU"
+                />
+
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleClose}></MenuItem>
+              </Menu>
+            </div>
+          )}
         </Toolbar>
       </AppBar>
-    </div>
+    </Box>
   );
 }

@@ -17,24 +17,18 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {/* <Calender /> */}
-      {/* <ExerciseList /> */} {/* => not working yet */}
-      {/* <ExerciseListItem /> */}
-      {/* <Exercises /> */} {/*=> not working yet */}
-      {/* <Exercise /> */} {/* => not working yet */}
-      {/* <AddForm /> */}
-      {/* <EditForm /> */}
-      <Calender />
       <Footer />
-      {/* <AddForm/> */}
-      {/*  <div> <Header/> </div> }/:name
-      <div><Application /> </div>F
-       <div> <Footer/> </div>     } */}
-      {/* <Routes>
-        <Route path="/" element={<Application />} />
-        <Route path="exercises/:part" element={<Exercises />} />
-        <Route path="exercises/:part/exercise/:name" element={<Exercise />} />
-      </Routes> */}
+      <Routes>
+        {/* <Route path="/" element={<Dashboard/>} /> */} {/* rn - not working */}
+        <Route path="/" element={<div>
+          <h1 style={{color: "black"}}>"Bring Dashboard component here!!"</h1>
+        </div>} />
+        <Route path="/calender" element={<Calender />} />{/* change path to /calender; once get Dashboard working */}
+        <Route path="/exerciseCategory" element={<Application />} />
+        <Route path="/exercises/:part" element={<Exercises />} />
+        <Route path="/exercises/:part/exercise/:name" element={<Exercise />} />
+      </Routes>
+      
     </div>
   );
 }
