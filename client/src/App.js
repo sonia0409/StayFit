@@ -24,10 +24,11 @@ function App() {
           <h1 style={{color: "black"}}>"Bring Dashboard component here!!"</h1>
         </div>} />
         <Route path="/calender" element={<Calender />} />{/* change path to /calender; once get Dashboard working */}
-        <Route path="exerciseCategory" element={<Application />} />
-        <Route path="exercises/:part" element={<Exercises />} />
-        <Route path="exercises/:part/exercise/:name" element={<Exercise />} />
+        <Route path="/exerciseCategory" element={<Application />} />
+        <Route path="/exercises/:part" element={<Exercises />} />
+        <Route path="/exercises/:part/exercise/:name" element={<Exercise />} />
       </Routes>
+      
     </div>
   );
 }
