@@ -53,21 +53,24 @@ const EditForm = (props) => {
           console.log("Data from Edit Form =======>", data);
 
           // Use axios to edit exercise in database.
-          //path:  ("/:exercise_id");
-          await axios.post(`http://localhost:8080/${exercise_id}`, data);
+          //path:  ("exercise/:exercise_id");
+          await axios.post(
+            `http://localhost:8080/exercise/${exercise_id}`,
+            data
+          );
 
           // onClose();
         })}
       >
         <div className="close-cross">
           <HighlightOffIcon fontSize="large" onClick={onClose} />
-          <h5>Close</h5>
+          {/* <h5>Close</h5> */}
         </div>
 
         <div className="form-name">
-          <h1>Edit Workout</h1>
+          <h2>Edit Workout</h2>
           <hr />
-          <h4>Do we want a date here?</h4>
+          <h3>Do we want a date here?</h3>
         </div>
 
         <div className="form-dropdown"></div>
