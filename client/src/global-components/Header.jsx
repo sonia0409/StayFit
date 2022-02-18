@@ -20,7 +20,7 @@ export default function Header() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar style={{ "background-color": "#2c2e43" }} position="static">
         <Toolbar>
           {/* <Grid container spacing={8}> */}
           {/* <Grid item xs={4}> */}
