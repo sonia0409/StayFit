@@ -7,6 +7,11 @@
     width: 20%;
     padding: 20px;
     // border: solid;
+    display: flex;
+    flex-direction: column;
+    // align-content: center;
+    // justify-content: center;
+    align-items: center;
   }
   
   .selected {

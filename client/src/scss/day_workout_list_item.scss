@@ -60,13 +60,12 @@
         position: relative;
         width:100%;
         height:5vh;
-        min-height: 5rem;
+        min-height: 7rem;
         border-radius:1rem;
         background:var(--background);
         color:var(--text);
         padding-left: 5%;
         padding-right: 5%;
-        padding-bottom: 5%;
         display: flex;
         flex-direction: column;
         // align-content: center;
@@ -81,16 +80,16 @@
         color:var(--background);
         cursor: pointer;
 
-        &:hover {
-            background: greenyellow;
-            // color:var(--background);
-            // border-color: yellow;
-        }
-        &:focus {
-            background: greenyellow;
-            color:var(--background);
-            border-color: yellow;
-        }
+        // &:hover {
+        //     background: greenyellow;
+        //     // color:var(--background);
+        //     // border-color: yellow;
+        // }
+        // &:focus {
+        //     background: greenyellow;
+        //     color:var(--background);
+        //     border-color: yellow;
+        // }
         }
 
         .exercise-name {
@@ -98,6 +97,7 @@
             display: flex;
             justify-content: center;
             width: 100%;
+            letter-spacing: 0.25rem;
         }
 
         .exercise-info {
@@ -105,6 +105,7 @@
             font-size: smaller;
             width: 30%;
             justify-content: space-between;
+            align-items: center;
             width: 100%;
             .exercise-completed-button {
                 // width: 20%;
@@ -165,7 +166,7 @@
     cursor: pointer;
     
     &:hover {
-        background: greenyellow;
+        // background: greenyellow;
     }
 }
 

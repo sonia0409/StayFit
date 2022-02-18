@@ -24,9 +24,9 @@ function App() {
       {/* <Exercise /> */} {/* => not working yet */}
       {/* <AddForm /> */}
       {/* <EditForm /> */}
-      {/* <AddForm/> */}
       <Calender />
-      {/* <Footer /> */}
+      <Footer />
+      {/* <AddForm/> */}
       {/*  <div> <Header/> </div> }/:name
       <div><Application /> </div>F
        <div> <Footer/> </div>     } */}

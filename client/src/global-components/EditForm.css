@@ -1,43 +1,18 @@
 body {
-  background: #eeeeee;
+  background: #d1d1d1;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
 }
 
-form {
-  background: #2c2e43;
-  max-width: 500px;
-  margin: 0 auto;
-  margin-top: 50px;
-  padding: 20px;
-  border-radius: 4px;
-}
-
-.form-name {
-  background: #ffc600;
-  text-transform: uppercase;
-  border: none;
-  padding: 20px;
-  border-radius: 4px;
-}
-label {
-  line-height: 2;
-  text-align: left;
-  color: #ffc600;
-  margin: 20px 0;
-}
-
-h1 {
+h2 {
   font-weight: 300;
-  color: white;
   text-align: center;
-  letter-spacing: 10px;
+  letter-spacing: 1rem;
 }
-.form {
-  background: #6c6d65;
-  max-width: 400px;
-  margin: 0 auto;
+
+h5 {
+  margin-top: 0px;
 }
 
 p {
@@ -49,11 +24,33 @@ p::before {
   content: "⚠ ";
 }
 
-.form-dropdown {
-  display: block;
-  width: 100%;
-  margin-bottom: 10px;
-  font-size: 14px;
+.close-cross {
+  color: #1976d2;
+  text-align: center;
+  margin-top: 0px;
+}
+
+form {
+  background: #2c2e43;
+  max-width: 500px;
+  margin: 2rem auto 5rem auto;
+  padding: 1.5rem;
+  border-radius: 4px;
+}
+
+.form-name {
+  background: #ffc600;
+  text-transform: uppercase;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.form-label {
+  line-height: 2;
+  text-align: left;
+  color: #ffc600;
+  margin: 2rem 0;
 }
 
 input {
@@ -62,43 +59,22 @@ input {
   width: 100%;
   border-radius: 4px;
   border: 1px solid white;
-  padding: 10px 15px;
-  margin-bottom: 10px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
   font-size: 14px;
 }
 
-.form-checkboxes {
-  background-color: white;
-  display: block;
-  border-radius: 4px;
-  padding: 10px 15px;
-  margin-bottom: 10px;
-  font-size: 14px;
-}
-.form-checkboxes label {
-  color: #548cff;
-  font-weight: bold;
-}
-
-button[type="submit"],
 input[type="submit"] {
   background: #ffc600;
-  color: white;
+  color: black;
   text-transform: uppercase;
-  border: none;
-  margin-top: 40px;
-  padding: 20px;
+  padding: 2rem;
   font-size: 16px;
   font-weight: 100;
-  letter-spacing: 10px;
+  letter-spacing: 1rem;
 }
 
-button[type="submit"]:hover,
 input[type="submit"]:hover {
   background: #93ffd8;
   color: black;
-}
-
-input:disabled {
-  opacity: 0.4;
 }

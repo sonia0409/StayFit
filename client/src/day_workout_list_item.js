@@ -77,10 +77,10 @@ export default function DayWorkoutListItem(props) {
           <h2 className="exercise-name">{ name }</h2>
           
           <div className="exercise-info">
-            { weight && <div>Weight: <div>{ weight } lbs</div></div> }
-            { sets && <div>Sets: <div>{ sets }</div></div> }
-            { reps && <div>Reps: <div>{ reps }</div></div> }
-            { duration && <div>Time: <div>{ duration } min</div></div> }
+            { weight > 0 && <div>Weight: <div>{ weight } lbs</div></div> }
+            { sets > 0 && <div>Sets: <div>{ sets }</div></div> }
+            { reps > 0 && <div>Reps: <div>{ reps }</div></div> }
+            { duration > 0 && <div>Time: <div>{ duration } min</div></div> }
 
               <div className="exercise-not-completed-button">
                 <input type="checkbox" id="demo" checked={localCompleted} onChange={() => 1}/>
