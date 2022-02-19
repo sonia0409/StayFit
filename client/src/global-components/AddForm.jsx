@@ -5,7 +5,7 @@ import { Checkbox } from "@mui/material";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import Grid from "@mui/material/Grid";
 import axios from "axios";
-import "./AddForm.css";
+import "../styles/AddForm.scss";
 
 const AddForm = (props) => {
   const { date, onSubmit, userid = 1, onClose } = props;

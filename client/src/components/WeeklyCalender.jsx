@@ -1,5 +1,5 @@
-import React from 'react';
-import '../scss/weeklyCalender.scss';
+import React from "react";
+import "../styles/WeeklyCalender.scss";
 
 export default function WeeklyCalender(props) {
   const { currDate, onClick, onClose } = props;
@@ -16,15 +16,16 @@ export default function WeeklyCalender(props) {
   day5.setDate(day5.getDate() + 2);
   // console.log(day1)
 
-  let day1Info = day1.toDateString().split(' ');
-  let day2Info = day2.toDateString().split(' ');
-  let day3Info = day3.toDateString().split(' ');
-  let day4Info = day4.toDateString().split(' ');
-  let day5Info = day5.toDateString().split(' ');
+  let day1Info = day1.toDateString().split(" ");
+  let day2Info = day2.toDateString().split(" ");
+  let day3Info = day3.toDateString().split(" ");
+  let day4Info = day4.toDateString().split(" ");
+  let day5Info = day5.toDateString().split(" ");
 
   return (
     <section className="weekCalenderContainer">
-      <article className="weekDay" 
+      <article
+        className="weekDay"
         onClick={() => {
           onClose();
           onClick(day1);
@@ -33,7 +34,8 @@ export default function WeeklyCalender(props) {
         <div>{day1Info[2]}</div> <div> {day1Info[0]}</div>
       </article>
 
-      <article className="weekDay"
+      <article
+        className="weekDay"
         onClick={() => {
           onClose();
           onClick(day2);
@@ -42,11 +44,12 @@ export default function WeeklyCalender(props) {
         <div>{day2Info[2]}</div> <div> {day2Info[0]}</div>
       </article>
 
-      <article className="selected" >
+      <article className="selected">
         <div>{day3Info[2]}</div> <div> {day3Info[0]}</div>
       </article>
 
-      <article className="weekDay"
+      <article
+        className="weekDay"
         onClick={() => {
           onClose();
           onClick(day4);
@@ -54,8 +57,9 @@ export default function WeeklyCalender(props) {
       >
         <div>{day4Info[2]}</div> <div> {day4Info[0]}</div>
       </article>
-        
-      <article className="weekDay"
+
+      <article
+        className="weekDay"
         onClick={() => {
           onClose();
           onClick(day5);
@@ -63,7 +67,6 @@ export default function WeeklyCalender(props) {
       >
         <div>{day5Info[2]}</div> <div> {day5Info[0]}</div>
       </article>
-
     </section>
   );
 }

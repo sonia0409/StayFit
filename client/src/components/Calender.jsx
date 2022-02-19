@@ -1,9 +1,9 @@
 import { React, useEffect, useState } from "react";
-import DayWorkoutList from "../day_workout_list";
+import DayWorkoutList from "./Day_workout_list";
 import WeeklyCalender from "./WeeklyCalender";
 import AddForm from "../global-components/AddForm";
 import EditForm from "../global-components/EditForm";
-import "../scss/calender.scss";
+import "../styles/Calender.scss";
 import Fab from "@mui/material/Fab";
 
 export default function Calender() {
