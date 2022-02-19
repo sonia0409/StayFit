@@ -16,8 +16,10 @@ import ExerciseListItem from "./components/ExerciseListItem";
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Footer />
+      <div className="header">
+      <Header /> 
+      </div>
+      <div className="routes">
       <Routes>
         {/* <Route path="/" element={<Dashboard/>} /> */} {/* rn - not working */}
         <Route path="/" element={<Dashboard />} />
@@ -26,7 +28,10 @@ function App() {
         <Route path="/exercises/:part" element={<Exercises />} />
         <Route path="/exercises/:part/exercise/:name" element={<Exercise />} />
       </Routes>
-      
+      </div>
+      <div className="footer">
+      <Footer />
+      </div>
     </div>
   );
 }
