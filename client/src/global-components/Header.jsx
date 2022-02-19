@@ -9,13 +9,13 @@ import Menu from '@mui/material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
 import Avatar from '@mui/material/Avatar';
 import { useNavigate } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
+import { useContext } from 'react';
+import { authContext } from '../providers/AuthProvider';
 
 export default function MenuAppBar() {
- 
-  const [auth, setAuth] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const { auth, user, logout } = useContext(authContext);
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
   const navigate = useNavigate()
   const handleHomeButton = () => {
     console.log("Home button clicked!!")
@@ -74,8 +74,9 @@ export default function MenuAppBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-                <MenuItem onClick={handleClose}></MenuItem>
+                <MenuItem divider={true} disabled={true}>User: { user.name }</MenuItem>
+                {/* <MenuItem divider={true} onClick={handleClose}>My account</MenuItem> */}
+                <MenuItem onClick={logout}>Logout</MenuItem>
               </Menu>
             </div>
           )}

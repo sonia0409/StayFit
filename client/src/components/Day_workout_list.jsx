@@ -1,12 +1,14 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import DayWorkoutListItem from "./Day_workout_list_item";
 import EmptyDayExercises from "./EmptyDayExercises";
 import "../styles/Day_workout_list.scss";
 import axios from "axios";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@material-ui/icons/Add";
+import { authContext } from '../providers/AuthProvider';
 
 export default function DayWorkoutList(props) {
+  const { user } = useContext(authContext);
   const selectedDate = props.selectedDate.toDateString();
   const { setEditObj } = props;
 
@@ -18,13 +20,11 @@ export default function DayWorkoutList(props) {
     setExerciseDeleted(!exerciseDeleted);
   };
 
-  const userid = 1;
-
   useEffect(() => {
     const updateData = async () => {
       setLoading(true);
       await axios
-        .get(`http://localhost:8080/day-exercises/${userid}/${selectedDate}`)
+        .get(`http://localhost:8080/day-exercises/${user.id}/${selectedDate}`)
         .then((response) => {
           setTimeout(() => {
             setLoading(false);
@@ -33,7 +33,7 @@ export default function DayWorkoutList(props) {
         });
     };
     updateData();
-  }, [selectedDate, exerciseDeleted]);
+  }, [selectedDate, exerciseDeleted, user]);
 
   const persistIsCompleted = async (dayExerciseId) => {
     // Update is_completed status in database
@@ -44,7 +44,7 @@ export default function DayWorkoutList(props) {
 
     // Get day_exercises and update state
     await axios
-      .get(`http://localhost:8080/day-exercises/${userid}/${selectedDate}`)
+      .get(`http://localhost:8080/day-exercises/${user.id}/${selectedDate}`)
       .then((response) => {
         setDayExercises([...response.data]);
       });
