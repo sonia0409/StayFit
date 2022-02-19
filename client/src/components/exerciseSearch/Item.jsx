@@ -17,14 +17,19 @@ export default function Item(props) {
 
   const useStyles = makeStyles(theme => ({
     item: {
-     background: '#2E3B55' ,
+     background: '#2c2e43' ,
      color: '#FFC600',
      width: '100%',
      display: 'flex'
     },
 
     listItemText:{
-      fontSize:'1.2rem',//Insert your required size
+      fontSize:'1.2rem'//Insert your required size
+    },
+    avatar:{
+      background: '#2c2e43' ,
+      color: '#FFC600',
+      border: '1px solid #FFC600',
     }
 
   }));
@@ -46,8 +51,8 @@ export default function Item(props) {
                   }
                 >
                   <ListItemAvatar>
-                    <Avatar>
-                      <FitnessCenterIcon style={{color:"1976d2"}}/>
+                    <Avatar className={classes.avatar}>
+                      <FitnessCenterIcon />
                     </Avatar>
                   </ListItemAvatar>
 
