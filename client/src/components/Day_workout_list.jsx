@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
-import DayWorkoutListItem from "./day_workout_list_item";
-import EmptyDayExercises from "./components/EmptyDayExercises";
-import "./scss/day_workout_list.scss";
+import DayWorkoutListItem from "./Day_workout_list_item";
+import EmptyDayExercises from "./EmptyDayExercises";
+import "../styles/Day_workout_list.scss";
 import axios from "axios";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@material-ui/icons/Add";
@@ -15,8 +15,8 @@ export default function DayWorkoutList(props) {
   const [exerciseDeleted, setExerciseDeleted] = useState(false);
 
   const toggleDeleted = () => {
-    setExerciseDeleted(!exerciseDeleted)
-  }
+    setExerciseDeleted(!exerciseDeleted);
+  };
 
   const userid = 1;
 
@@ -55,7 +55,7 @@ export default function DayWorkoutList(props) {
     <DayWorkoutListItem
       key={exercise.id}
       workoutObj={exercise}
-      onChange={() => persistIsCompleted(exercise.day_exercise_id)} 
+      onChange={() => persistIsCompleted(exercise.day_exercise_id)}
       onEditClick={() => setEditObj(exercise)}
       toggleDeleted={toggleDeleted}
     />

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import Grid from "@mui/material/Grid";
 import axios from "axios";
-import "./EditForm.css";
+import "../styles/EditForm.scss";
 
 const EditForm = (props) => {
   // console.log("PROPS =====>", props);
@@ -20,7 +20,7 @@ const EditForm = (props) => {
   const Sa = props.recurring_saturday;
   const Su = props.recurring_sunday;
 
-  const isRecurring = (Mo || Tu || We || Th || Fr || Sa || Su);
+  const isRecurring = Mo || Tu || We || Th || Fr || Sa || Su;
 
   const {
     control,
@@ -117,11 +117,12 @@ const EditForm = (props) => {
             <input {...register("weight")} placeholder="Weight" />
           </Grid>
         </Grid>
-        { isRecurring && 
+        {isRecurring && (
           <div className="note-message">
-            * Note: This is a recurring exercise and will modify all related events. 
+            * Note: This is a recurring exercise and will modify all related
+            events.
           </div>
-        }
+        )}
         <input type="submit" />
       </form>
     </main>
