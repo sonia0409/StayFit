@@ -20,7 +20,7 @@ export default function Signup(props) {
   };
 
   return (
-    <div className="container">
+    <div className="container-login">
 
         <form className="signup" onSubmit={onSubmit}>
           <h3>SIGNUP:</h3>
