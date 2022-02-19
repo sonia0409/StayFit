@@ -31,26 +31,19 @@ function App() {
 
       {auth &&
         <>
-          {/* <div className="header">
+          <div className="header">
             <Header />
-          </div> */}
+          </div>
           <div className="routes">
             <Routes>
               {/* <Route path="/" element={<Dashboard/>} /> */}
               {/* rn - not working */}
               <Route path="/" element={
-                <>
-                  <Header />
-                  <Dashboard />
-
-                </>
+                <Dashboard />
               } />
               <Route path="/calender" element={
-                <>
-                  <Header />
-                  <Calender />
-
-                </>} />
+                <Calender />
+              } />
               {/* change path to /calender; once get Dashboard working */}
               <Route path="/exerciseCategory" element={<Application />} />
               <Route path="/exercises/:part" element={<Exercises />} />
