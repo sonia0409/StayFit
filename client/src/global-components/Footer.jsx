@@ -16,7 +16,8 @@ export default function Footer() {
       position: 'fixed',
       bottom: 0,
       width: '100%',
-      height: 60,
+      height: 55,
+      padding:0,
       textAlign: 'space-evenly',
     }
   }));
