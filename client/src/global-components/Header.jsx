@@ -9,13 +9,12 @@ import Menu from '@mui/material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
 import Avatar from '@mui/material/Avatar';
 import { useNavigate } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
 import { useContext } from 'react';
 import { authContext } from '../providers/AuthProvider';
 
 export default function MenuAppBar() {
-  const { user, logout } = useContext(authContext);
-  const [auth, setAuth] = React.useState(true);
+  const { auth, user, logout } = useContext(authContext);
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const navigate = useNavigate()
   const handleHomeButton = () => {

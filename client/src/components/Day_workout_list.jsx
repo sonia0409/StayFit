@@ -33,7 +33,7 @@ export default function DayWorkoutList(props) {
         });
     };
     updateData();
-  }, [selectedDate, exerciseDeleted]);
+  }, [selectedDate, exerciseDeleted, user]);
 
   const persistIsCompleted = async (dayExerciseId) => {
     // Update is_completed status in database
