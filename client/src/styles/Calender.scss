@@ -31,6 +31,9 @@
     flex-direction: row;
     justify-content: space-around;
     color: $font-color;
+    border-bottom: 1px solid $font-color;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
 
     .weekDay {
       display: flex;

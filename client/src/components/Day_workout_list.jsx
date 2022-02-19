@@ -67,7 +67,7 @@ export default function DayWorkoutList(props) {
       {exerciseItems.length === 0 && !loading && <EmptyDayExercises />}
       {loading && "Loading"}
       <Fab
-        color="primary"
+        style={{ background: "#ffc600" }}
         aria-label="add"
         className="add-new-exercise"
         onClick={props.onClick(true)}
