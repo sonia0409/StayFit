@@ -75,7 +75,7 @@ export default function MenuAppBar() {
                 onClose={handleClose}
               >
                 <MenuItem divider={true} disabled={true}>User: { user.name }</MenuItem>
-                <MenuItem divider={true} onClick={handleClose}>My account</MenuItem>
+                {/* <MenuItem divider={true} onClick={handleClose}>My account</MenuItem> */}
                 <MenuItem onClick={logout}>Logout</MenuItem>
               </Menu>
             </div>
