@@ -20,18 +20,18 @@ export default function ExerciseList(props) {
   ));
 
   return (
-    <Box sx={{ flexGrow: 1, maxWidth: 752 }}>
-      <Grid container spacing={"auto"}>
-        <Grid item xs={12} md={6}>
-          <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-            {header}
-          </Typography>
-          <div>
-            <BackButton />
+    <div className='exerciseList'>
+          <div className='heading-container'>
+            <span>
+              <BackButton />
+            </span>
+            <h2>
+              {header}
+            </h2>
           </div>
+          <div className="item-container">
           {listOfExercises}
-        </Grid>
-      </Grid>
-    </Box>
+          </div>
+    </div>
   );
 }

@@ -2,7 +2,9 @@ import React from "react";
 import ItemList from "./ItemList";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import './Application.scss';
+import '../../App.scss'
+;import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 export default function Application() {
   const exerciseList = ["Body Parts", "Muscles"];
@@ -17,7 +19,7 @@ export default function Application() {
   };
 
   return (
-    <div>
+    <div className="application">
       {!showBodyPart && !showMuscles && (
         <ItemList
           header="List of Exercises"

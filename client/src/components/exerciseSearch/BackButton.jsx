@@ -8,9 +8,9 @@ export default function BackButton() {
   const navigate = useNavigate();
 
   return (
-    <Stack spacing={2} direction="row">
-      <Button onClick={() => navigate(-1)} variant="contained"><ArrowBackIosIcon/></Button>
-      {/* <div onClick={() => navigate(-1)}><ArrowBackIosIcon/></div> */}
+    <Stack >
+     {/*  <Button onClick={() => navigate(-1)} variant="contained"><ArrowBackIosIcon/></Button> */}
+      <div className='left-arrow' onClick={() => navigate(-1)}><ArrowBackIosIcon/></div>
     </Stack>
   );
 }

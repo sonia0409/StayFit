@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 export default function ShowExercise(props) {
 console.log(props)
     return (
-        <li>
+        <div className="exerciseGif-container">
             <Box
                 sx={{
                     display: 'flex',
@@ -16,7 +16,9 @@ console.log(props)
                     boxShadow: 3,
                     fontWeight: 'bold',
                 }}
+                
             >
+                 
                 <Box
                     component="img"
                     sx={{
@@ -25,6 +27,7 @@ console.log(props)
                         maxHeight: { xs: 500, md: 300 },
                         maxWidth: { xs: 350, md: 250 },
                     }}
+                    
                     alt="exercise-gif"
                     src={props.gifUrl}
                 />
@@ -37,12 +40,12 @@ console.log(props)
                         minWidth: { md: 350 },
                     }}
                 >
-                    <Box component="span" sx={{ color: 'primary.main', fontSize: 22 }}>
+                    <Box component="span" sx={{ color: 'primary.main', fontSize: 14, textTransform: 'uppercase'}}>
                     {props.name}
                     </Box>
                     
                 </Box>
             </Box>
-        </li>
+        </div>
     )
 }

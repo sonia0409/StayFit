@@ -12,16 +12,19 @@
   }
 }
 
-/* h2,
+ h2,
 h4 {
-  font-weight: 300;
+  //font-weight: 300;
   text-align: center;
-  letter-spacing: 1rem;
+  font-family: $font-family;
+  letter-spacing: 0.10rem;
+  width: 70%;
+  justify-content: center;
 }
 
 h5 {
   margin-top: 0px;
-} */
+} 
 /* .layout {
   display: flex;
   min-height: 100vh;
