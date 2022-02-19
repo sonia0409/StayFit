@@ -1,187 +1,152 @@
+@import "./variables.scss";
+
 .card {
-    transition: 0.5s;
-    --background:#5D9CEC;
-    --text:white;
-    color: white;
-    position: relative;
-    max-width: 87.5%;
-    margin: 10px;
-    // margin-left: 15px;
-    // box-shadow:0 0 2rem -1rem rgba(0,0,0,.05);
-    .multi-button {
-        z-index:1;
-        position: absolute;
-        top:1.25rem;
-        left:1.25rem;
-        border-radius:100%;
-        width:0rem;
-        height:0rem;
-        transform: translate(-45%, -50%);
-        transition: .5s cubic-bezier(0.25, 0, 0, 1);
-        button {
-            display: grid;
-            place-items: center;
-            position: absolute;
-            width:2rem;
-            height:2rem;
-            border:none;
-            border-radius:100%;
-            background:var(--background);
-            color:var(--text);
-            transform: translate(-50%, -50%);
-            cursor: pointer;
-            transition: .25s cubic-bezier(0.25, 0, 0, 1);
-            // box-shadow:0 0 0rem -.25rem var(--background);
-            &:hover {
-                background:var(--text);
-                color:var(--background);
-                box-shadow:0 0 1rem -.25rem var(--background);
-            }
-            &:first-child:nth-last-child(3),
-            &:first-child:nth-last-child(3) ~ * { //If there are 3 children
-                &:nth-child(1) {
-                    left:28%;
-                    top:95%;
-                }
-                &:nth-child(2) {
-                    left:28%;
-                    top:70%;
-                }
-                &:nth-child(3) {
-                    left:28%;
-                    top:45%;
-                }
-            }
+  transition: 0.5s;
+  //   color: white;
+  position: relative;
+  max-width: 87.5%;
+  margin: 10px;
+  .multi-button {
+    z-index: 1;
+    position: absolute;
+    top: 1.25rem;
+    left: 1.25rem;
+    border-radius: 100%;
+    width: 0rem;
+    height: 0rem;
+    transform: translate(-45%, -50%);
+    transition: 0.5s cubic-bezier(0.25, 0, 0, 1);
 
+    //THREE FLOATING BUTTONS
+    button {
+      display: grid;
+      place-items: center;
+      position: absolute;
+      width: 2rem;
+      height: 2rem;
+      border: none;
+      border-radius: 100%;
+      color: $icons;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      transition: 0.25s cubic-bezier(0.25, 0, 0, 1);
 
+      &:hover {
+        background-color: $hoverover;
+        color: $icons;
+      }
+      &:first-child:nth-last-child(3),
+      &:first-child:nth-last-child(3) ~ * {
+        //If there are 3 children
+        &:nth-child(1) {
+          left: 28%;
+          top: 95%;
         }
-    }
-    .container {
-        position: relative;
-        width:100%;
-        height:5vh;
-        min-height: 7rem;
-        border-radius:1rem;
-        background:var(--background);
-        color:var(--text);
-        padding-left: 5%;
-        padding-right: 5%;
-        display: flex;
-        flex-direction: column;
-        // align-content: center;
-
-        button {
-        width:3rem;
-        height:3rem;
-        border-style: solid;
-        // border-color: greenyellow;
-        border-radius:100%;
-        background:whitesmoke;
-        color:var(--background);
-        cursor: pointer;
-
-        // &:hover {
-        //     background: greenyellow;
-        //     // color:var(--background);
-        //     // border-color: yellow;
-        // }
-        // &:focus {
-        //     background: greenyellow;
-        //     color:var(--background);
-        //     border-color: yellow;
-        // }
+        &:nth-child(2) {
+          left: 28%;
+          top: 70%;
         }
-
-        .exercise-name {
-            font-size: smaller;
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            letter-spacing: 0.25rem;
+        &:nth-child(3) {
+          left: 28%;
+          top: 45%;
         }
-
-        .exercise-info {
-            display: flex;
-            font-size: smaller;
-            width: 30%;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            .exercise-completed-button {
-                // width: 20%;
-                // color:var(--background);
-            }
-
-            .exercise-not-completed-button {
-                // border-style: solid;
-                // border-color: red;
-                // border-radius:100%;
-                // background:whitesmoke;
-                // // color:var(--background);
-                // cursor: pointer;
-                .checkbox {
-                    display: none;
-                }
-            }
-
-        }
+      }
     }
-    &:hover .multi-button, .multi-button:focus-within { //Hover or a button inside is focused
-        width:10rem;
-        height:10rem;
-    }
+  }
 
-    &:hover {
-        transition: 0.5s;
-        padding-left: 0.75rem;
-    }
-}
-
-.empty-card {
-    --background:#5D9CEC;
-    --text:white;
-    width:100%;
-    max-width: 87.5%;
-    height:5vh;
-    margin: 10px;
+  // INSIDE CARD, INFO ABOUT EXERCISE
+  .container {
+    // position: relative;
+    width: 100%;
+    // height: 5vh;
+    min-height: 7rem;
+    border-radius: 1rem;
+    background: $font-color;
+    // color: $black;
     padding-left: 5%;
     padding-right: 5%;
-    padding-bottom: 5%;
-
-    border-radius:1rem;
-    border-style: solid;
-    border-color:var(--background);
-    background:var(--text);
-    color:var(--background);
-
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    // align-content: center;
+
+    .exercise-name {
+      font-size: smaller;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      letter-spacing: 0.25rem;
+    }
+
+    .exercise-info {
+      display: flex;
+      font-size: smaller;
+      width: 30%;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+  }
+
+  //   .exercise-not-completed-button {
+  //     .checkbox {
+  //       display: none;
+  //     }
+  //   }
+
+  // tree buttons move
+  &:hover .multi-button,
+  .multi-button:focus-within {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  // card moves to right
+  &:hover {
+    transition: 0.5s;
+    padding-left: 0.75rem;
+  }
 }
 
-#btnbtn {
-    border-style: solid;
-    border-radius:100%;
-    background:whitesmoke;
-    color:var(--background);
-    cursor: pointer;
-    
-    &:hover {
-        // background: greenyellow;
-    }
+// CHECKBOX is complited
+button {
+  width: 3rem;
+  height: 3rem;
+  border-style: solid;
+  border-radius: 100%;
+  background: whitesmoke;
+  cursor: pointer;
 }
 
 #demo:checked + label {
-    #btnbtn {
-        background: greenyellow;
-        color:var(--background);
-        border-color: yellow;
-
-    }
-
+  #btnbtn {
+    background: $hoverover;
+    color: green;
+    border-color: yellow;
+  }
 }
-
+//hide checkbox behind round button
 #demo {
-    display: none;
+  display: none;
 }
-label {
+
+// EMPTY DAY
+.empty-card {
+  --background: #5d9cec;
+  --text: white;
+  width: 100%;
+  max-width: 87.5%;
+  height: 5vh;
+  margin: 10px;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 5%;
+
+  border-radius: 1rem;
+  border-style: solid;
+  border-color: var(--background);
+  background: var(--text);
+  color: var(--background);
+
+  display: flex;
+  justify-content: center;
 }

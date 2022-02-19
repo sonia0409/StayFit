@@ -1,7 +1,6 @@
 @import "../styles/variables.scss";
 
 .calender-container {
-  //border: 0.1rem solid black;
   background: $header;
   max-width: 500px;
   margin: 2rem auto 5rem auto;
@@ -13,38 +12,38 @@
     justify-content: space-around;
     align-items: center;
     background-color: $font-color;
-
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
     text-transform: uppercase;
     padding: 1rem 0;
     margin-bottom: 1rem;
     text-align: center;
-    border-radius: 4px;
+    border-radius: 1rem;
     //letter-spacing: 0.25rem;
-    h2{
+    h2 {
       width: 25%;
     }
   }
+
+  // WEEK
   .weekCalenderContainer {
-    //border: 0.1rem solid lightskyblue;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     color: $font-color;
-    // padding: 0 5% 0 5%;
 
     .weekDay {
       display: flex;
-      flex-direction:column;
+      flex-direction: column;
       align-items: center;
       justify-content: space-between;
       width: 20%;
       padding: 20px;
-      // border: solid;
     }
 
     .selected {
       display: flex;
-      flex-direction:column;
+      flex-direction: column;
       align-items: center;
       justify-content: space-evenly;
       width: 20%;
@@ -54,14 +53,13 @@
       font-weight: 700;
     }
   }
+
+  // ONE DAY EXERCISES
   .exercises-container {
-    // border: 0.1rem solid lightskyblue;
-    margin: 1rem;
+    // margin: 1rem;
     display: flex;
     flex-direction: column;
-    padding: 5vw;
-    border: 0.1rem solid lightskyblue;
-    border-radius: 20px;
+    // padding: 5vw;
 
     .add-new-exercise {
       align-self: center;
