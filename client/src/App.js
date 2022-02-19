@@ -13,14 +13,25 @@ function App() {
   return (
     <div className="App">
       <div className="header">
-        <Header />
+        {/* <Header /> */}
       </div>
       <div className="routes">
         <Routes>
-          {/* <Route path="/" element={<Dashboard/>} /> */}{" "}
+          {/* <Route path="/" element={<Dashboard/>} /> */}
           {/* rn - not working */}
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/calender" element={<Calender />} />
+          <Route path="/" element={
+            <>
+              <Header />
+              <Dashboard />
+
+            </>
+          } />
+          <Route path="/calender" element={
+            <>
+              <Header />
+              <Calender />
+
+            </>} />
           {/* change path to /calender; once get Dashboard working */}
           <Route path="/exerciseCategory" element={<Application />} />
           <Route path="/exercises/:part" element={<Exercises />} />
