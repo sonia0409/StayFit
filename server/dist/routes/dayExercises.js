@@ -91,7 +91,11 @@ function default_1(db) {
         const { date, userid } = req.params;
         // Get data from request body
         const data = req.body;
-        const { exerciseName, weight, duration, sets, reps, recurring_monday = data.Mo, recurring_tuesday = data.Tu, recurring_wednesday = data.We, recurring_thursday = data.Th, recurring_friday = data.Fr, recurring_saturday = data.Sa, recurring_sunday = data.Su } = req.body;
+        const { exerciseName, recurring_monday = data.Mo, recurring_tuesday = data.Tu, recurring_wednesday = data.We, recurring_thursday = data.Th, recurring_friday = data.Fr, recurring_saturday = data.Sa, recurring_sunday = data.Su } = req.body;
+        const weight = req.body.weight || null;
+        const duration = req.body.duration || null;
+        const sets = req.body.sets || null;
+        const reps = req.body.reps || null;
         const muscleGroup = data.muscleGroup.value;
         const bodyPart = data.bodyPart.value;
         const isRecurring = (recurring_monday || recurring_tuesday || recurring_wednesday || recurring_thursday || recurring_friday || recurring_saturday || recurring_sunday);

@@ -59,7 +59,7 @@ const EditForm = (props) => {
             data
           );
 
-          // onClose();
+          onClose();
         })}
       >
         <div className="close-cross">

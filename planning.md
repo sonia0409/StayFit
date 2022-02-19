@@ -213,5 +213,19 @@ notes:
   => fix UX for loading between dates -> add loading gif? or something else
   => dont show add button when date is in the past.
 
-- LOGIN/SIGNUP PAGE
+
+
+1.- LOGIN/SIGNUP PAGE
   - need component/functionality
+2.- add noifications/reminders
+- use emulator to 
+- research if pwa can send notifications on phone/mobile
+  -> set logos/icon
+  -> or use setTimeout/interval mby?
+3.- add inspirational quotes
+4.Show weather
+
+priority:
+1->login!! -> TOP PRIORITY
+2->quotes
+3->reminder
