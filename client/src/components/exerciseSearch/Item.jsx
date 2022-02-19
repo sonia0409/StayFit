@@ -17,49 +17,63 @@ export default function Item(props) {
 
   const useStyles = makeStyles(theme => ({
     item: {
-     background: '#2E3B55' ,
-     color: '#FFC600',
-     width: '100%',
-     display: 'flex'
+      background: '#2c2e43',
+      color: '#FFC600',
+      width: '100%',
+      display: 'flex',
+     /*  borderBottom: '1px solid #FFC600', */
+      borderTop: '1px solid #FFC600',
+
+    },
+    arrow: {
+      background: '#2c2e43',
+      color: '#FFC600',
+      width: '100%',
+      display: 'flex',
     },
 
-    listItemText:{
-      fontSize:'1.2rem',//Insert your required size
+    listItemText: {
+      fontSize: '1.2rem'//Insert your required size
+    },
+    avatar: {
+      background: '#2c2e43',
+      color: '#FFC600',
+      border: '1px solid #FFC600',
     }
 
   }));
-  
+
   const classes = useStyles();
 
   return (
-  
+
     <Box className={classes.item} sx={{ flexGrow: 1 }}>
       <Grid container spacing={"auto"}>
         <Grid item xs={12} md={12}>
           <div className="item">
             <List >
-                <ListItem 
-                  secondaryAction={
-                    <IconButton className={classes.item} onClick={() => props.onClick(props.exerciseItem)}>
-                      <ArrowForwardIosIcon />
-                    </IconButton>
-                  }
-                >
-                  <ListItemAvatar>
-                    <Avatar>
-                      <FitnessCenterIcon style={{color:"1976d2"}}/>
-                    </Avatar>
-                  </ListItemAvatar>
+              <ListItem
+                secondaryAction={
+                  <IconButton className={classes.arrow} onClick={() => props.onClick(props.exerciseItem)}>
+                    <ArrowForwardIosIcon />
+                  </IconButton>
+                }
+              >
+                <ListItemAvatar>
+                  <Avatar className={classes.avatar}>
+                    <FitnessCenterIcon />
+                  </Avatar>
+                </ListItemAvatar>
 
-                  <ListItemText classes={{primary:classes.listItemText}}
-                    primary={props.exerciseItem}
-                  />
-                </ListItem>
+                <ListItemText classes={{ primary: classes.listItemText }}
+                  primary={props.exerciseItem}
+                />
+              </ListItem>
             </List>
-            </div>
+          </div>
         </Grid>
       </Grid>
     </Box>
-   
+
   );
 }

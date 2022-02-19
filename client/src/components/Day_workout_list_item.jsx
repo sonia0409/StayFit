@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/Day_workout_list_item.scss";
 import axios from "axios";
 import DeletePopup from "./popup/DeletePopup";
-import "./popup/Popup.scss";
+import "./popup/popup.scss";
 
 
 export default function DayWorkoutListItem(props) {
