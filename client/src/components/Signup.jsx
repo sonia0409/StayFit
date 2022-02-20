@@ -50,9 +50,10 @@ export default function Signup(props) {
           </div>
           {/* <div className="errorMessage">{errorMessage}</div> */}
           <div className="submit">
-            <button type="button" onClick={() => showLogin()} >
-              Back to Login
-            </button>
+            {/* <button type="button" onClick={() => showLogin()} >
+              Back
+            </button> */}
+            <div className="toggle-login" onClick={() => showLogin()}>Login</div>
             <button type="submit" name="commit">Signup</button>
           </div>
         </form>

@@ -19,6 +19,7 @@ export default function Footer() {
       height: 55,
       padding:0,
       textAlign: 'space-evenly',
+      zIndex: '2',
     }
   }));
   

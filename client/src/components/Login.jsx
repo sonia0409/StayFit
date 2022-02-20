@@ -31,7 +31,9 @@ export default function Login(props) {
             />
           </div>
           <div className="submit">
-          <button type="button" onClick={() => showSignup()}>Signup now</button>
+            {/* Signup? */}
+          {/* <button type="button" onClick={() => showSignup()}>Signup</button> */}
+          <div className="toggle-signup" onClick={() => showSignup()}>Signup</div>
             <button type="submit" name="commit">Login</button>
           </div>
         </form>
