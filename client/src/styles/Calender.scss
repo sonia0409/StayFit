@@ -6,6 +6,8 @@
   margin: 2rem auto 5rem auto;
   padding: 1.5rem;
   border-radius: 4px;
+  min-height: 75vh;
+  // max-height: 75vh;
 
   .calender-information {
     display: flex;
@@ -18,7 +20,7 @@
     padding: 1rem 0;
     margin-bottom: 1rem;
     text-align: center;
-    border-radius: 1rem;
+    border-radius: 4px;
     //letter-spacing: 0.25rem;
     h2 {
       width: 25%;
@@ -63,10 +65,13 @@
     display: flex;
     flex-direction: column;
     // padding: 5vw;
+    // max-height: 50vh;
+    // overflow-y: scroll;
 
     .add-new-exercise {
       align-self: center;
-      margin-top: 5vh;
+      margin-top: 1vh;
+      margin-bottom: 1vh;
     }
   }
 }

@@ -1,3 +1,5 @@
+@import "../styles/variables.scss";
+
 .container-login {
   height: 100vh;
   width: 100vw;
@@ -31,16 +33,32 @@
 
       button {
         width: 40%;
-        background: #ffc600;
-        color: black;
+        background: $header;
+        color: $font-color;
         text-transform: uppercase;
         padding: 1rem;
         font-size: 12px;
         letter-spacing: 0.25rem;
         border-radius: 4px;
+        &:hover {
+          background: $font-color;
+          color: $header;
+        }
+      }
+
+      .toggle-signup {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: black;
+        &:hover {
+          color: $font-color;
+          cursor: pointer;
+        }
       }
     }
-
   }
 
   .signup {
@@ -57,7 +75,7 @@
     h3 {
       align-self: center;
       margin-top: 0;
-      color: #ffc600;;
+      color: $font-color;
     }
 
     .submit {
@@ -68,13 +86,30 @@
 
       button {
         width: 40%;
-        background: #ffc600;
-        color: black;
         text-transform: uppercase;
         padding: 1rem;
         font-size: 12px;
         letter-spacing: 0.25rem;
         border-radius: 4px;
+        background: $header;
+        color: $font-color;
+        &:hover {
+          background: $font-color;
+          color: $header;
+        }
+      }
+
+      .toggle-login {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: black;
+        &:hover {
+          color: $font-color;
+          cursor: pointer;
+        }
       }
     }
 

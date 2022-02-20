@@ -1,18 +1,8 @@
 @import "../styles/variables.scss";
 
-/* .exercises-container {
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-bottom: 5%;
+.loading-circle {
   display: flex;
-  flex-direction: column;
-  padding: 5vw;
-  border: 0.1rem solid lightskyblue;
-  border-radius: 20px;
-  background-color: $header;
-
-  .add-new-exercise {
-    align-self: center;
-    margin-top: 5vh;
-  }
-} */
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}

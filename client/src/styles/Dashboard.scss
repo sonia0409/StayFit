@@ -1,0 +1,50 @@
+@import "./variables.scss";
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.container-dashboard {
+  background: $header;
+  max-width: 500px;
+  margin: 2rem auto 5rem auto;
+  padding: 1.5rem;
+  border-radius: 4px;
+  min-height: 75vh;
+  color: $font-color;
+
+  .dashboard-date {
+    text-align: center;
+    margin: 0.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .container-quote {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    min-height: 30vh;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 1rem 0;
+
+    text-align: center;
+    background-color: $header;
+    border: 5px solid $font-color;
+    border-radius: 1rem;
+
+    .quote-data {
+      padding: 1rem;
+      font-family: 'Bebas Neue', cursive;
+      letter-spacing: 1px;
+      word-spacing: 3px;
+      font-size: 24px;
+    }
+  }
+  .db-titles {
+    max-height: 32px;
+    padding: 0 1rem 0 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+}
