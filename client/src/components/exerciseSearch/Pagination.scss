@@ -1,12 +1,15 @@
+@import "../../styles/variables.scss";
+
 .pagination {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top:0.1rem
   }
   
   .paginationItem {
-    background: #fff;
-    border: 2px solid #666;
+  
+    border: 2px solid $font-color;
     padding: 10px 15px;
     border-radius: 50%;
     height: 45px;
