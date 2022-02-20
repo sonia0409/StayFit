@@ -16,6 +16,13 @@ export default function Calender() {
     setEditExerciseObj({});
   }, [selectedDate]);
 
+  const isToday = (someDate) => {
+    const today = new Date()
+    return someDate.getDate() === today.getDate() &&
+      someDate.getMonth() === today.getMonth() &&
+      someDate.getFullYear() === today.getFullYear()
+  }
+
   // const dateStringFormat = selectedDate.toDateString();
   const splitDate = selectedDate.toDateString().split(" ");
   // console.log(selectedDate)
@@ -25,9 +32,11 @@ export default function Calender() {
         <h2 className="date">
           {splitDate[1]} {splitDate[2]}{" "}
         </h2>
-        <Fab variant="extended" onClick={() => setSelectedDate(new Date())}>
-          Today
-        </Fab>
+        { !isToday(selectedDate) && 
+          <Fab variant="extended" onClick={() => setSelectedDate(new Date())}>
+            Today
+          </Fab>
+        }
       </div>
 
       <WeeklyCalender

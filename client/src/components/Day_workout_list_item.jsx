@@ -124,6 +124,7 @@ export default function DayWorkoutListItem(props) {
           )}
 
           <div className="exercise-not-completed-button">
+            <div className="mark-completed-text">Mark completed?</div>
             <input
               type="checkbox"
               id="demo"

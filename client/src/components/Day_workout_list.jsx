@@ -6,6 +6,7 @@ import axios from "axios";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import { authContext } from '../providers/AuthProvider';
+import CircularIndeterminate from "../global-components/Loading";
 
 export default function DayWorkoutList(props) {
   const { user } = useContext(authContext);
@@ -51,6 +52,9 @@ export default function DayWorkoutList(props) {
     return;
   };
 
+  const isPast = (someDate) => 
+  someDate.setHours(0, 0, 0, 0) < new Date().setHours(0, 0, 0, 0);
+
   const exerciseItems = dayExercises.map((exercise) => (
     <DayWorkoutListItem
       key={exercise.id}
@@ -63,17 +67,23 @@ export default function DayWorkoutList(props) {
 
   return (
     <div className="exercises-container">
+      { !isPast(props.selectedDate) &&
+        <Fab
+          style={{ background: "#ffc600" }}
+          aria-label="add"
+          className="add-new-exercise"
+          onClick={props.onClick(true)}
+        >
+          <AddIcon />
+        </Fab>
+      }
       {exerciseItems.length > 0 && !loading && exerciseItems}
       {exerciseItems.length === 0 && !loading && <EmptyDayExercises />}
-      {loading && "Loading"}
-      <Fab
-        style={{ background: "#ffc600" }}
-        aria-label="add"
-        className="add-new-exercise"
-        onClick={props.onClick(true)}
-      >
-        <AddIcon />
-      </Fab>
+      {loading && 
+      <div className="loading-circle">
+        <CircularIndeterminate/>
+      </div>
+      }
     </div>
   );
 }
