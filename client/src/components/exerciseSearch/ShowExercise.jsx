@@ -8,7 +8,7 @@ console.log(props)
             <Box
                 sx={{
                     display: 'flex',
-                    flexDirection: { xs: 'column', md: 'row' },
+                    flexDirection: { xs: 'column', md: 'column' },
                     alignItems: 'center',
                     bgcolor: 'background.paper',
                     overflow: 'hidden',
@@ -35,7 +35,7 @@ console.log(props)
                     sx={{
                         display: 'flex',
                         flexDirection: 'column',
-                        alignItems: { xs: 'center', md: 'flex-start' },
+                        alignItems: { xs: 'center', md: 'center' },
                         m: 3,
                         minWidth: { md: 350 },
                     }}

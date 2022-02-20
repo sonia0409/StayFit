@@ -1,6 +1,6 @@
 @import "../../styles/variables.scss";
 
-.application,
+
 .item-container,
 .itemList,
 .exerciseList {
@@ -10,8 +10,9 @@
   padding: 1.5rem;
   border-radius: 4px;
   text-transform: uppercase;
-  max-height: 70vh;
+  max-height: 80vh;
   overflow-y: scroll;
+ 
 
   .heading-container {
     display: flex;
@@ -35,7 +36,7 @@
   }
 }
 .item-container {
-  max-height: 40vh;
+  max-height: 50vh;
   margin: 1rem 0 0 0;
   padding-bottom:0;
 }
