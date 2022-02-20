@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -10,42 +9,57 @@ import IconButton from '@mui/material/IconButton';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import Grid from '@mui/material/Grid';
+import { makeStyles } from '@material-ui/core/styles';
 
 
-
-const Demo = styled('div')(({ theme }) => ({
-  backgroundColor: theme.palette.background.paper,
-}));
 
 export default function Item(props) {
 
+  const useStyles = makeStyles(theme => ({
+    item: {
+     background: '#2E3B55' ,
+     color: '#FFC600',
+     width: '100%',
+     display: 'flex'
+    },
+
+    listItemText:{
+      fontSize:'1.2rem',//Insert your required size
+    }
+
+  }));
+  
+  const classes = useStyles();
 
   return (
-    <Box sx={{ flexGrow: 1, maxWidth: 752 }}>
+  
+    <Box className={classes.item} sx={{ flexGrow: 1 }}>
       <Grid container spacing={"auto"}>
         <Grid item xs={12} md={12}>
-          <Demo>
-            <List>
-                <ListItem
+          <div className="item">
+            <List >
+                <ListItem 
                   secondaryAction={
-                    <IconButton edge="end" aria-label="next" onClick={() => props.onClick(props.exerciseItem)}>
+                    <IconButton className={classes.item} onClick={() => props.onClick(props.exerciseItem)}>
                       <ArrowForwardIosIcon />
                     </IconButton>
                   }
                 >
                   <ListItemAvatar>
                     <Avatar>
-                      <FitnessCenterIcon />
+                      <FitnessCenterIcon style={{color:"1976d2"}}/>
                     </Avatar>
                   </ListItemAvatar>
-                  <ListItemText
+
+                  <ListItemText classes={{primary:classes.listItemText}}
                     primary={props.exerciseItem}
                   />
                 </ListItem>
             </List>
-          </Demo>
+            </div>
         </Grid>
       </Grid>
     </Box>
+   
   );
 }

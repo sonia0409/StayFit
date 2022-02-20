@@ -1,4 +1,6 @@
-.exercises-container {
+@import "../styles/variables.scss";
+
+/* .exercises-container {
   margin-left: 5%;
   margin-right: 5%;
   margin-bottom: 5%;
@@ -7,9 +9,10 @@
   padding: 5vw;
   border: 0.1rem solid lightskyblue;
   border-radius: 20px;
+  background-color: $header;
 
   .add-new-exercise {
     align-self: center;
     margin-top: 5vh;
   }
-}
+} */

@@ -188,3 +188,44 @@ Forms -> OLGA
 Rest -> 
 
 CSS ->
+
+
+notes:
+
+- exercises search sections 
+  => make whole section clickable as opposed to just the > icon?
+  => make back button and aligned with heading
+  => reformat the footer background or make container have margin-bottom
+  => no back button when on main search screen
+  => single exercise
+    - add margin/padding for footer
+    - remove the random dot
+    - add spacing underneath exercise gif
+
+- Dashboard
+  => mark completed and show details 
+  => STRETCH: weather? -> add location for user on signup -> use with api to show weather.
+  => STRETCH: add random motivational quotes. Find an api?
+  => STRETCH: 
+
+- Calender
+  => ALL edit/add/delete functionality available
+  => fix UX for loading between dates -> add loading gif? or something else
+  => dont show add button when date is in the past.
+
+
+
+1.- LOGIN/SIGNUP PAGE
+  - need component/functionality
+2.- add noifications/reminders
+- use emulator to 
+- research if pwa can send notifications on phone/mobile
+  -> set logos/icon
+  -> or use setTimeout/interval mby?
+3.- add inspirational quotes
+4.Show weather
+
+priority:
+1->login!! -> TOP PRIORITY
+2->quotes
+3->reminder

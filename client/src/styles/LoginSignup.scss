@@ -1,0 +1,83 @@
+.container-login {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url("../../public/pexels-cottonbro-4753987.jpg");
+
+  .login {
+    min-width: 250px;
+    min-height: 150px;
+    max-width: 500px;
+    max-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 40vh;
+    padding-top: 12px;
+
+    h3 {
+      align-self: center;
+      margin-top: 0;
+      color: #ffc600;;
+    }
+
+    .submit {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      button {
+        width: 40%;
+        background: #ffc600;
+        color: black;
+        text-transform: uppercase;
+        padding: 1rem;
+        font-size: 12px;
+        letter-spacing: 0.25rem;
+        border-radius: 4px;
+      }
+    }
+
+  }
+
+  .signup {
+    min-width: 250px;
+    min-height: 400px;
+    max-width: 500px;
+    max-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 45vh;
+    padding-top: 12px;
+
+    h3 {
+      align-self: center;
+      margin-top: 0;
+      color: #ffc600;;
+    }
+
+    .submit {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      button {
+        width: 40%;
+        background: #ffc600;
+        color: black;
+        text-transform: uppercase;
+        padding: 1rem;
+        font-size: 12px;
+        letter-spacing: 0.25rem;
+        border-radius: 4px;
+      }
+    }
+
+  }
+
+}

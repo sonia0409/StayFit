@@ -1,14 +1,16 @@
-import React from "react";
+import { React, useContext } from "react";
 import { useForm, Controller } from "react-hook-form";
 import ReactSelect from "react-select";
 import { Checkbox } from "@mui/material";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import Grid from "@mui/material/Grid";
 import axios from "axios";
-import "./AddForm.css";
+import "../styles/AddForm.scss";
+import { authContext } from '../providers/AuthProvider';
 
 const AddForm = (props) => {
-  const { date, onSubmit, userid = 1, onClose } = props;
+  const { user } = useContext(authContext);
+  const { date, onSubmit, onClose } = props;
 
   const {
     control,
@@ -36,7 +38,7 @@ const AddForm = (props) => {
           console.log("Data from form =====> ", data);
           // Use axios post to add exercise to database.
           await axios.post(
-            `http://localhost:8080/day-exercises/${userid}/${date}/new`,
+            `http://localhost:8080/day-exercises/${user.id}/${date}/new`,
             data
           );
 

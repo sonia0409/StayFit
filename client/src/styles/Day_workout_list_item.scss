@@ -1,0 +1,147 @@
+@import "./variables.scss";
+
+.card {
+  transition: 0.5s;
+  position: relative;
+  max-width: 87.5%;
+  margin: 10px;
+  .multi-button {
+    z-index: 1;
+    position: absolute;
+    top: 1.25rem;
+    left: 1.25rem;
+    border-radius: 100%;
+    width: 0rem;
+    height: 0rem;
+    transform: translate(-45%, -50%);
+    transition: 0.5s cubic-bezier(0.25, 0, 0, 1);
+
+    //THREE FLOATING BUTTONS
+    button {
+      display: grid;
+      place-items: center;
+      position: absolute;
+      width: 2rem;
+      height: 2rem;
+      border: none;
+      border-radius: 100%;
+      background-color: $header;
+      color: $font-color;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      transition: 0.25s cubic-bezier(0.25, 0, 0, 1);
+
+      &:hover {
+        color: $font-color;
+        border: 1px solid $font-color;
+      }
+      &:first-child:nth-last-child(3),
+      &:first-child:nth-last-child(3) ~ * {
+        //If there are 3 children
+        &:nth-child(1) {
+          left: 28%;
+          top: 95%;
+        }
+        &:nth-child(2) {
+          left: 28%;
+          top: 70%;
+        }
+        &:nth-child(3) {
+          left: 28%;
+          top: 45%;
+        }
+      }
+    }
+  }
+
+  // INSIDE CARD, INFO ABOUT EXERCISE
+  .container {
+    background: $header;
+    color: $font-color;
+
+    width: 100%;
+    min-height: 7rem;
+    border-radius: 1rem;
+    border: solid 1px $font-color;
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+    flex-direction: column;
+    font-size: larger;
+
+    .exercise-name {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      letter-spacing: 0.25rem;
+      font-weight: 400;
+    }
+
+    .exercise-info {
+      display: flex;
+      width: 30%;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding-bottom: 1rem;
+    }
+  }
+
+  // tree buttons move
+  &:hover .multi-button,
+  .multi-button:focus-within {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  // card moves to right
+  &:hover {
+    transition: 0.5s;
+    padding-left: 0.75rem;
+  }
+}
+
+// CHECKBOX is complited
+button {
+  width: 3rem;
+  height: 3rem;
+  border-style: solid;
+  border-radius: 100%;
+  background: $header;
+  border: 1px solid $font-color;
+  cursor: pointer;
+  color: $font-color;
+}
+
+#demo:checked + label {
+  #btnbtn {
+    background: $font-color;
+    color: $header;
+  }
+}
+//hide checkbox behind round button
+#demo {
+  display: none;
+}
+
+// EMPTY DAY
+.empty-card {
+  --background: #5d9cec;
+  --text: white;
+  width: 100%;
+  max-width: 87.5%;
+  height: 5vh;
+  margin: 10px;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 5%;
+
+  border-radius: 1rem;
+  border-style: solid;
+  border-color: var(--background);
+  background: var(--text);
+  color: var(--background);
+
+  display: flex;
+  justify-content: center;
+}
