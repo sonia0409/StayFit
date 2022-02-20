@@ -1,13 +1,17 @@
 @import "../../styles/variables.scss";
 
-
-.application, .item-container, .itemList, .exerciseList {
+.application,
+.item-container,
+.itemList,
+.exerciseList {
   background: $header;
   max-width: 500px;
   margin: 2rem auto 5rem auto;
   padding: 1.5rem;
   border-radius: 4px;
   text-transform: uppercase;
+  max-height: 70vh;
+  overflow-y: scroll;
 
   .heading-container {
     display: flex;
@@ -20,13 +24,19 @@
     text-align: center;
     border-radius: 4px;
   }
-  .exerciseListItem{
+  .exerciseListItem {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 1rem;
   }
-  .exerciseGif-container{
+  .exerciseGif-container {
     width: 90%;
   }
+}
+.item-container {
+  max-height: 40vh
+}
+.itemList{
+  
 }
