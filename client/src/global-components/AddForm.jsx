@@ -76,9 +76,9 @@ const AddForm = (props) => {
       muscleGroup: "",
       exerciseName: "",
       duration: 0,
-      // sets: 0,
-      // reps: 0,
-      // weight: 0,
+      sets: 0,
+      reps: 0,
+      weight: 0,
       Mo: false,
       Tu: false,
       We: false,
@@ -113,7 +113,7 @@ const AddForm = (props) => {
           <CancelIcon fontSize="large" onClick={onClose} />
         </div>
         <div className="add-form-name">
-          <h2>Add Workout</h2>
+          <h2>Add Exercise</h2>
         </div>
         {/* Dropdown */}
         <div className="form-dropdown">
@@ -127,7 +127,7 @@ const AddForm = (props) => {
                 control={control}
                 render={({ field }) => (
                   <ReactSelect
-                    isClearable
+                    // isClearable
                     {...field}
                     options={[
                       { value: "chest", label: "Chest" },
@@ -159,7 +159,7 @@ const AddForm = (props) => {
                 control={control}
                 render={({ field }) => (
                   <ReactSelect
-                    isClearable
+                    // isClearable
                     {...field}
                     options={updatedMuscles}
                   />
