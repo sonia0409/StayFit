@@ -12,12 +12,21 @@ const AddForm = (props) => {
   const { user } = useContext(authContext);
   const { date, onSubmit, onClose } = props;
 
+  type FormValues = {
+    exerciseName: string,
+    duration: number,
+    sets: number,
+    reps: number,
+    weight: number,
+  };
   const {
     control,
     register, //cb ,register individual inputs into the hook
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm <
+  FormValues >
+  {
     defaultValues: {
       bodyPart: "",
       muscleGroup: "",
@@ -29,7 +38,7 @@ const AddForm = (props) => {
       Sa: false,
       Su: false,
     },
-  });
+  };
 
   return (
     <main>
