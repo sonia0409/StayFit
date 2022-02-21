@@ -11,20 +11,23 @@ export default function DeletePopup(props) {
         </span>
         <div className="confirm-deletion">
           <h4>Confirm deletion:</h4>
-          {/* <h4>Delete for:</h4> */}
         </div>
         <div className="container-delete-buttons">
           <div>
-            <button id="single-delete" onClick={() => onSingleDelete()}>
-              Delete exercise for today
-              {/* Today only */}
+            <button
+              className="popup-delete-botton"
+              onClick={() => onSingleDelete()}
+            >
+              Delete for today
             </button>
           </div>
           <div>
             {isRecurring && (
-              <button id="all-delete" onClick={() => onAllDelete()}>
+              <button
+                className="popup-delete-botton"
+                onClick={() => onAllDelete()}
+              >
                 Delete for all future dates
-                {/* All future dates */}
               </button>
             )}
           </div>

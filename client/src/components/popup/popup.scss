@@ -19,7 +19,7 @@
   height: auto;
   max-height: 70vh;
   margin-top: calc(100vh - 70vh);
-  background: #fff;
+  background: $background-color;
   border-radius: 4px;
   padding: 20px;
   border: 1px solid #999;
@@ -50,21 +50,20 @@
 h4,
 .confirm-deletion {
   margin-top: 0;
-  color: red;
+  color: #ee5253;
 }
 
-#single-delete,
-#all-delete {
+.popup-delete-botton {
   border-radius: 4px;
   background-color: $header;
-  border: 1px solid $font-color;
+  border: 1px solid #ee5253;
+  color: #ee5253;
   font-size: 1rem;
   width: 200px;
 
   &:hover {
-    background-color: $font-color;
+    background-color: #ee5253;
     border: 2px solid;
-    box-shadow: 3px 3px $hoverover;
     color: $black;
   }
 }
