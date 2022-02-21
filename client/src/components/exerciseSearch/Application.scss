@@ -10,8 +10,8 @@
   padding: 1.5rem;
   border-radius: 4px;
   text-transform: uppercase;
-  max-height: 80vh;
-  overflow-y: scroll;
+  max-height: 75vh;
+  min-height: 75vh;
  
 
   .heading-container {
@@ -36,7 +36,9 @@
   }
 }
 .item-container {
-  max-height: 50vh;
+  max-height: 40vh;
   margin: 1rem 0 0 0;
   padding-bottom:0;
+  overflow-y: scroll;
+  min-height: 55vh;
 }

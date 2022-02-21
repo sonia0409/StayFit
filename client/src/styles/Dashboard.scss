@@ -1,5 +1,6 @@
 @import "./variables.scss";
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
 .container-dashboard {
   background: $header;
@@ -34,9 +35,16 @@
     .quote-data {
       padding: 1rem;
       font-family: 'Bebas Neue', cursive;
+      // font-family: 'Shizuru', cursive;
       letter-spacing: 1px;
       word-spacing: 3px;
       font-size: 24px;
+    }
+    .quote-author {
+      font-family: 'Great Vibes', cursive;
+      letter-spacing: 1px;
+      word-spacing: 3px;
+      font-size: 32px;
     }
   }
   .db-titles {
