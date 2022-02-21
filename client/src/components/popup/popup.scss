@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 /* Popup style */
 .popup-box {
   position: fixed;
@@ -18,14 +20,14 @@
   max-height: 70vh;
   margin-top: calc(100vh - 70vh);
   background: #fff;
-  // border-radius: 10%;
+  border-radius: 4px;
   padding: 20px;
   border: 1px solid #999;
   overflow: auto;
 }
 
 .close-icon {
-  content: 'x';
+  content: "x";
   cursor: pointer;
   position: fixed;
   right: calc(15% - 30px);
@@ -38,4 +40,31 @@
   text-align: center;
   border: 1px solid #999;
   font-size: 20px;
+}
+.container-delete-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+h4,
+.confirm-deletion {
+  margin-top: 0;
+  color: red;
+}
+
+#single-delete,
+#all-delete {
+  border-radius: 4px;
+  background-color: $header;
+  border: 1px solid $font-color;
+  font-size: 1rem;
+  width: 200px;
+
+  &:hover {
+    background-color: $font-color;
+    border: 2px solid;
+    box-shadow: 3px 3px $hoverover;
+    color: $black;
+  }
 }
