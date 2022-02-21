@@ -65,17 +65,17 @@ const AddForm = (props) => {
   const { date, onSubmit, onClose } = props;
 
   const {
-    control,
-    watch,
+    watch, // follow up for changes in the input field
     register, //cb ,register individual inputs into the hook
     handleSubmit,
+    control, //same as register but for fields other than input
     formState: { errors },
   } = useForm({
     defaultValues: {
       bodyPart: "",
       muscleGroup: "",
       exerciseName: "",
-      // duration: 0,
+      duration: 0,
       // sets: 0,
       // reps: 0,
       // weight: 0,
@@ -180,7 +180,7 @@ const AddForm = (props) => {
 
         <Grid container spacing={0}>
           <Grid item xs={5}>
-            <label className="form-label"> Name : ( Required )</label>
+            <label className="form-label"> Name : * Required </label>
           </Grid>
           <Grid item xs={7}>
             <input
