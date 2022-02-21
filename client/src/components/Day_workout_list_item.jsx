@@ -98,32 +98,37 @@ export default function DayWorkoutListItem(props) {
       </div>
 
       <div className="container">
-        <h2 className="exercise-name">{name}</h2>
+        <h2 className="exercise-name-calender">{name}</h2>
 
         <div className="exercise-info">
-          {weight > 0 && (
-            <div>
-              Weight: <div>{weight} lbs</div>
-            </div>
-          )}
-          {sets > 0 && (
-            <div>
-              Sets: <div>{sets}</div>
-            </div>
-          )}
-          {reps > 0 && (
-            <div>
-              Reps: <div>{reps}</div>
-            </div>
-          )}
-          {duration > 0 && (
-            <div>
-              Time: <div>{duration} min</div>
-            </div>
-          )}
+          <div className="exercise-data">
+
+            {weight > 0 && (
+              <div>
+                Weight: <div>{weight} lbs</div>
+              </div>
+            )}
+            {sets > 0 && (
+              <div>
+                Sets: <div>{sets}</div>
+              </div>
+            )}
+            {reps > 0 && (
+              <div>
+                Reps: <div>{reps}</div>
+              </div>
+            )}
+            {duration > 0 && (
+              <div>
+                Time: <div>{duration} min</div>
+              </div>
+            )}
+
+          </div>
 
           <div className="exercise-not-completed-button">
-            <div className="mark-completed-text">Mark completed?</div>
+
+            
             <input
               type="checkbox"
               id="demo"
@@ -135,6 +140,9 @@ export default function DayWorkoutListItem(props) {
                 <FontAwesomeIcon icon={faCheck} />
               </button>
             </label>
+            {!localCompleted && <div className="mark-completed-text-calender">Did you finish this?</div> }
+            {localCompleted && <div className="mark-completed-text-calender">Good job!</div> }
+            
           </div>
         </div>
       </div>

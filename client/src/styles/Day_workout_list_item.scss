@@ -69,12 +69,13 @@
     flex-direction: column;
     font-size: larger;
 
-    .exercise-name {
+    .exercise-name-calender {
       display: flex;
       justify-content: center;
       width: 100%;
-      letter-spacing: 0.25rem;
+      // letter-spacing: 0.25rem;
       font-weight: 400;
+      margin-bottom: 0;
     }
 
     .exercise-info {
@@ -84,6 +85,15 @@
       align-items: center;
       width: 100%;
       padding-bottom: 1rem;
+
+      .exercise-data {
+        width: 80%;
+        display: flex;
+        // flex-direction: row;
+        justify-content: space-evenly;
+        border-right: 1px solid $font-color;
+        height: 50px;
+      }
     }
   }
 
@@ -153,7 +163,11 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 25%;
+  padding-left: 2%;
 }
-.mark-completed-text {
-  font-size: x-small;
+.mark-completed-text-calender {
+  font-size: 12px;
+  text-align: center;
+  padding-top: 5px;
 }

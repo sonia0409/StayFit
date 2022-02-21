@@ -274,6 +274,7 @@ export default function (db) {
     WHERE day_exercises.user_id = $1
     AND day_exercises.date = $2
     AND day_exercises.is_deleted = false
+    ORDER BY day_exercises.is_completed
     `;
 
     const recurringExercisesQuery = `

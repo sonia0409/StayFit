@@ -29,26 +29,29 @@ export default function DashboardExerciseListItem(props) {
         <h2 className="db-exercise-name">{name}</h2>
 
         <div className="db-exercise-info">
-          {weight > 0 && (
-            <div>
-              Weight: <div>{weight} lbs</div>
-            </div>
-          )}
-          {sets > 0 && (
-            <div>
-              Sets: <div>{sets}</div>
-            </div>
-          )}
-          {reps > 0 && (
-            <div>
-              Reps: <div>{reps}</div>
-            </div>
-          )}
-          {duration > 0 && (
-            <div>
-              Time: <div>{duration} min</div>
-            </div>
-          )}
+          <div className="db-exercise-data">
+
+            {weight > 0 && (
+              <div>
+                Weight: <div>{weight} lbs</div>
+              </div>
+            )}
+            {sets > 0 && (
+              <div>
+                Sets: <div>{sets}</div>
+              </div>
+            )}
+            {reps > 0 && (
+              <div>
+                Reps: <div>{reps}</div>
+              </div>
+            )}
+            {duration > 0 && (
+              <div>
+                Time: <div>{duration} min</div>
+              </div>
+            )}
+          </div>
 
           <div className="db-completed-button">
             <input
