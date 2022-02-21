@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import CancelIcon from "@mui/icons-material/Cancel";
 import Grid from "@mui/material/Grid";
 import axios from "axios";
 import "../styles/EditForm.scss";
@@ -49,8 +49,9 @@ const EditForm = (props) => {
   return (
     <main>
       <form
+        className="edit-form"
         onSubmit={handleSubmit(async (data) => {
-          // console.log("Data from Edit Form =======>", data);
+          console.log("Data from Edit Form =======>", data);
 
           // Use axios to edit exercise in database.
           //path:  ("exercise/:exercise_id");
@@ -62,68 +63,67 @@ const EditForm = (props) => {
           onClose();
         })}
       >
-        <div className="close-cross">
-          <HighlightOffIcon fontSize="large" onClick={onClose} />
-          <h5>Close</h5>
+        <div className="edit-close-cross">
+          <CancelIcon fontSize="large" onClick={onClose} />
         </div>
 
-        <div className="form-name">
-          <h2>Edit Workout</h2>
-          {/* <hr /> */}
+        <div className="edit-form-name">
+          <h2>Edit Exercise</h2>
         </div>
 
         {/* Inputs  */}
-
         <Grid container spacing={0}>
-          <Grid item xs={3}>
+          <Grid item xs={5}>
             <label className="form-label"> Exercise Name :</label>
           </Grid>
-          <Grid item xs={9}>
+          <Grid item xs={7}>
             <input {...register("exerciseName")} placeholder="Exercise Name" />
             {errors.exerciseName && <p>Exercise Name is required field</p>}
           </Grid>
         </Grid>
 
         <Grid container spacing={0}>
-          <Grid item xs={3}>
+          <Grid item xs={5}>
             <label className="form-label"> Duration (min) : </label>
           </Grid>
-          <Grid item xs={9}>
+          <Grid item xs={7}>
             <input {...register("duration")} placeholder="Duration / min" />
           </Grid>
         </Grid>
 
         <Grid container spacing={0}>
-          <Grid item xs={3}>
+          <Grid item xs={5}>
             <label className="form-label"> Sets :</label>
           </Grid>
-          <Grid item xs={9}>
+          <Grid item xs={7}>
             <input {...register("sets")} placeholder="Sets" />
           </Grid>
         </Grid>
         <Grid container spacing={0}>
-          <Grid item xs={3}>
+          <Grid item xs={5}>
             <label className="form-label"> Reps :</label>
           </Grid>
-          <Grid item xs={9}>
+          <Grid item xs={7}>
             <input {...register("reps")} placeholder="Reps" />
           </Grid>
         </Grid>
         <Grid container spacing={0}>
-          <Grid item xs={3}>
+          <Grid item xs={5}>
             <label className="form-label"> Weight (lbs) :</label>
           </Grid>
-          <Grid item xs={9}>
+          <Grid item xs={7}>
             <input {...register("weight")} placeholder="Weight" />
           </Grid>
         </Grid>
         {isRecurring && (
           <div className="note-message">
-            * Note: This is a recurring exercise and will modify all related
-            events.
+            <h5>
+              * Note: This is a recurring exercise and will modify all related
+              events.
+            </h5>
           </div>
         )}
-        <input type="submit" />
+        <input className="edit-input" type="submit" />
       </form>
     </main>
   );
