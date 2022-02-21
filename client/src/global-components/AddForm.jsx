@@ -170,34 +170,35 @@ const AddForm = (props) => {
         </div>
 
         {/* Inputs field */}
-        {/* Error messages for input field validation */}
+        {/* Error messages for name field validation */}
         {errors.exerciseName?.type === "required" && (
-          <p> "First name is required"</p>
+          <p>Give the name for your exersicise.</p>
         )}
         {errors.exerciseName?.type === "maxLength" && (
-          <p>Max length is 25 characters.</p>
+          <p>Max length for name is 25 characters.</p>
         )}
-
         <Grid container spacing={0}>
           <Grid item xs={5}>
-            <label className="form-label"> Name : * Required </label>
+            <label className="form-label"> Name : * </label>
           </Grid>
           <Grid item xs={7}>
             <input
               placeholder="Exercise Name / max 25 char"
               {...register("exerciseName", {
-                required: {
-                  value: true,
-                  message: "required",
-                },
-                maxLength: {
-                  value: 25,
-                  message: "maxLength",
-                },
+                required: true,
+                maxLength: 25,
               })}
             />
           </Grid>
         </Grid>
+        {/* Error messages for duration field. */}
+        {errors.duration?.type === "required" && (
+          <p> Duration field can't be empty. </p>
+        )}
+        {errors.duration?.type === "min" && <p>Duration can't be negative.</p>}
+        {errors.duration?.type === "max" && (
+          <p>Duration can't be more then 1000.</p>
+        )}
         <Grid container spacing={0}>
           <Grid item xs={5}>
             <label className="form-label"> Duration (min) : </label>
@@ -207,11 +208,18 @@ const AddForm = (props) => {
               type="number"
               placeholder="Duration"
               {...register("duration", {
+                required: true,
                 valueAsNumber: true,
+                min: 0,
+                max: 1000,
               })}
             />
           </Grid>
         </Grid>
+        {/* Error messages for sets field. */}
+        {errors.sets?.type === "required" && <p> Sets field can't be empty.</p>}
+        {errors.sets?.type === "min" && <p>Sets can't be negative.</p>}
+        {errors.sets?.type === "max" && <p>Sets can't be more then 1000.</p>}
         <Grid container spacing={0}>
           <Grid item xs={5}>
             <label className="form-label"> Sets :</label>
@@ -221,11 +229,18 @@ const AddForm = (props) => {
               type="number"
               placeholder="Sets"
               {...register("sets", {
+                required: true,
                 valueAsNumber: true,
+                min: 0,
+                max: 1000,
               })}
             />
           </Grid>
         </Grid>
+        {/* Error messages for reps field. */}
+        {errors.reps?.type === "required" && <p> Reps field can't be empty.</p>}
+        {errors.reps?.type === "min" && <p>Reps can't be negative.</p>}
+        {errors.reps?.type === "max" && <p>Reps can't be more then 1000.</p>}
         <Grid container spacing={0}>
           <Grid item xs={5}>
             <label className="form-label"> Reps :</label>
@@ -235,11 +250,19 @@ const AddForm = (props) => {
               type="number"
               placeholder="Reps"
               {...register("reps", {
+                required: true,
                 valueAsNumber: true,
+                min: 0,
+                max: 1000,
               })}
             />
           </Grid>
         </Grid>
+        {/* Error messages for weight field. */}
+        {errors.weight?.type === "min" && <p>Weight can't be negative.</p>}
+        {errors.weight?.type === "max" && (
+          <p>Weight can't be more then 1000.</p>
+        )}
         <Grid container spacing={0}>
           <Grid item xs={5}>
             <label className="form-label"> Weight (lbs) :</label>
@@ -250,16 +273,14 @@ const AddForm = (props) => {
               placeholder="Weight"
               {...register("weight", {
                 valueAsNumber: true,
+                min: 0,
+                max: 1000,
               })}
             />
           </Grid>
         </Grid>
         {/* Checkboxes  */}
-        {/* <Grid container spacing={0}>
-          <Grid item xs={4}> */}
         <label className="form-label">Recurring :</label>
-        {/* </Grid>
-          <Grid item xs={8}> */}
         <div className="form-checkboxes">
           <label> Mo </label>
           {/* control your input into the hook by invoking the "field" function */}
@@ -305,8 +326,6 @@ const AddForm = (props) => {
             render={({ field }) => <Checkbox {...field} />}
           />
         </div>
-        {/* </Grid>
-        </Grid> */}
         <input className="add-input" type="submit" />
       </form>
     </main>
