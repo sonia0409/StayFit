@@ -68,7 +68,7 @@ const hardcodedQuotes = [
 
 export default function Dashboard() {
   const [quotes, setQuotes] = useState(hardcodedQuotes);
-  let displayQuoteNum = 0;
+  let displayQuoteNum = 8;
   const formatedDate = () => {
     const today = new Date();
     const splitDate = today.toDateString().split(' ');
@@ -84,7 +84,7 @@ export default function Dashboard() {
       params: {page: `${randomPage}`},
       headers: {
         'x-rapidapi-host': 'bodybuilding-quotes1.p.rapidapi.com',
-        'x-rapidapi-key': '490c8aff1dmsh968e221e781c0b2p1313fejsnb290062d41c4'
+        'x-rapidapi-key': `${process.env.API_KEY_QUOTES}`
       }
     };
 

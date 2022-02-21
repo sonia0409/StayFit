@@ -1,14 +1,23 @@
-//function to filter the exercises based on the BodyPart and the partName
-export const getExerciseByBodyPartName = (exercises, bodyPartName) => {
-  //exercises is an array of objects
+//function to filter the muscle group based on a selected body part
+export const getMusclesByBodyPartName = (exercises, bodyPartName) => {
   if (!bodyPartName) {
     return [];
   }
-  const exercisesByBodyPart = exercises.filter(
-    (exercise) => exercise.bodyPart === bodyPartName.toLowerCase()
-  );
-  //return filtered array of objects
-  return exercisesByBodyPart;
+
+  const filteredList = exercises.filter(exerciseObj => {
+    return exerciseObj.bodyPart.toLowerCase() === bodyPartName.toLowerCase()
+  })
+
+  const listOfBodyParts = filteredList.map(obj => obj.target)
+  const uniqueParts = [...new Set(listOfBodyParts)]
+
+  return uniqueParts.map(part => 
+    {
+      return {
+        value: part.toLowerCase(), 
+        label: (part.charAt(0).toUpperCase() + part.slice(1))
+      }
+    })
 };
 
 //function to filter the exercise based on the Muscels and the muscelName
