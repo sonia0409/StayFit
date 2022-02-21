@@ -22,7 +22,7 @@ export default function ItemList(props) {
     <div className='itemList'>
       <div className='heading-container'>
         <span>
-          <BackButton />
+          {header !== "List of Exercises" && <BackButton />}
         </span>
         <h2>
           {header}

@@ -1,0 +1,92 @@
+@import "./variables.scss";
+
+.db-card {
+  padding-top: 1rem;
+  // INSIDE CARD, INFO ABOUT EXERCISE
+  .db-container {
+    background: $header;
+    color: $font-color;
+
+    border-radius: 1rem;
+    border: solid 1px $font-color;
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+
+
+    .db-exercise-name {
+      display: flex;
+      align-items: center;
+      width: 50%;
+      letter-spacing: 0.25rem;
+      font-weight: 400;
+      font-size: medium;
+    }
+
+    .db-exercise-info {
+      display: flex;
+      width: 30%;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding-bottom: 1rem;
+    }
+  }
+}
+
+// CHECKBOX is complited
+button {
+  width: 3rem;
+  height: 3rem;
+  border-style: solid;
+  border-radius: 100%;
+  background: $header;
+  border: 1px solid $font-color;
+  cursor: pointer;
+  color: $font-color;
+}
+
+#demo:checked + label {
+  #btnbtn {
+    background: $font-color;
+    color: $header;
+  }
+}
+//hide checkbox behind round button
+#demo {
+  display: none;
+}
+
+// EMPTY DAY
+.empty-card {
+  --background: #5d9cec;
+  // color: #ffc600;
+  // --text: white;
+  width: 100%;
+  max-width: 87.5%;
+  height: 5vh;
+  margin: 10px;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 5%;
+
+  border-radius: 1rem;
+  border-style: solid;
+  border-color: var(--background);
+  background: var(--text);
+  color: var(--background);
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+}
+
+.exercise-not-completed-button{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mark-completed-text {
+  font-size: x-small;
+}

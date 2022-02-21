@@ -1,25 +1,18 @@
 import { React, useState, useEffect, useContext } from "react";
-import DayWorkoutListItem from "./Day_workout_list_item";
 import EmptyDayExercises from "./EmptyDayExercises";
-import "../styles/Day_workout_list.scss";
 import axios from "axios";
-import Fab from "@mui/material/Fab";
-import AddIcon from "@material-ui/icons/Add";
 import { authContext } from '../providers/AuthProvider';
 import CircularIndeterminate from "../global-components/Loading";
+import DashboardExerciseListItem from "./Dashboard_exercise_item";
+import "../styles/Dashboard_exercise_list.scss";
 
-export default function DayWorkoutList(props) {
+export default function DashboardExerciseList(props) {
   const { user } = useContext(authContext);
   const selectedDate = props.selectedDate.toDateString();
-  const { setEditObj } = props;
 
   const [dayExercises, setDayExercises] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [exerciseDeleted, setExerciseDeleted] = useState(false);
 
-  const toggleDeleted = () => {
-    setExerciseDeleted(!exerciseDeleted);
-  };
 
   useEffect(() => {
     const updateData = async () => {
@@ -34,7 +27,7 @@ export default function DayWorkoutList(props) {
         });
     };
     updateData();
-  }, [selectedDate, exerciseDeleted, user]);
+  }, [selectedDate, user]);
 
   const persistIsCompleted = async (dayExerciseId) => {
     // Update is_completed status in database
@@ -52,31 +45,16 @@ export default function DayWorkoutList(props) {
     return;
   };
 
-  const isPast = (someDate) => 
-  someDate.setHours(0, 0, 0, 0) < new Date().setHours(0, 0, 0, 0);
-
   const exerciseItems = dayExercises.map((exercise) => (
-    <DayWorkoutListItem
+    <DashboardExerciseListItem
       key={exercise.id}
       workoutObj={exercise}
       onChange={() => persistIsCompleted(exercise.day_exercise_id)}
-      onEditClick={() => setEditObj(exercise)}
-      toggleDeleted={toggleDeleted}
     />
   ));
 
   return (
-    <div className="exercises-container">
-      { !isPast(props.selectedDate) &&
-        <Fab
-          style={{ background: "#ffc600" }}
-          aria-label="add"
-          className="add-new-exercise"
-          onClick={props.onClick(true)}
-        >
-          <AddIcon />
-        </Fab>
-      }
+    <div className="dashboard-exercises-container">
       {exerciseItems.length > 0 && !loading && exerciseItems}
       {exerciseItems.length === 0 && !loading && <EmptyDayExercises />}
       {loading && 

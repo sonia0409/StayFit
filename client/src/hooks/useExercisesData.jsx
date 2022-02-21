@@ -5,24 +5,23 @@ import axios from "axios";
 function useExercisesData() {
     const [exercises, setExercises] = useState([])
     const API_KEY = process.env.REACT_APP_API_KEY
-    
+    const options = {
+        method: 'GET',
+        url: 'https://exercisedb.p.rapidapi.com/exercises',
+        headers: {
+            'x-rapidapi-host': 'exercisedb.p.rapidapi.com',
+            'x-rapidapi-key': `${API_KEY}`
+        }
+    };
+
     useEffect(() => {
-        const options = {
-            method: 'GET',
-            url: 'https://exercisedb.p.rapidapi.com/exercises',
-            headers: {
-                'x-rapidapi-host': 'exercisedb.p.rapidapi.com',
-                'x-rapidapi-key': `${API_KEY}`
-            }
-        };
-
-        axios.request(options).then(function (response) {
-            console.log(response.data);
-            setExercises(response.data)
-        }).catch(function (error) {
-            console.error(error);
-        });
-
+        axios
+            .request(options)
+            .then((res) => {
+                setExercises([...res.data])
+            }).catch((error) => {
+                console.error(error);
+            });
     }, [])
 
     return { exercises };

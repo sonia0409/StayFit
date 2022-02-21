@@ -31,7 +31,7 @@ export default function MenuAppBar() {
 //material ui took inline styling only- figure out the ways to implement differently
   return (
     <Box  sx={{ flexGrow: 1 }}>
-      <AppBar style={{ background: '#2E3B55' }} position="static">
+      <AppBar style={{ background: '#2c2e43' }} position="static">
         <Toolbar>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton

@@ -5,7 +5,7 @@ export default function EmptyDayExercises() {
   return (
     <div className="empty-card">
       <div>
-        <p>No exercises planned for today</p>
+        <div>No exercises planned for today</div>
       </div>
     </div>
   );

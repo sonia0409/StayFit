@@ -126,8 +126,9 @@ button {
 
 // EMPTY DAY
 .empty-card {
-  --background: #5d9cec;
-  --text: white;
+  --background: #5d9cec; 
+ // color: #ffc600;
+  // --text: white;
   width: 100%;
   max-width: 87.5%;
   height: 5vh;
@@ -144,4 +145,15 @@ button {
 
   display: flex;
   justify-content: center;
+  align-items: flex-end;
+
+}
+
+.exercise-not-completed-button{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mark-completed-text {
+  font-size: x-small;
 }
