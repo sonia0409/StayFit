@@ -64,35 +64,30 @@ const AddForm = (props) => {
   const { user } = useContext(authContext);
   const { date, onSubmit, onClose } = props;
 
-  // type FormValues = {
-  //   exerciseName: string,
-  //   duration: number,
-  //   sets: number,
-  //   reps: number,
-  //   weight: number,
-  // };
   const {
     control,
     watch,
     register, //cb ,register individual inputs into the hook
     handleSubmit,
     formState: { errors },
-  } = useForm(
-    //  < FormValues >
-    {
-      defaultValues: {
-        bodyPart: "",
-        muscleGroup: "",
-        Mo: false,
-        Tu: false,
-        We: false,
-        Th: false,
-        Fr: false,
-        Sa: false,
-        Su: false,
-      },
-    }
-  );
+  } = useForm({
+    defaultValues: {
+      bodyPart: "",
+      muscleGroup: "",
+      // exerciseName: 0,
+      // duration: 0,
+      // sets: 0,
+      // reps: 0,
+      // weight: 0,
+      Mo: false,
+      Tu: false,
+      We: false,
+      Th: false,
+      Fr: false,
+      Sa: false,
+      Su: false,
+    },
+  });
 
   const selectedPart = watch("bodyPart").value;
   const updatedMuscles = getMusclesByBodyPartName(exercises, selectedPart);
@@ -183,8 +178,19 @@ const AddForm = (props) => {
           </Grid>
           <Grid item xs={7}>
             <input
-              {...register("exerciseName", { required: true })}
-              placeholder="Exercise Name"
+              placeholder="Exercise Name / max 25 char"
+              {...register(
+                "exerciseName",
+                {
+                  required: true,
+                },
+                {
+                  max: {
+                    value: 25,
+                    message: "error message", // JS only: <p>error message</p> TS only support string
+                  },
+                }
+              )}
             />
           </Grid>
         </Grid>
@@ -193,7 +199,13 @@ const AddForm = (props) => {
             <label className="form-label"> Duration (min) : </label>
           </Grid>
           <Grid item xs={7}>
-            <input {...register("duration")} placeholder="Duration / min" />
+            <input
+              type="number"
+              placeholder="Duration / min"
+              {...register("duration", {
+                valueAsNumber: true,
+              })}
+            />
           </Grid>
         </Grid>
         <Grid container spacing={0}>
@@ -201,7 +213,13 @@ const AddForm = (props) => {
             <label className="form-label"> Sets :</label>
           </Grid>
           <Grid item xs={7}>
-            <input {...register("sets")} placeholder="Sets" />
+            <input
+              type="number"
+              placeholder="Sets"
+              {...register("sets", {
+                valueAsNumber: true,
+              })}
+            />
           </Grid>
         </Grid>
         <Grid container spacing={0}>
@@ -209,7 +227,13 @@ const AddForm = (props) => {
             <label className="form-label"> Reps :</label>
           </Grid>
           <Grid item xs={7}>
-            <input {...register("reps")} placeholder="Reps" />
+            <input
+              type="number"
+              placeholder="Reps"
+              {...register("reps", {
+                valueAsNumber: true,
+              })}
+            />
           </Grid>
         </Grid>
         <Grid container spacing={0}>
@@ -217,7 +241,13 @@ const AddForm = (props) => {
             <label className="form-label"> Weight (lbs) :</label>
           </Grid>
           <Grid item xs={7}>
-            <input {...register("weight")} placeholder="Weight" />
+            <input
+              type="number"
+              placeholder="Weight"
+              {...register("weight", {
+                valueAsNumber: true,
+              })}
+            />
           </Grid>
         </Grid>
 
