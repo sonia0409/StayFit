@@ -201,7 +201,7 @@ const AddForm = (props) => {
         )}
         <Grid container spacing={0}>
           <Grid item xs={5}>
-            <label className="form-label"> Duration (min) : * </label>
+            <label className="form-label"> Duration (min) : </label>
           </Grid>
           <Grid item xs={7}>
             <input
@@ -222,7 +222,7 @@ const AddForm = (props) => {
         {errors.sets?.type === "max" && <p>Sets can't be more then 1000.</p>}
         <Grid container spacing={0}>
           <Grid item xs={5}>
-            <label className="form-label"> Sets : *</label>
+            <label className="form-label"> Sets :</label>
           </Grid>
           <Grid item xs={7}>
             <input
@@ -243,7 +243,7 @@ const AddForm = (props) => {
         {errors.reps?.type === "max" && <p>Reps can't be more then 1000.</p>}
         <Grid container spacing={0}>
           <Grid item xs={5}>
-            <label className="form-label"> Reps : *</label>
+            <label className="form-label"> Reps :</label>
           </Grid>
           <Grid item xs={7}>
             <input
@@ -280,11 +280,7 @@ const AddForm = (props) => {
           </Grid>
         </Grid>
         {/* Checkboxes  */}
-        {/* <Grid container spacing={0}>
-          <Grid item xs={4}> */}
         <label className="form-label">Recurring :</label>
-        {/* </Grid>
-          <Grid item xs={8}> */}
         <div className="form-checkboxes">
           <label> Mo </label>
           {/* control your input into the hook by invoking the "field" function */}
@@ -330,8 +326,6 @@ const AddForm = (props) => {
             render={({ field }) => <Checkbox {...field} />}
           />
         </div>
-        {/* </Grid>
-        </Grid> */}
         <input className="add-input" type="submit" />
       </form>
     </main>
