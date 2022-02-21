@@ -11,7 +11,6 @@ import axios from "axios";
 import DeletePopup from "./popup/DeletePopup";
 import "./popup/popup.scss";
 
-
 export default function DayWorkoutListItem(props) {
   const { workoutObj, onChange, onEditClick, toggleDeleted } = props;
 

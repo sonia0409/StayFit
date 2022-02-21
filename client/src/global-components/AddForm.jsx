@@ -2,11 +2,11 @@ import { React, useContext } from "react";
 import { useForm, Controller } from "react-hook-form";
 import ReactSelect from "react-select";
 import { Checkbox } from "@mui/material";
-import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import CancelIcon from "@mui/icons-material/Cancel";
 import Grid from "@mui/material/Grid";
 import axios from "axios";
 import "../styles/AddForm.scss";
-import { authContext } from '../providers/AuthProvider';
+import { authContext } from "../providers/AuthProvider";
 import { getMusclesByBodyPartName } from "../helpers/selectors";
 
 const exercises = [
@@ -58,7 +58,7 @@ const exercises = [
     name: "archer pull up",
     target: "lats",
   },
-]
+];
 
 const AddForm = (props) => {
   const { user } = useContext(authContext);
@@ -85,11 +85,12 @@ const AddForm = (props) => {
   });
 
   const selectedPart = watch("bodyPart").value;
-  const updatedMuscles = (getMusclesByBodyPartName(exercises, selectedPart));
+  const updatedMuscles = getMusclesByBodyPartName(exercises, selectedPart);
 
   return (
     <main>
       <form
+        className="add-form"
         onSubmit={handleSubmit(async (data) => {
           console.log("Data from form =====> ", data);
           // Use axios post to add exercise to database.
@@ -103,24 +104,21 @@ const AddForm = (props) => {
           onSubmit();
         })}
       >
-        <div className="close-cross">
-          <HighlightOffIcon fontSize="large" onClick={onClose} />
-          <h5>Close</h5>
+        <div className="add-close-cross">
+          <CancelIcon fontSize="large" onClick={onClose} />
         </div>
 
-        <div className="form-name">
+        <div className="add-form-name">
           <h2>Add Workout</h2>
-          <hr />
-          <h4>{date}</h4>
         </div>
 
         {/* Dropdown */}
         <div className="form-dropdown">
           <Grid container spacing={0}>
-            <Grid item xs={3}>
+            <Grid item xs={5}>
               <label className="form-label">Body Part :</label>
             </Grid>
-            <Grid item xs={9}>
+            <Grid item xs={7}>
               <Controller
                 name="bodyPart"
                 control={control}
@@ -149,10 +147,10 @@ const AddForm = (props) => {
         </div>
         <div className="form-dropdown">
           <Grid container spacing={0}>
-            <Grid item xs={3}>
+            <Grid item xs={5}>
               <label className="form-label">Muscle Group :</label>
             </Grid>
-            <Grid item xs={9}>
+            <Grid item xs={7}>
               <Controller
                 name="muscleGroup"
                 control={control}
@@ -160,7 +158,7 @@ const AddForm = (props) => {
                   <ReactSelect
                     isClearable
                     {...field}
-                    options={ updatedMuscles }
+                    options={updatedMuscles}
                   />
                 )}
               />
@@ -170,10 +168,10 @@ const AddForm = (props) => {
         {/* Inputs field */}
         {errors.exerciseName && <p>Exercise Name is required field</p>}
         <Grid container spacing={0}>
-          <Grid item xs={3}>
+          <Grid item xs={5}>
             <label className="form-label"> Name :</label>
           </Grid>
-          <Grid item xs={9}>
+          <Grid item xs={7}>
             <input
               {...register("exerciseName", { required: true })}
               placeholder="Exercise Name"
@@ -181,92 +179,92 @@ const AddForm = (props) => {
           </Grid>
         </Grid>
         <Grid container spacing={0}>
-          <Grid item xs={3}>
+          <Grid item xs={5}>
             <label className="form-label"> Duration (min) : </label>
           </Grid>
-          <Grid item xs={9}>
+          <Grid item xs={7}>
             <input {...register("duration")} placeholder="Duration / min" />
           </Grid>
         </Grid>
         <Grid container spacing={0}>
-          <Grid item xs={3}>
+          <Grid item xs={5}>
             <label className="form-label"> Sets :</label>
           </Grid>
-          <Grid item xs={9}>
+          <Grid item xs={7}>
             <input {...register("sets")} placeholder="Sets" />
           </Grid>
         </Grid>
         <Grid container spacing={0}>
-          <Grid item xs={3}>
+          <Grid item xs={5}>
             <label className="form-label"> Reps :</label>
           </Grid>
-          <Grid item xs={9}>
+          <Grid item xs={7}>
             <input {...register("reps")} placeholder="Reps" />
           </Grid>
         </Grid>
         <Grid container spacing={0}>
-          <Grid item xs={3}>
+          <Grid item xs={5}>
             <label className="form-label"> Weight (lbs) :</label>
           </Grid>
-          <Grid item xs={9}>
+          <Grid item xs={7}>
             <input {...register("weight")} placeholder="Weight" />
           </Grid>
         </Grid>
 
         {/* Checkboxes  */}
-        <Grid container spacing={0}>
-          <Grid item xs={3}>
-            <label className="form-label">Recurring :</label>
-          </Grid>
-          <Grid item xs={9}>
-            <div className="form-checkboxes">
-              <label> Mo </label>
-              {/* control your input into the hook by invoking the "field" function */}
-              <Controller
-                name="Mo"
-                control={control}
-                render={({ field }) => <Checkbox {...field} />}
-              />
-              <label> Tu </label>
-              <Controller
-                name="Tu"
-                control={control}
-                render={({ field }) => <Checkbox {...field} />}
-              />
-              <label> We </label>
-              <Controller
-                name="We"
-                control={control}
-                render={({ field }) => <Checkbox {...field} />}
-              />
-              <label> Th </label>
-              <Controller
-                name="Th"
-                control={control}
-                render={({ field }) => <Checkbox {...field} />}
-              />
-              <label> Fr </label>
-              <Controller
-                name="Fr"
-                control={control}
-                render={({ field }) => <Checkbox {...field} />}
-              />
-              <label> Sa </label>
-              <Controller
-                name="Sa"
-                control={control}
-                render={({ field }) => <Checkbox {...field} />}
-              />
-              <label> Su </label>
-              <Controller
-                name="Su"
-                control={control}
-                render={({ field }) => <Checkbox {...field} />}
-              />
-            </div>
-          </Grid>
-        </Grid>
-        <input type="submit" />
+        {/* <Grid container spacing={0}>
+          <Grid item xs={4}> */}
+        <label className="form-label">Recurring :</label>
+        {/* </Grid>
+          <Grid item xs={8}> */}
+        <div className="form-checkboxes">
+          <label> Mo </label>
+          {/* control your input into the hook by invoking the "field" function */}
+          <Controller
+            name="Mo"
+            control={control}
+            render={({ field }) => <Checkbox {...field} />}
+          />
+          <label> Tu </label>
+          <Controller
+            name="Tu"
+            control={control}
+            render={({ field }) => <Checkbox {...field} />}
+          />
+          <label> We </label>
+          <Controller
+            name="We"
+            control={control}
+            render={({ field }) => <Checkbox {...field} />}
+          />
+          <label> Th </label>
+          <Controller
+            name="Th"
+            control={control}
+            render={({ field }) => <Checkbox {...field} />}
+          />
+          <label> Fr </label>
+          <Controller
+            name="Fr"
+            control={control}
+            render={({ field }) => <Checkbox {...field} />}
+          />
+          <label> Sa </label>
+          <Controller
+            name="Sa"
+            control={control}
+            render={({ field }) => <Checkbox {...field} />}
+          />
+          <label> Su </label>
+          <Controller
+            name="Su"
+            control={control}
+            render={({ field }) => <Checkbox {...field} />}
+          />
+        </div>
+        {/* </Grid>
+        </Grid> */}
+        <input className="add-input" type="submit" />
       </form>
     </main>
   );
