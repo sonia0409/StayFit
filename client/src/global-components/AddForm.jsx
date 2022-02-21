@@ -7,6 +7,58 @@ import Grid from "@mui/material/Grid";
 import axios from "axios";
 import "../styles/AddForm.scss";
 import { authContext } from '../providers/AuthProvider';
+import { getMusclesByBodyPartName } from "../helpers/selectors";
+
+const exercises = [
+  {
+    bodyPart: "waist",
+    equipment: "body weight",
+    gifUrl: "http://d205bpvrqc9yn1.cloudfront.net/0001.gif",
+    id: "0001",
+    name: "3/4 sit-up",
+    target: "abs",
+  },
+  {
+    bodyPart: "waist",
+    equipment: "body weight",
+    gifUrl: "http://d205bpvrqc9yn1.cloudfront.net/0002.gif",
+    id: "0002",
+    name: "45° side bend",
+    target: "abs",
+  },
+  {
+    bodyPart: "waist",
+    equipment: "body weight",
+    gifUrl: "http://d205bpvrqc9yn1.cloudfront.net/1512.gif",
+    id: "1512",
+    name: "all fours squad stretch",
+    target: "quads",
+  },
+  {
+    bodyPart: "waist",
+    equipment: "cable",
+    gifUrl: "http://d205bpvrqc9yn1.cloudfront.net/0007.gif",
+    id: "0007",
+    name: "alternate lateral pulldown",
+    target: "lats",
+  },
+  {
+    bodyPart: "lower legs",
+    equipment: "body weight",
+    gifUrl: "http://d205bpvrqc9yn1.cloudfront.net/1368.gif",
+    id: "1368",
+    name: "ankle circles",
+    target: "calves",
+  },
+  {
+    bodyPart: "waist",
+    equipment: "body weight",
+    gifUrl: "http://d205bpvrqc9yn1.cloudfront.net/3293.gif",
+    id: "3293",
+    name: "archer pull up",
+    target: "lats",
+  },
+]
 
 const AddForm = (props) => {
   const { user } = useContext(authContext);
@@ -14,6 +66,7 @@ const AddForm = (props) => {
 
   const {
     control,
+    watch,
     register, //cb ,register individual inputs into the hook
     handleSubmit,
     formState: { errors },
@@ -30,6 +83,9 @@ const AddForm = (props) => {
       Su: false,
     },
   });
+
+  const selectedPart = watch("bodyPart").value;
+  const updatedMuscles = (getMusclesByBodyPartName(exercises, selectedPart));
 
   return (
     <main>
@@ -104,33 +160,7 @@ const AddForm = (props) => {
                   <ReactSelect
                     isClearable
                     {...field}
-                    options={[
-                      { value: "abductors", label: "Abductors" },
-                      { value: "abs", label: "Abs" },
-                      { value: "biceps", label: "Biceps" },
-                      { value: "calves", label: "Calves" },
-                      {
-                        value: "cardiovascular system",
-                        label: "Cardiovascular System",
-                      },
-                      { value: "delts", label: "Delts" },
-                      { value: "forearms", label: "Forearms" },
-                      { value: "glutes", label: "Glutes" },
-                      { value: "hamstrings", label: "Hamstrings" },
-                      { value: "lats", label: "Lats" },
-                      { value: "levator scapulae", label: "Levator Scapulae" },
-                      { value: "pectorals", label: "Pectorals" },
-                      { value: "quads", label: "Quads" },
-                      {
-                        value: "serratus anterior",
-                        label: "Serratus Anterior",
-                      },
-                      { value: "spine", label: "Spine" },
-                      { value: "traps", label: "Traps" },
-                      { value: "triceps", label: "Triceps" },
-                      { value: "upper back", label: "Upper back" },
-                      { value: "other", label: "other" },
-                    ]}
+                    options={ updatedMuscles }
                   />
                 )}
               />
