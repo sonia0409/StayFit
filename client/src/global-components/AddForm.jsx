@@ -74,7 +74,7 @@ const AddForm = (props) => {
     defaultValues: {
       bodyPart: "",
       muscleGroup: "",
-      // exerciseName: 0,
+      exerciseName: "",
       // duration: 0,
       // sets: 0,
       // reps: 0,
@@ -112,11 +112,9 @@ const AddForm = (props) => {
         <div className="add-close-cross">
           <CancelIcon fontSize="large" onClick={onClose} />
         </div>
-
         <div className="add-form-name">
           <h2>Add Workout</h2>
         </div>
-
         {/* Dropdown */}
         <div className="form-dropdown">
           <Grid container spacing={0}>
@@ -170,27 +168,33 @@ const AddForm = (props) => {
             </Grid>
           </Grid>
         </div>
+
         {/* Inputs field */}
-        {errors.exerciseName && <p>Exercise Name is required field</p>}
+        {/* Error messages for input field validation */}
+        {errors.exerciseName?.type === "required" && (
+          <p> "First name is required"</p>
+        )}
+        {errors.exerciseName?.type === "maxLength" && (
+          <p>Max length is 25 characters.</p>
+        )}
+
         <Grid container spacing={0}>
           <Grid item xs={5}>
-            <label className="form-label"> Name :</label>
+            <label className="form-label"> Name : ( Required )</label>
           </Grid>
           <Grid item xs={7}>
             <input
               placeholder="Exercise Name / max 25 char"
-              {...register(
-                "exerciseName",
-                {
-                  required: true,
+              {...register("exerciseName", {
+                required: {
+                  value: true,
+                  message: "required",
                 },
-                {
-                  max: {
-                    value: 25,
-                    message: "error message", // JS only: <p>error message</p> TS only support string
-                  },
-                }
-              )}
+                maxLength: {
+                  value: 25,
+                  message: "maxLength",
+                },
+              })}
             />
           </Grid>
         </Grid>
@@ -201,7 +205,7 @@ const AddForm = (props) => {
           <Grid item xs={7}>
             <input
               type="number"
-              placeholder="Duration / min"
+              placeholder="Duration"
               {...register("duration", {
                 valueAsNumber: true,
               })}
@@ -250,7 +254,6 @@ const AddForm = (props) => {
             />
           </Grid>
         </Grid>
-
         {/* Checkboxes  */}
         {/* <Grid container spacing={0}>
           <Grid item xs={4}> */}
