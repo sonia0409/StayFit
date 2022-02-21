@@ -1,20 +1,12 @@
-/* body {
-  background: #d1d1d1;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-}
-*/
-/* h2,
-h4 {
-  font-weight: 300;
-  text-align: center;
-  letter-spacing: 1rem;
+@import "../styles/variables.scss";
+
+h2 {
+  width: 100%;
 }
 
-h5 {
-  margin-top: 0px;
-} */
+// h5 {
+//   margin-top: 0px;
+// }
 
 p {
   color: #bf1650;
@@ -25,33 +17,32 @@ p::before {
   content: "⚠ ";
 }
 
-.close-cross {
-  color: #1976d2;
+.add-close-cross {
+  color: $font-color;
   text-align: center;
-  margin-top: 0px;
+  margin-bottom: 0.5rem;
 }
 
-form {
-  background: #2c2e43;
+.add-form {
+  background: $header;
   max-width: 500px;
-  margin: 2rem auto 5rem auto;
-  padding: 1.5rem;
+  margin: 0 auto;
+  padding: 0 1.5rem 1.5rem 1.5rem;
   border-radius: 4px;
 }
 
-.form-name {
-  background: #ffc600;
-  text-transform: uppercase;
+.add-form-name {
+  background: $font-color;
+  // text-transform: uppercase;
   padding: 1rem 0;
-  margin-bottom: 1rem;
-  text-align: center;
+  width: 100%;
   border-radius: 4px;
 }
 
 .form-label {
   line-height: 2;
   text-align: left;
-  color: #ffc600;
+  color: $font-color;
   margin: 2rem 0;
 }
 
@@ -70,7 +61,7 @@ form {
 }
 
 .form-checkboxes label {
-  color: #1976d2;
+  color: $header;
   font-weight: bold;
 }
 
@@ -81,22 +72,23 @@ input {
   border-radius: 4px;
   border: 1px solid white;
   padding: 1rem 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   font-size: 14px;
 }
 
-input[type="submit"] {
-  background: #ffc600;
-  color: black;
+.add-input[type="submit"] {
+  background: $header;
+  color: $font-color;
   text-transform: uppercase;
   padding: 2rem;
   font-size: 16px;
   font-weight: 100;
-  letter-spacing: 10px;
+  letter-spacing: 1rem;
   text-align: center;
+  border: 1px solid $font-color;
 }
 
-input[type="submit"]:hover {
-  background: #93ffd8;
+.add-input[type="submit"]:hover {
+  background: $font-color;
   color: black;
 }
