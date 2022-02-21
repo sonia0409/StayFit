@@ -93,17 +93,17 @@ function App() {
             <Routes>
               {/* <Route path="/" element={<Dashboard/>} /> */}
               {/* rn - not working */}
-              <Route path="/" element={
+              <Route exact path="/" element={
                 <Dashboard />
               } />
-              <Route path="/calender" element={
+              <Route exact path="/calender" element={
                 <Calender />
               } />
               {/* change path to /calender; once get Dashboard working */}
-              <Route path="/exerciseCategory" element={<Application />} />
-              <Route path="/exercises/:part" element={<Exercises />} />
+              <Route exact path="/exerciseCategory" element={<Application />} />
+              <Route exact path="/exercises/:part" element={<Exercises />} />
               <Route
-                path="/exercises/:part/exercise/:name"
+               exact path="/exercises/:part/exercise/:name"
                 element={<Exercise exercises={exercises} />}
               />
             </Routes>
