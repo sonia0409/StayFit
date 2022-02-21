@@ -40,16 +40,23 @@ export default function DayWorkoutList(props) {
     // Update is_completed status in database
     await axios.patch(
       `http://localhost:8080/day-exercises/${dayExerciseId}`,
-      {}
-    );
+      {})
+      .then(() => {
+        setDayExercises(prev => {
+          return prev.map(item => {
+            if(item.day_exercise_id === dayExerciseId) {
+              item.is_completed = !item.is_completed
+            }
+            return item;
+          })
+        })
 
-    // Get day_exercises and update state
-    await axios
-      .get(`http://localhost:8080/day-exercises/${user.id}/${selectedDate}`)
-      .then((response) => {
-        setDayExercises([...response.data]);
-      });
-    return;
+        let sortedExercises = dayExercises.sort((x, y) => {
+          console.log(x)
+          return (x.is_completed === y.is_completed)? 0 : x.is_completed? 1 : -1;
+        })
+        setDayExercises(sortedExercises)
+      })
   };
 
   const isPast = (someDate) => 

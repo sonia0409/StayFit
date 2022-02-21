@@ -22,8 +22,8 @@ export default function Dashboard() {
       <section className="container-quote">
         <div className="quote-data" >{quotes[displayQuoteNum].quote}</div>
         <div className="quote-author" >
-          Author:
-          <div>{quotes[displayQuoteNum].author}</div>
+          {/* Author: */}
+          <div>- {quotes[displayQuoteNum].author}</div>
         </div>
       </section>
 
