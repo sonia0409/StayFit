@@ -64,34 +64,35 @@ const AddForm = (props) => {
   const { user } = useContext(authContext);
   const { date, onSubmit, onClose } = props;
 
-  type FormValues = {
-    exerciseName: string,
-    duration: number,
-    sets: number,
-    reps: number,
-    weight: number,
-  };
+  // type FormValues = {
+  //   exerciseName: string,
+  //   duration: number,
+  //   sets: number,
+  //   reps: number,
+  //   weight: number,
+  // };
   const {
     control,
     watch,
     register, //cb ,register individual inputs into the hook
     handleSubmit,
     formState: { errors },
-  } = useForm <
-  FormValues >
-  {
-    defaultValues: {
-      bodyPart: "",
-      muscleGroup: "",
-      Mo: false,
-      Tu: false,
-      We: false,
-      Th: false,
-      Fr: false,
-      Sa: false,
-      Su: false,
-    },
-  };
+  } = useForm(
+    //  < FormValues >
+    {
+      defaultValues: {
+        bodyPart: "",
+        muscleGroup: "",
+        Mo: false,
+        Tu: false,
+        We: false,
+        Th: false,
+        Fr: false,
+        Sa: false,
+        Su: false,
+      },
+    }
+  );
 
   const selectedPart = watch("bodyPart").value;
   const updatedMuscles = getMusclesByBodyPartName(exercises, selectedPart);
