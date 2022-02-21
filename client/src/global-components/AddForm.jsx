@@ -65,15 +65,20 @@ const AddForm = (props) => {
   const { date, onSubmit, onClose } = props;
 
   const {
-    control,
-    watch,
+    watch, // follow up for changes in the input field
     register, //cb ,register individual inputs into the hook
     handleSubmit,
+    control, //same as register but for fields other than input
     formState: { errors },
   } = useForm({
     defaultValues: {
       bodyPart: "",
       muscleGroup: "",
+      exerciseName: "",
+      duration: 0,
+      sets: 0,
+      reps: 0,
+      weight: 0,
       Mo: false,
       Tu: false,
       We: false,
@@ -107,11 +112,9 @@ const AddForm = (props) => {
         <div className="add-close-cross">
           <CancelIcon fontSize="large" onClick={onClose} />
         </div>
-
         <div className="add-form-name">
-          <h2>Add Workout</h2>
+          <h2>Add Exercise</h2>
         </div>
-
         {/* Dropdown */}
         <div className="form-dropdown">
           <Grid container spacing={0}>
@@ -124,7 +127,7 @@ const AddForm = (props) => {
                 control={control}
                 render={({ field }) => (
                   <ReactSelect
-                    isClearable
+                    // isClearable
                     {...field}
                     options={[
                       { value: "chest", label: "Chest" },
@@ -156,7 +159,7 @@ const AddForm = (props) => {
                 control={control}
                 render={({ field }) => (
                   <ReactSelect
-                    isClearable
+                    // isClearable
                     {...field}
                     options={updatedMuscles}
                   />
@@ -165,16 +168,33 @@ const AddForm = (props) => {
             </Grid>
           </Grid>
         </div>
+
         {/* Inputs field */}
-        {errors.exerciseName && <p>Exercise Name is required field</p>}
+        {/* Error messages for input field validation */}
+        {errors.exerciseName?.type === "required" && (
+          <p> "First name is required"</p>
+        )}
+        {errors.exerciseName?.type === "maxLength" && (
+          <p>Max length is 25 characters.</p>
+        )}
+
         <Grid container spacing={0}>
           <Grid item xs={5}>
-            <label className="form-label"> Name :</label>
+            <label className="form-label"> Name : * Required </label>
           </Grid>
           <Grid item xs={7}>
             <input
-              {...register("exerciseName", { required: true })}
-              placeholder="Exercise Name"
+              placeholder="Exercise Name / max 25 char"
+              {...register("exerciseName", {
+                required: {
+                  value: true,
+                  message: "required",
+                },
+                maxLength: {
+                  value: 25,
+                  message: "maxLength",
+                },
+              })}
             />
           </Grid>
         </Grid>
@@ -183,7 +203,13 @@ const AddForm = (props) => {
             <label className="form-label"> Duration (min) : </label>
           </Grid>
           <Grid item xs={7}>
-            <input {...register("duration")} placeholder="Duration / min" />
+            <input
+              type="number"
+              placeholder="Duration"
+              {...register("duration", {
+                valueAsNumber: true,
+              })}
+            />
           </Grid>
         </Grid>
         <Grid container spacing={0}>
@@ -191,7 +217,13 @@ const AddForm = (props) => {
             <label className="form-label"> Sets :</label>
           </Grid>
           <Grid item xs={7}>
-            <input {...register("sets")} placeholder="Sets" />
+            <input
+              type="number"
+              placeholder="Sets"
+              {...register("sets", {
+                valueAsNumber: true,
+              })}
+            />
           </Grid>
         </Grid>
         <Grid container spacing={0}>
@@ -199,7 +231,13 @@ const AddForm = (props) => {
             <label className="form-label"> Reps :</label>
           </Grid>
           <Grid item xs={7}>
-            <input {...register("reps")} placeholder="Reps" />
+            <input
+              type="number"
+              placeholder="Reps"
+              {...register("reps", {
+                valueAsNumber: true,
+              })}
+            />
           </Grid>
         </Grid>
         <Grid container spacing={0}>
@@ -207,10 +245,15 @@ const AddForm = (props) => {
             <label className="form-label"> Weight (lbs) :</label>
           </Grid>
           <Grid item xs={7}>
-            <input {...register("weight")} placeholder="Weight" />
+            <input
+              type="number"
+              placeholder="Weight"
+              {...register("weight", {
+                valueAsNumber: true,
+              })}
+            />
           </Grid>
         </Grid>
-
         {/* Checkboxes  */}
         {/* <Grid container spacing={0}>
           <Grid item xs={4}> */}
