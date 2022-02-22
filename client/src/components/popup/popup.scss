@@ -32,7 +32,7 @@
   position: fixed;
   right: calc(15% - 30px);
   top: calc(100vh - 75vh);
-  background: #ededed;
+  background: $background-color;
   width: 25px;
   height: 25px;
   border-radius: 50%;
@@ -50,20 +50,20 @@
 h4,
 .confirm-deletion {
   margin-top: 0;
-  color: #ee5253;
+  color: $warning;
 }
 
 .popup-delete-botton {
   border-radius: 4px;
   background-color: $header;
-  border: 1px solid #ee5253;
-  color: #ee5253;
+  border: 1px solid $warning;
+  color: $deletion;
   font-size: 1rem;
   width: 200px;
 
   &:hover {
-    background-color: #ee5253;
-    border: 2px solid;
+    background-color: $deletion;
+    border: 1px solid;
     color: $black;
   }
 }
