@@ -12,7 +12,7 @@ export default function ExerciseList(props) {
   const dataLimit = 5;
   const [pages] = useState(Math.round(exercises.length / dataLimit));
   const [currentPage, setCurrentPage] = useState(1);
-  const pageLimit = pages < 5? pages : 5;
+  const pageLimit = pages < 5 ? pages : 5;
   //function to go to next page
   function goToNextPage() {
     //increment the current page by 1
@@ -44,7 +44,7 @@ export default function ExerciseList(props) {
     let start = Math.floor((currentPage - 1) / pageLimit) * pageLimit;
     return new Array(pageLimit).fill().map((_, idx) => start + idx + 1)
   }
-  const showPage = (getPaginatedData().length < dataLimit) ? false: true;
+  const showPage = (getPaginatedData().length < dataLimit) ? false : true;
 
   //==============pagination end==============
 
@@ -95,7 +95,7 @@ export default function ExerciseList(props) {
         {showPage && showPageNumbers}
 
         {/* next button */}
-        <button
+        <button 
           onClick={goToNextPage}
           className={`next ${currentPage === pages ? 'disabled' : ''}`}
         >
