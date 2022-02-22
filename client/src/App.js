@@ -12,6 +12,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import { authContext } from './providers/AuthProvider';
 import useExercisesData from "./hooks/useExercisesData";
+import useQuotes from "./hooks/useQuotes";
 import useWeather from "./hooks/useWeather";
 
 
@@ -114,6 +115,7 @@ const todayWeather = {
 function App() {
   const { auth } = useContext(authContext);
   const [show, setShow] = useState('LOGIN');
+  const { quotes } = useQuotes()
   //const { exercises } = useExercisesData()
   //const { todayWeather } = useWeather();
 
@@ -140,7 +142,7 @@ function App() {
               {/* <Route path="/" element={<Dashboard/>} /> */}
               {/* rn - not working */}
               <Route exact path="/" element={
-                <Dashboard todayWeather={todayWeather} />
+                <Dashboard quotes={quotes} todayWeather={todayWeather} />
               } />
               <Route exact path="/calender" element={
                 <Calender />
