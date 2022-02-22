@@ -54,13 +54,13 @@ export default function Item(props) {
             <List >
               <ListItem
                 secondaryAction={
-                  <IconButton className={classes.arrow} onClick={() => props.onClick(props.exerciseItem)}>
+                  <IconButton sx={{ bgcolor: '#2c2e43' , color: '#FFC600'}} className={classes.arrow} onClick={() => props.onClick(props.exerciseItem)}>
                     <ArrowForwardIosIcon />
                   </IconButton>
                 }
               >
                 <ListItemAvatar>
-                  <Avatar className={classes.avatar}>
+                  <Avatar sx={{ bgcolor: '#2c2e43' , color: '#FFC600'}} className={classes.avatar}>
                     <FitnessCenterIcon />
                   </Avatar>
                 </ListItemAvatar>
