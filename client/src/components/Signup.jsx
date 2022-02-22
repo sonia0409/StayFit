@@ -23,7 +23,7 @@ export default function Signup(props) {
     <div className="container-login">
 
         <form className="signup" onSubmit={onSubmit}>
-          <h3>SIGNUP:</h3>
+          <h3>Join the StayFit community:</h3>
           <div className="firstName">
             <input autoComplete="off" type="text" name="firstName"
               value={firstName} placeholder="Enter first name"

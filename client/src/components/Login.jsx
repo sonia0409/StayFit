@@ -17,7 +17,7 @@ export default function Login(props) {
   return (
     <div className="container-login">
         <form autoComplete="off" className="login" onSubmit={onSubmit}>
-          <h3>LOGIN:</h3>
+          <h3>StayFit...Logo here.</h3>
           <div className="username">
             <input type="text" name="username"
               value={email} placeholder="Enter Username or email"
