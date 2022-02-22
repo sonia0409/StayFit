@@ -54,5 +54,17 @@
     flex-direction: row;
     justify-content: space-between;
   }
-
+  .weather{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    font-family: $font-family;
+  }
+  .heading-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+  }
 }
