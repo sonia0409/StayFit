@@ -1,11 +1,20 @@
 import React from 'react';
 import Box from '@mui/material/Box';
+import CancelIcon from "@mui/icons-material/Cancel";
 
 export default function ShowExercise(props) {
-console.log(props)
+    const [anchorEl, setAnchorEl] = React.useState(true);
+    const handleClose = () => {
+        setAnchorEl(!anchorEl);
+        console.log("Close got clicked")
+    };
+    console.log(props)
     return (
         <div className="exerciseGif-container">
-            <Box
+            <div className="add-close-cross">
+         {anchorEl && <CancelIcon fontSize="large" onClick={handleClose} />}
+        </div>
+            {anchorEl && <Box
                 sx={{
                     display: 'flex',
                     flexDirection: { xs: 'column', md: 'column' },
@@ -16,9 +25,9 @@ console.log(props)
                     boxShadow: 3,
                     fontWeight: 'bold',
                 }}
-                
+
             >
-                 
+
                 <Box
                     component="img"
                     sx={{
@@ -27,7 +36,6 @@ console.log(props)
                         maxHeight: { xs: 500, md: 300 },
                         maxWidth: { xs: 350, md: 250 },
                     }}
-                    
                     alt="exercise-gif"
                     src={props.gifUrl}
                 />
@@ -40,12 +48,12 @@ console.log(props)
                         minWidth: { md: 350 },
                     }}
                 >
-                    <Box component="span" sx={{ color: 'primary.main', fontSize: 14, textTransform: 'uppercase'}}>
-                    {props.name}
+                    <Box component="span" sx={{ color: 'primary.main', fontSize: 14, textTransform: 'uppercase' }}>
+                        {props.name}
                     </Box>
-                    
+
                 </Box>
-            </Box>
+            </Box>}
         </div>
     )
 }

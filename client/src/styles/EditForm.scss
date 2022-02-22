@@ -28,10 +28,10 @@ p::before {
 }
 
 .edit-form-name {
-  background: $font-color;
+  color: $font-color;
   width: 100%;
   border-radius: 4px;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   margin-bottom: 0.5rem;
 }
 
@@ -40,6 +40,8 @@ p::before {
   text-align: left;
   color: $font-color;
   margin: 2rem 0;
+  font-size: 18px;
+  
 }
 
 input {
@@ -56,7 +58,8 @@ input {
 .note-message {
   h5 {
     margin: 0.5rem 0;
-    color: $warning;
+    font-size: 14px;
+    color: $deletion;
     letter-spacing: 0.015rem;
   }
 }
@@ -67,8 +70,8 @@ input {
   text-transform: uppercase;
   padding: 2rem;
   font-size: 16px;
-  font-weight: 100;
-  letter-spacing: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.25rem;
   text-align: center;
   border: 1px solid $font-color;
 }

@@ -113,7 +113,7 @@ const AddForm = (props) => {
           <CancelIcon fontSize="large" onClick={onClose} />
         </div>
         <div className="add-form-name">
-          <h2>Add Exercise</h2>
+          <h2>Schedule Exercise</h2>
         </div>
         {/* Dropdown */}
         <div className="form-dropdown">
@@ -326,7 +326,7 @@ const AddForm = (props) => {
             render={({ field }) => <Checkbox {...field} />}
           />
         </div>
-        <input className="add-input" type="submit" />
+        <input value="add Exercise" className="add-input" type="submit" />
       </form>
     </main>
   );

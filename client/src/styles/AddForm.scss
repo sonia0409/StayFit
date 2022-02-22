@@ -32,11 +32,12 @@ p::before {
 }
 
 .add-form-name {
-  background: $font-color;
+  //background: $font-color;
   // text-transform: uppercase;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   width: 100%;
-  border-radius: 4px;
+  //border-radius: 4px;
+  color: $font-color;
 }
 
 .form-label {
@@ -82,8 +83,8 @@ input {
   text-transform: uppercase;
   padding: 2rem;
   font-size: 16px;
-  font-weight: 100;
-  letter-spacing: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.25rem;
   text-align: center;
   border: 1px solid $font-color;
 }
