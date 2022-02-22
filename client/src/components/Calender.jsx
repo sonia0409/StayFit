@@ -6,7 +6,7 @@ import EditForm from "../global-components/EditForm";
 import "../styles/Calender.scss";
 import Fab from "@mui/material/Fab";
 
-export default function Calender() {
+export default function Calender(props) {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [showAddForm, setShowAddForm] = useState(false);
   // const [showEditForm, setShowEditForm] = useState(false);
@@ -17,11 +17,13 @@ export default function Calender() {
   }, [selectedDate]);
 
   const isToday = (someDate) => {
-    const today = new Date()
-    return someDate.getDate() === today.getDate() &&
+    const today = new Date();
+    return (
+      someDate.getDate() === today.getDate() &&
       someDate.getMonth() === today.getMonth() &&
       someDate.getFullYear() === today.getFullYear()
-  }
+    );
+  };
 
   // const dateStringFormat = selectedDate.toDateString();
   const splitDate = selectedDate.toDateString().split(" ");
@@ -32,11 +34,11 @@ export default function Calender() {
         <h2 className="date">
           {splitDate[1]} {splitDate[2]}{" "}
         </h2>
-        { !isToday(selectedDate) && 
+        {!isToday(selectedDate) && (
           <Fab variant="extended" onClick={() => setSelectedDate(new Date())}>
             Today
           </Fab>
-        }
+        )}
       </div>
 
       <WeeklyCalender
@@ -55,6 +57,7 @@ export default function Calender() {
 
       {showAddForm && (
         <AddForm
+          exercises={props.exercises}
           date={selectedDate.toDateString()}
           onSubmit={() => setShowAddForm(false)}
           onClose={() => setShowAddForm(false)}

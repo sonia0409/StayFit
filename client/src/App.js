@@ -10,13 +10,12 @@ import Footer from "./global-components/Footer";
 import Header from "./global-components/Header";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import { authContext } from './providers/AuthProvider';
+import { authContext } from "./providers/AuthProvider";
 import useExercisesData from "./hooks/useExercisesData";
 import useQuotes from "./hooks/useQuotes";
 import useWeather from "./hooks/useWeather";
 
-
-//temporarty data- this data will be fetched from API call 
+//temporarty data- this data will be fetched from API call
 const exercises = [
   {
     bodyPart: "waist",
@@ -70,15 +69,15 @@ const exercises = [
 const todayWeather = {
   coord: {
     lon: -79.4163,
-    lat: 43.7001
+    lat: 43.7001,
   },
   weather: [
     {
       id: 800,
       main: "Clear",
       description: "clear sky",
-      icon: "01d" //"04n"
-    }
+      icon: "01d", //"04n"
+    },
   ],
   base: "stations",
   main: {
@@ -87,52 +86,51 @@ const todayWeather = {
     temp_min: 36.36,
     temp_max: 42.19,
     pressure: 1022,
-    humidity: 54
+    humidity: 54,
   },
   visibility: 10000,
   wind: {
     speed: 16.11,
-    deg: 70
+    deg: 70,
   },
   clouds: {
-    all: 0
+    all: 0,
   },
   dt: 1645472884,
   sys: {
     type: 1,
     id: 718,
-    country: "CA",//
+    country: "CA", //
     sunrise: 1645445250,
-    sunset: 1645484124
+    sunset: 1645484124,
   },
   timezone: -18000,
   id: 6167865,
   name: "Toronto",
-  cod: 200
-}
-
+  cod: 200,
+};
 
 function App() {
   const { auth } = useContext(authContext);
-  const [show, setShow] = useState('LOGIN');
-  const { quotes } = useQuotes()
+  const [show, setShow] = useState("LOGIN");
+  const { quotes } = useQuotes();
   //const { exercises } = useExercisesData()
   //const { todayWeather } = useWeather();
 
   const showLogin = () => {
     setShow("LOGIN");
-  }
+  };
 
   const showSignup = () => {
-    setShow('SIGNUP');
-  }
+    setShow("SIGNUP");
+  };
 
   return (
     <div className="App">
-      {(!auth && show === "LOGIN") && <Login showSignup={showSignup} />}
-      {(!auth && show === "SIGNUP") && <Signup showLogin={showLogin} />}
+      {!auth && show === "LOGIN" && <Login showSignup={showSignup} />}
+      {!auth && show === "SIGNUP" && <Signup showLogin={showLogin} />}
 
-      {auth &&
+      {auth && (
         <>
           <div className="header">
             <Header />
@@ -141,17 +139,24 @@ function App() {
             <Routes>
               {/* <Route path="/" element={<Dashboard/>} /> */}
               {/* rn - not working */}
-              <Route exact path="/" element={
-                <Dashboard quotes={quotes} todayWeather={todayWeather} />
-              } />
-              <Route exact path="/calender" element={
-                <Calender />
-              } />
+              <Route
+                exact
+                path="/"
+                element={
+                  <Dashboard quotes={quotes} todayWeather={todayWeather} />
+                }
+              />
+              <Route
+                exact
+                path="/calender"
+                element={<Calender exercises={exercises} />}
+              />
               {/* change path to /calender; once get Dashboard working */}
               <Route exact path="/exerciseCategory" element={<Application />} />
               <Route exact path="/exercises/:part" element={<Exercises />} />
               <Route
-               exact path="/exercises/:part/exercise/:name"
+                exact
+                path="/exercises/:part/exercise/:name"
                 element={<Exercise exercises={exercises} />}
               />
             </Routes>
@@ -160,7 +165,7 @@ function App() {
             <Footer />
           </div>
         </>
-      }
+      )}
     </div>
   );
 }
