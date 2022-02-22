@@ -11,6 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { authContext } from '../providers/AuthProvider';
+import { makeStyles } from '@material-ui/core/styles';
 
 export default function MenuAppBar() {
   const { auth, user, logout } = useContext(authContext);
@@ -28,10 +29,23 @@ export default function MenuAppBar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const useStyles = makeStyles(theme => ({
+    header: {
+      position: 'fixed',
+      top: 0,
+      width: '100%',
+      height: 55,
+      padding:0,
+      textAlign: 'space-evenly',
+    }
+  }));
+  const classes = useStyles();
+  
 //material ui took inline styling only- figure out the ways to implement differently
   return (
-    <Box  sx={{ flexGrow: 1 }}>
-      <AppBar style={{ background: '#2c2e43' }} position="static">
+    <Box className={classes.header} sx={{ flexGrow: 1 }}>
+      <AppBar style={{ background: '#2c2e43' }} >
         <Toolbar>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -75,7 +89,6 @@ export default function MenuAppBar() {
                 onClose={handleClose}
               >
                 <MenuItem divider={true} disabled={true}>User: { user.name }</MenuItem>
-                {/* <MenuItem divider={true} onClick={handleClose}>My account</MenuItem> */}
                 <MenuItem onClick={logout}>Logout</MenuItem>
               </Menu>
             </div>
