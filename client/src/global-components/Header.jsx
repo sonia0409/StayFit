@@ -1,27 +1,27 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
-import HomeIcon from '@mui/icons-material/Home';
-import Avatar from '@mui/material/Avatar';
-import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
-import { authContext } from '../providers/AuthProvider';
-import { makeStyles } from '@material-ui/core/styles';
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import MenuItem from "@mui/material/MenuItem";
+import Menu from "@mui/material/Menu";
+import HomeIcon from "@mui/icons-material/Home";
+import Avatar from "@mui/material/Avatar";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { authContext } from "../providers/AuthProvider";
+import { makeStyles } from "@material-ui/core/styles";
 
 export default function MenuAppBar() {
   const { auth, user, logout } = useContext(authContext);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleHomeButton = () => {
-    console.log("Home button clicked!!")
-    navigate("..")
-  }
+    console.log("Home button clicked!!");
+    navigate("..");
+  };
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -30,24 +30,25 @@ export default function MenuAppBar() {
     setAnchorEl(null);
   };
 
-  const useStyles = makeStyles(theme => ({
+  const useStyles = makeStyles((theme) => ({
     header: {
-      position: 'fixed',
+      zIndex: 2,
+      position: "fixed",
       top: 0,
-      width: '100%',
+      width: "100%",
       height: 55,
-      padding:0,
-      textAlign: 'space-evenly',
-    }
+      padding: 0,
+      textAlign: "space-evenly",
+    },
   }));
   const classes = useStyles();
-  
-//material ui took inline styling only- figure out the ways to implement differently
+
+  //material ui took inline styling only- figure out the ways to implement differently
   return (
     <Box className={classes.header} sx={{ flexGrow: 1 }}>
-      <AppBar style={{ background: '#2c2e43' }} >
+      <AppBar style={{ background: "#2c2e43" }}>
         <Toolbar>
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -65,30 +66,30 @@ export default function MenuAppBar() {
           </Typography>
           {auth && (
             <div>
-
               <IconButton onClick={handleMenu} sx={{ p: 0 }}>
                 <Avatar
                   alt="Tired man"
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxSNIFSen-ODMRSzmOFJkfqBxejIsxvl2_6g&usqp=CAU"
                 />
-
               </IconButton>
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
                 anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
+                  vertical: "top",
+                  horizontal: "right",
                 }}
                 keepMounted
                 transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
+                  vertical: "top",
+                  horizontal: "right",
                 }}
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem divider={true} disabled={true}>User: { user.name }</MenuItem>
+                <MenuItem divider={true} disabled={true}>
+                  User: {user.name}
+                </MenuItem>
                 <MenuItem onClick={logout}>Logout</MenuItem>
               </Menu>
             </div>
