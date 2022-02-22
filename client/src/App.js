@@ -13,6 +13,8 @@ import Signup from "./components/Signup";
 import { authContext } from './providers/AuthProvider';
 import useExercisesData from "./hooks/useExercisesData";
 import useQuotes from "./hooks/useQuotes";
+import useWeather from "./hooks/useWeather";
+
 
 //temporarty data- this data will be fetched from API call 
 const exercises = [
@@ -65,13 +67,57 @@ const exercises = [
     target: "lats",
   },
 ];
+const todayWeather = {
+  coord: {
+    lon: -79.4163,
+    lat: 43.7001
+  },
+  weather: [
+    {
+      id: 800,
+      main: "Clear",
+      description: "clear sky",
+      icon: "01d" //"04n"
+    }
+  ],
+  base: "stations",
+  main: {
+    temp: 37.67,
+    feels_like: 37.67,
+    temp_min: 36.36,
+    temp_max: 42.19,
+    pressure: 1022,
+    humidity: 54
+  },
+  visibility: 10000,
+  wind: {
+    speed: 16.11,
+    deg: 70
+  },
+  clouds: {
+    all: 0
+  },
+  dt: 1645472884,
+  sys: {
+    type: 1,
+    id: 718,
+    country: "CA",//
+    sunrise: 1645445250,
+    sunset: 1645484124
+  },
+  timezone: -18000,
+  id: 6167865,
+  name: "Toronto",
+  cod: 200
+}
 
 
 function App() {
   const { auth } = useContext(authContext);
   const [show, setShow] = useState('LOGIN');
-  const { exercises } = useExercisesData()
   const { quotes } = useQuotes()
+  //const { exercises } = useExercisesData()
+  //const { todayWeather } = useWeather();
 
   const showLogin = () => {
     setShow("LOGIN");
@@ -96,16 +142,16 @@ function App() {
               {/* <Route path="/" element={<Dashboard/>} /> */}
               {/* rn - not working */}
               <Route exact path="/" element={
-                <Dashboard quotes={quotes} />
+                <Dashboard quotes={quotes} todayWeather={todayWeather} />
               } />
               <Route exact path="/calender" element={
                 <Calender />
               } />
               {/* change path to /calender; once get Dashboard working */}
               <Route exact path="/exerciseCategory" element={<Application />} />
-              <Route path="/exercises/:part" element={<Exercises />} />
+              <Route exact path="/exercises/:part" element={<Exercises />} />
               <Route
-                path="/exercises/:part/exercise/:name"
+               exact path="/exercises/:part/exercise/:name"
                 element={<Exercise exercises={exercises} />}
               />
             </Routes>
