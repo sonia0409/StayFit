@@ -2,24 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 const hardcodedQuotes = [
     {
-        "id": 71,
-        "quote": "Self-discipline is about controlling your desires and impulses while staying focused on what needs to get done to achieve your goal.",
-        "author": "Adam Sicinski",
-        "category": "Self Discipline"
-    },
-    {
-        "id": 72,
-        "quote": "Rule of thumb: Eat for what you’re going to be doing and not for what you have done. Don’t take in more than you’re willing to burn off.",
-        "author": "Lee Haney",
-        "category": "Self Discipline"
-    },
-    {
-        "id": 73,
-        "quote": "Bodybuilding is an art, your body is the canvas, weights are your brush and nutrition is your paint. We all have the ability to turn a self-portrait into a masterpiece.",
-        "author": "Kai Greene",
-        "category": "Self Discipline"
-    },
-    {
         "id": 74,
         "quote": "Success is what comes after you stop making excuses.",
         "author": "Luis Galarza",

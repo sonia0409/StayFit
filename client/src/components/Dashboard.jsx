@@ -5,7 +5,7 @@ import "../styles/Dashboard.scss";
 export default function Dashboard(props) {
   const {quotes} = props;
 
-  const randomQuote = Math.floor((Math.random() * 8));
+  const randomQuote = Math.floor((Math.random() * 6));
 
   const formatedDate = () => {
     const today = new Date();
