@@ -52,7 +52,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        color: black;
+        color: $font-color;
         &:hover {
           color: $font-color;
           cursor: pointer;
@@ -105,7 +105,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        color: black;
+        color: $font-color;
         &:hover {
           color: $font-color;
           cursor: pointer;

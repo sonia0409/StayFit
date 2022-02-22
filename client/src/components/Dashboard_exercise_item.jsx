@@ -65,6 +65,10 @@ export default function DashboardExerciseListItem(props) {
                 <FontAwesomeIcon icon={faCheck} />
               </button>
             </label>
+
+            {!localCompleted && <div className="mark-completed-text-calender">Done?</div> }
+            {localCompleted && <div className="mark-completed-text-calender">Good job!</div> }
+            
           </div>
         </div>
       </div>

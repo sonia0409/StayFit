@@ -12,6 +12,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import { authContext } from './providers/AuthProvider';
 import useExercisesData from "./hooks/useExercisesData";
+import useQuotes from "./hooks/useQuotes";
 
 //temporarty data- this data will be fetched from API call 
 const exercises = [
@@ -69,7 +70,8 @@ const exercises = [
 function App() {
   const { auth } = useContext(authContext);
   const [show, setShow] = useState('LOGIN');
-  // const { exercises } = useExercisesData()
+  const { exercises } = useExercisesData()
+  const { quotes } = useQuotes()
 
   const showLogin = () => {
     setShow("LOGIN");
@@ -93,14 +95,14 @@ function App() {
             <Routes>
               {/* <Route path="/" element={<Dashboard/>} /> */}
               {/* rn - not working */}
-              <Route path="/" element={
-                <Dashboard />
+              <Route exact path="/" element={
+                <Dashboard quotes={quotes} />
               } />
-              <Route path="/calender" element={
+              <Route exact path="/calender" element={
                 <Calender />
               } />
               {/* change path to /calender; once get Dashboard working */}
-              <Route path="/exerciseCategory" element={<Application />} />
+              <Route exact path="/exerciseCategory" element={<Application />} />
               <Route path="/exercises/:part" element={<Exercises />} />
               <Route
                 path="/exercises/:part/exercise/:name"
