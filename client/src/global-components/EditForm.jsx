@@ -23,7 +23,6 @@ const EditForm = (props) => {
   const isRecurring = Mo || Tu || We || Th || Fr || Sa || Su;
 
   const {
-    control,
     register, //cb ,register individual inputs into the hook
     handleSubmit,
     formState: { errors },
@@ -32,10 +31,10 @@ const EditForm = (props) => {
       bodyPart: bodyPart || "",
       muscleGroup: muscleGroup || "",
       exerciseName: exerciseName || "",
-      duration: duration || null,
-      sets: sets || null,
-      reps: reps || null,
-      weight: weight || null,
+      duration: duration || 0,
+      sets: sets || 0,
+      reps: reps || 0,
+      weight: weight || 0,
       Mo: Mo || false,
       Tu: Tu || false,
       We: We || false,
@@ -51,7 +50,7 @@ const EditForm = (props) => {
       <form
         className="edit-form"
         onSubmit={handleSubmit(async (data) => {
-          console.log("Data from Edit Form =======>", data);
+          // console.log("Data from Edit Form =======>", data);
 
           // Use axios to edit exercise in database.
           //path:  ("exercise/:exercise_id");
@@ -72,47 +71,114 @@ const EditForm = (props) => {
         </div>
 
         {/* Inputs  */}
+        {/* Error messages for name field validation */}
+        {errors.exerciseName?.type === "required" && (
+          <p>Give the name for your exersicise.</p>
+        )}
+        {errors.exerciseName?.type === "maxLength" && (
+          <p>Max length for name is 25 characters.</p>
+        )}
         <Grid container spacing={0}>
           <Grid item xs={5}>
-            <label className="form-label"> Exercise Name :</label>
+            <label className="form-label"> Name : *</label>
           </Grid>
           <Grid item xs={7}>
-            <input {...register("exerciseName")} placeholder="Exercise Name" />
-            {errors.exerciseName && <p>Exercise Name is required field</p>}
+            <input
+              placeholder="Exercise Name"
+              {...register("exerciseName", {
+                required: true,
+                maxLength: 25,
+              })}
+            />
           </Grid>
         </Grid>
 
+        {/* Error messages for duration field. */}
+        {errors.duration?.type === "required" && (
+          <p> Duration field can't be empty. </p>
+        )}
+        {errors.duration?.type === "min" && <p>Duration can't be negative.</p>}
+        {errors.duration?.type === "max" && (
+          <p>Duration can't be more then 1000.</p>
+        )}
         <Grid container spacing={0}>
           <Grid item xs={5}>
             <label className="form-label"> Duration (min) : </label>
           </Grid>
           <Grid item xs={7}>
-            <input {...register("duration")} placeholder="Duration / min" />
+            <input
+              type="number"
+              placeholder="Duration"
+              {...register("duration", {
+                required: true,
+                valueAsNumber: true,
+                min: 0,
+                max: 1000,
+              })}
+            />
           </Grid>
         </Grid>
-
+        {/* Error messages for sets field. */}
+        {errors.sets?.type === "required" && <p> Sets field can't be empty.</p>}
+        {errors.sets?.type === "min" && <p>Sets can't be negative.</p>}
+        {errors.sets?.type === "max" && <p>Sets can't be more then 1000.</p>}
         <Grid container spacing={0}>
           <Grid item xs={5}>
             <label className="form-label"> Sets :</label>
           </Grid>
           <Grid item xs={7}>
-            <input {...register("sets")} placeholder="Sets" />
+            <input
+              type="number"
+              placeholder="Sets"
+              {...register("sets", {
+                required: true,
+                valueAsNumber: true,
+                min: 0,
+                max: 1000,
+              })}
+            />
           </Grid>
         </Grid>
+        {/* Error messages for reps field. */}
+        {errors.reps?.type === "required" && <p> Reps field can't be empty.</p>}
+        {errors.reps?.type === "min" && <p>Reps can't be negative.</p>}
+        {errors.reps?.type === "max" && <p>Reps can't be more then 1000.</p>}
         <Grid container spacing={0}>
           <Grid item xs={5}>
             <label className="form-label"> Reps :</label>
           </Grid>
           <Grid item xs={7}>
-            <input {...register("reps")} placeholder="Reps" />
+            <input
+              type="number"
+              placeholder="Reps"
+              {...register("reps", {
+                required: true,
+                valueAsNumber: true,
+                min: 0,
+                max: 1000,
+              })}
+            />
           </Grid>
         </Grid>
+        {/* Error messages for weight field. */}
+        {errors.weight?.type === "min" && <p>Weight can't be negative.</p>}
+        {errors.weight?.type === "max" && (
+          <p>Weight can't be more then 1000.</p>
+        )}
         <Grid container spacing={0}>
           <Grid item xs={5}>
             <label className="form-label"> Weight (lbs) :</label>
           </Grid>
           <Grid item xs={7}>
-            <input {...register("weight")} placeholder="Weight" />
+            <input
+              type="number"
+              placeholder="Weight"
+              {...register("weight", {
+                valueAsNumber: true,
+                min: 0,
+                max: 1000,
+              })}
+            />
           </Grid>
         </Grid>
         {isRecurring && (
