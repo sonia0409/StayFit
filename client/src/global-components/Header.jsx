@@ -62,15 +62,12 @@ export default function MenuAppBar() {
           </Box>
 
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            StayFit
+            <img id="nav-image" src="../logo-no-backgr.png" alt=""></img>
           </Typography>
           {auth && (
             <div>
               <IconButton onClick={handleMenu} sx={{ p: 0 }}>
-                <Avatar
-                  alt="Tired man"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxSNIFSen-ODMRSzmOFJkfqBxejIsxvl2_6g&usqp=CAU"
-                />
+                <Avatar alt="heart" src="../heart-black.png" />
               </IconButton>
               <Menu
                 id="menu-appbar"
