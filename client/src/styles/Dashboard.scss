@@ -11,10 +11,16 @@
   min-height: 75vh;
   color: $font-color;
 
+  .dashboard-title {
+    margin: 0;
+    font-size: 28px;
+  }
   .dashboard-date {
     text-align: center;
     margin: 0.1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    // display: flex;
+    // justify-content: space-between;
   }
 
   .container-quote {
@@ -50,11 +56,11 @@
     }
   }
   .db-titles {
-    max-height: 32px;
+    // max-height: 32px;
     padding: 0 1rem 0 1.5rem;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
   }
   .weather{
     display: flex;
@@ -65,8 +71,9 @@
   }
   .heading-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: row-reverse;
     align-items: flex-end;
+    padding: 0.5rem 1.5rem 0 1.5rem;
   }
 }
