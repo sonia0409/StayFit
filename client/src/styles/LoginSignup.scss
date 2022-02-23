@@ -8,6 +8,20 @@
   justify-content: center;
   background-image: url("../../public/pexels-cottonbro-4753987.jpg");
 
+  .login-images {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.5rem;
+  }
+  #login-image-text {
+    width: 100px;
+    height: 30px;
+    margin-top: 0.7rem;
+  }
+  #login-image-picture {
+    width: 50px;
+    height: 50px;
+  }
   .login {
     min-width: 250px;
     min-height: 150px;
@@ -17,7 +31,7 @@
     flex-direction: column;
     justify-content: center;
     background-color: $header;
-    padding: 3rem 2rem;
+    padding: 3rem 2rem 3.5rem 2rem;
     margin: 40vh auto 40vh auto;
 
     h3 {
@@ -74,8 +88,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    // background-color: $header;
-    // padding: 1rem 1rem 0.5rem 1rem;
+    background-color: $header;
+    padding: 0.5rem 1.5rem 0.5rem 1.5rem;
     margin: 40vh auto 40vh auto;
 
     h3 {
