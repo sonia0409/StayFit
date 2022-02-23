@@ -20,13 +20,13 @@ export default function Dashboard(props) {
   //=========**=====
   return (
     <div className="container-dashboard">
+          <h2 className="dashboard-title">Dashboard</h2>
       <div className="heading-container">
         <div className="weather">
           <img src={`${iconurl}`} alt=""/>
           {temperatureInCelsius}&#8451; {weather.name}
         </div>
         <div>
-          <h2 className="dashboard-date">Dashboard</h2>
           <h2 className="dashboard-date">{formatedDate()}</h2>
         </div>
       </div>
