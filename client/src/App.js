@@ -14,6 +14,8 @@ import { authContext } from "./providers/AuthProvider";
 import useExercisesData from "./hooks/useExercisesData";
 import useQuotes from "./hooks/useQuotes";
 import useWeather from "./hooks/useWeather";
+import About from "./about/About";
+import Stack from "./about/Stack";
 
 //temporarty data- this data will be fetched from API call
 const exercises = [
@@ -159,6 +161,8 @@ function App() {
                 path="/exercises/:part/exercise/:name"
                 element={<Exercise exercises={exercises} />}
               />
+              <Route exact path="/about" element={<About />} />
+              <Route exact path="/stack" element={<Stack />} />
             </Routes>
           </div>
           <div className="footer">

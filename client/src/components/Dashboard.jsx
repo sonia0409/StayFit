@@ -14,7 +14,7 @@ export default function Dashboard(props) {
   }
   //weather api data======
   const weather = props.todayWeather
-  const temperatureInCelsius = Math.round((weather.main.temp - 32) / 1.8)
+  const temperatureInCelsius = Math.round(weather.main.temp)
   const { icon } = weather.weather['0']
   const iconurl = `http://openweathermap.org/img/w/${icon}.png`;
   //=========**=====
