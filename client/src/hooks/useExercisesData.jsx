@@ -4,9 +4,9 @@ import axios from "axios";
 
 function useExercisesData() {
     const [exercises, setExercises] = useState([])
-    const API_KEY = process.env.REACT_APP_API_KEY
-
+    
     useEffect(() => {
+        const API_KEY = process.env.REACT_APP_API_KEY
         const options = {
             method: 'GET',
             url: 'https://exercisedb.p.rapidapi.com/exercises',
@@ -22,7 +22,7 @@ function useExercisesData() {
             }).catch((error) => {
                 console.error(error);
             });
-    }, [options])
+    }, [])
 
     return { exercises };
 }

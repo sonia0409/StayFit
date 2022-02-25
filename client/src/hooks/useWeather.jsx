@@ -5,9 +5,10 @@ import axios from "axios";
 function useWeather() {
 
     const [todayWeather, setTodayWeather] = useState({})
-    const API_KEY = process.env.REACT_APP_API_KEY_WEATHER
+    
     
     useEffect(() => {
+        const API_KEY = process.env.REACT_APP_API_KEY_WEATHER
         const options = {
             method: 'GET',
             url: 'https://community-open-weather-map.p.rapidapi.com/weather',
@@ -35,7 +36,7 @@ function useWeather() {
             }).catch((error) => {
                 console.error(error);
             });
-    }, [options, todayWeather.weather])
+    }, [todayWeather.weather])
     console.log("before return===========>", todayWeather )
     return { todayWeather };
 }
