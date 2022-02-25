@@ -35,7 +35,7 @@ function useWeather() {
             }).catch((error) => {
                 console.error(error);
             });
-    }, [])
+    }, [options, todayWeather.weather])
     console.log("before return===========>", todayWeather )
     return { todayWeather };
 }

@@ -35,7 +35,7 @@ export default function About() {
 
             <div className="description">
               <div className='name'>Olga Shilenkova &nbsp; <a href="https://github.com/OlgaShilenkova"><GitHubIcon /> Github</a>
-              &nbsp; <a href=""><LinkedInIcon /> LinkedIn</a></div>
+              &nbsp; <a href="https://www.linkedin.com/in/olga-shilenkova-a69a6572/"><LinkedInIcon /> LinkedIn</a></div>
               <div>Olga Shilenkova is a Full Stack Web Developer, also has background in professional sport.She really enjoys adding new features to the front-end.
               </div>
             </div>
@@ -45,7 +45,7 @@ export default function About() {
               sx={{ width: 125, height: 125 }} />
             <div className="description">
             <div className='name'>Nikhil Tallapureddy&nbsp;  <a href="https://github.com/snoopy55619819"><GitHubIcon /> Github</a>
-              <a href=""><LinkedInIcon /> LinkedIn</a></div>
+              <a href="https://www.linkedin.com/in/nikhil-tallapureddy/"><LinkedInIcon /> LinkedIn</a></div>
             <div>Nikhil is a Full Stack Developer. He has a background in Finance and Compliance and looking forward to build products related to financial services.</div>
             </div>
           </div>

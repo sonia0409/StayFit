@@ -1,7 +1,4 @@
 import * as React from "react";
-import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
 import Item from "./Item";
 import BackButton from "./BackButton";
 

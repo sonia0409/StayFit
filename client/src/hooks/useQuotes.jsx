@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState } from "react";
+//import axios from "axios";
 const hardcodedQuotes = [
     {
         "id": 74,
@@ -46,11 +46,11 @@ const hardcodedQuotes = [
 ]
 
 function useQuotes() {
-    const [quotes, setQuotes] = useState(hardcodedQuotes);
+    const [quotes] = useState(hardcodedQuotes);
 
     // const randomPage = Math.floor((Math.random() * 20) + 1);
 
-    const options = {
+   /*  const options = {
         method: 'GET',
         url: 'https://bodybuilding-quotes1.p.rapidapi.com/quotes',
         params: {page: `7`},
@@ -59,7 +59,7 @@ function useQuotes() {
           'x-rapidapi-key': `${process.env.REACT_APP_API_KEY}`
         }
       };
-
+ */
     // useEffect(() => {
     //     axios.request(options)
     //         .then((response) => {
@@ -69,7 +69,7 @@ function useQuotes() {
     //         .catch((error) => {
     //         console.error(error);
     //     });
-    // }, [])
+    // }, [options])
 
     return { quotes };
 }

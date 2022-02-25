@@ -22,7 +22,7 @@ function useExercisesData() {
             }).catch((error) => {
                 console.error(error);
             });
-    }, [])
+    }, [options])
 
     return { exercises };
 }

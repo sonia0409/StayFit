@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import DashboardExerciseList from "./Dashboard_exercise_list";
 import "../styles/Dashboard.scss";
 

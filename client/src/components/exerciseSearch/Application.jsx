@@ -1,15 +1,13 @@
 import React from "react";
 import ItemList from "./ItemList";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './Application.scss';
-import '../../App.scss'
-;import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import '../../App.scss';
 
 export default function Application() {
   const exerciseList = ["Body Parts", "Muscles"];
-  const [showBodyPart, setShowBodyPart] = useState(false);
-  const [showMuscles, setShowMuscles] = useState(false);
+  const showBodyPart = false;
+  const showMuscles = false;
 
   const navigate = useNavigate();
 

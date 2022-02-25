@@ -6,7 +6,7 @@ import './Pagination.scss'
 
 export default function ExerciseList(props) {
   const [current, setCurrent] = useState("");
-  const { header, exercises, onClick } = props;
+  const { header, exercises } = props;
 
   //============pagination================
   const dataLimit = 5;
