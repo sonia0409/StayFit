@@ -56,7 +56,7 @@ export default function DayWorkoutListItem(props) {
 
   const onSingleDelete = async () => {
     await axios
-      .patch(`http://localhost:8080/exercises/${day_exercise_id}`)
+      .patch(`/exercises/${day_exercise_id}`)
       .then(() => {
         toggleDeleted();
         togglePopup();
@@ -65,7 +65,7 @@ export default function DayWorkoutListItem(props) {
   const onAllDelete = async () => {
     console.log(workoutObj);
     await axios
-      .delete(`http://localhost:8080/exercises/${exercise_id}`)
+      .delete(`/exercises/${exercise_id}`)
       .then(() => {
         toggleDeleted();
         togglePopup();

@@ -55,7 +55,7 @@ const EditForm = (props) => {
           // Use axios to edit exercise in database.
           //path:  ("exercise/:exercise_id");
           await axios.post(
-            `http://localhost:8080/exercises/${exercise_id}`,
+            `/exercises/${exercise_id}`,
             data
           );
 

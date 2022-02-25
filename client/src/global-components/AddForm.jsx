@@ -100,7 +100,7 @@ const AddForm = (props) => {
           console.log("Data from form =====> ", data);
           // Use axios post to add exercise to database.
           await axios.post(
-            `http://localhost:8080/day-exercises/${user.id}/${date}/new`,
+            `/day-exercises/${user.id}/${date}/new`,
             data
           );
 

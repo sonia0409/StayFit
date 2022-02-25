@@ -25,7 +25,7 @@ export default function DayWorkoutList(props) {
     const updateData = async () => {
       setLoading(true);
       await axios
-        .get(`http://localhost:8080/day-exercises/${user.id}/${selectedDate}`)
+        .get(`/day-exercises/${user.id}/${selectedDate}`)
         .then((response) => {
           setTimeout(() => {
             setLoading(false);
@@ -39,7 +39,7 @@ export default function DayWorkoutList(props) {
   const persistIsCompleted = async (dayExerciseId) => {
     // Update is_completed status in database
     await axios.patch(
-      `http://localhost:8080/day-exercises/${dayExerciseId}`,
+      `/day-exercises/${dayExerciseId}`,
       {})
       .then(() => {
         setDayExercises(prev => {

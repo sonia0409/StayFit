@@ -14,7 +14,7 @@ export default function AuthProvider(props) {
     // setUser({ email1, id, name });
     // setAuth(true);
 
-    await axios.get(`http://localhost:8080/users/${email}`)
+    await axios.get(`/users/${email}`)
       .then((response) => {
         const userDetails = response.data[0];
         const {id, email } = userDetails;
@@ -35,7 +35,7 @@ export default function AuthProvider(props) {
 
   const signup = async function(newUserObj) {
 
-    await axios.post(`http://localhost:8080/users`, newUserObj)
+    await axios.post(`/users`, newUserObj)
       .catch(e => e.message)
   }
 
