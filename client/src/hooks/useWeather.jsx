@@ -32,11 +32,11 @@ function useWeather() {
             .then((res) => {
                 console.log("========API Calls========", res.data)
                 setTodayWeather({...res.data})
-                console.log("====after API call====",todayWeather.weather)
+               // console.log("====after API call====",todayWeather.weather)
             }).catch((error) => {
                 console.error(error);
             });
-    }, [todayWeather.weather])
+    }, [])
     console.log("before return===========>", todayWeather )
     return { todayWeather };
 }
