@@ -8,6 +8,7 @@ import CreateIcon from "@mui/icons-material/Create";
 import DateRangeTwoToneIcon from "@mui/icons-material/DateRangeTwoTone";
 import { makeStyles } from '@material-ui/core/styles';
 import { useNavigate } from 'react-router-dom';
+import InfoIcon from '@mui/icons-material/Info';
 
 export default function Footer() {
   const [value, setValue] = useState(0);
@@ -44,6 +45,10 @@ export default function Footer() {
           <BottomNavigationAction
             label="Calender"
             icon={<DateRangeTwoToneIcon onClick={() => {handleClick('/Calender')}} />}
+          />
+          <BottomNavigationAction
+            label="About us"
+            icon={<InfoIcon onClick={() => {handleClick('/About')}} />}
           />
         </BottomNavigation>
       </Box>
