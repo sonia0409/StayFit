@@ -4,7 +4,8 @@
   "description": "",
   "main": "dist/src/app.js",
   "scripts": {
-    "start": "tsc && node dist/src/app.js",
+    "start": "node dist/src/app.js",
+    "startTSC": "tsc && node dist/src/app.js",
     "lint": "eslint . --ext .ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "db:reset": "node db/scripts/resetdb.js",
