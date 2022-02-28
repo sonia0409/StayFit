@@ -5,7 +5,17 @@ StayFit is a fitness-focused scheduling application that lets users plan & keep 
 React based frontend with JSX, SASS and Material UI. Backend made with NodeJS, Express and PostgreSQL.
 
 Application deployed using Netlify and Heroku. Visit application here: [StayFit](https://stayfit-v01.netlify.app).
+___
+## Contributors
 
+[Sonia Singh](https://github.com/sonia0409)
+
+[Olga Shilenkova](https://github.com/OlgaShilenkova)
+
+[Nikhil Tallapureddy](https://github.com/snoopy55619819)
+
+___
+## Application
 ### Login/Signup:
 <img src="https://github.com/sonia0409/StayFit/blob/master/docs/login.png?raw=true" width="300" height="400" />
 
