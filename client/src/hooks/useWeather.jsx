@@ -3,10 +3,7 @@ import axios from "axios";
 
 
 function useWeather() {
-
     const [todayWeather, setTodayWeather] = useState({})
-    
-    
     useEffect(() => {
         const API_KEY = process.env.REACT_APP_API_KEY_WEATHER
         const options = {
@@ -25,19 +22,15 @@ function useWeather() {
                 'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com',
                 'x-rapidapi-key': `${API_KEY}`
             }
-        };
-    
+        };    
         axios
             .request(options)
             .then((res) => {
-                console.log("========API Calls========", res.data)
                 setTodayWeather({...res.data})
-               // console.log("====after API call====",todayWeather.weather)
             }).catch((error) => {
                 console.error(error);
             });
     }, [])
-    console.log("before return===========>", todayWeather )
     return { todayWeather };
 }
 
