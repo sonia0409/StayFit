@@ -6,21 +6,20 @@ React based frontend with JSX, SASS and Material UI. Backend made with NodeJS, E
 
 Application deployed using Netlify and Heroku. Visit application here: [StayFit](https://stayfit-v01.netlify.app).
 
-<!-- !["StayFit Login page!"]("./docs/login.png") -->
+### Login/Signup:
+<img src="https://github.com/sonia0409/StayFit/blob/master/docs/login.png?raw=true" width="300" height="400" />
 
-<img src="./docs/login.png" width="300" height="400" />
+### Dashboard walkthrough:
 
-### Dashboard:
+<img src="https://github.com/sonia0409/StayFit/blob/master/docs/dashboard.gif?raw=true" width="300" height="400" />
 
-<img src="./docs/dashboard.gif" width="300" height="400" />
+### Calender walkthrough:
 
-### Calender:
+<img src="https://github.com/sonia0409/StayFit/blob/master/docs/calender.gif?raw=true" width="300" height="400" />
 
-<img src="./docs/calender.gif" width="300" height="400" />
+### Exercises search walkthrough:
 
-### Exercises Search:
-
-<img src="./docs/exercises.gif" width="300" height="400" />
+<img src="https://github.com/sonia0409/StayFit/blob/master/docs/exercises.gif?raw=true" width="300" height="400" />
 
 ___
 ## Getting Started
@@ -52,40 +51,30 @@ ___
 git clone git@github.com:sonia0409/StayFit.git
 ```
 
-3. Install dependencies for client and server using the `npm install` command.
-
-Client:
-```js
-cd client
-npm install
-```
-
-Server:
+2. Setting up and running server/backend:
 ```js
 cd server
 npm install
-```
 
-4. Starting/Running the application
-
-Client:
-```js
-cd client
-npm start
-```
-
-Server:
-```js
-cd server
+# Start server
 npm startTSC
 ```
 
-5. Go to <http://localhost:3000/> in your browser.
+3. Setting up and running client/frontend:
+```js
+cd client
+npm install
 
-6. Sign up for an account and login in. 
+# Start client
+npm start
+```
 
-7. Schedule your exercises and explore away!
+4. Go to <http://localhost:3000/> in your browser.
 
+5. Sign up for an account and login in. 
+
+6. Schedule your exercises and explore away!
+___
 ## Dependencies
 
 Frontend:
